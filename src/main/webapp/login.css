@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* CSS Document */
+.bodyStyle{
+	background-color:white;
+}
+.loginDiv{
+	opacity:0.9;
+	padding:100px;
+	width:350px;
+	height:500px;
+	border-color:#DC143C;
+	border-width: 2px;
+	border-style: solid;
+	border-radius:8px;
+	margin:auto;
+	background-color:#FFF7CC;
+}
+.button{
+	float:center;
+	width: 160px;
+	border-radius: 8px;
+	border-color: white;
+	background-color: #DC143C;
+	color: white;
+}
+.titleText{
+	float:left;
+	padding:10px;
+	font-size:20px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	border-width: 2px;
+	border-color:white;
+	border-style: solid;
+	border-radius:4px;
+	background-color: #DC143C;
+	color: white;
+	width:307px;
+}
+.textSettings{
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	font-size:14;
+}
+.inputList{
+	-webkit-padding-start: 0px !important;
+}
+.inputBox{
+	margin-left:2px;
+	width:327px;
+	border-color:black;
+	border-width: 2px;
+	border-style: solid;
+	border-radius:4px;
+	background-color:white;
+}
+.inputBox:focus{
+	outline-color:#DC143C;
+}
+
+.disabledButton{
+	float:center;
+	width: 160px;
+	border-radius: 8px;
+	border-color: white;
+	background-color: grey;
+	color: white;
+}
+
+.badPassword{
+	margin-left:2px;
+	width:327px;
+	border-color:black;
+	border-width: 2px;
+	border-style: solid;
+	border-radius:4px;
+	background-color:#FFB2B2;
+}
+
+.myform{
+	float:left;
+	display: block;
+}
+
+.indexBody{
+	padding:100px;
+	width:350px;
+	height:500px;
+	border-color:#68228B;
+	border-width: 2px;
+	border-style: solid;
+	border-radius:8px;
+	margin:auto;
+	background-color:#F0F0F0;
+}
+
+.indexTitle{
+	float:left;
+	padding:10px;
+	font-size:20px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	border-width: 2px;
+	border-color:grey;
+	border-style: solid;
+	border-radius:4px;
+	background-color: #FFFFFF;
+	color: black;
+	width:307px;
+}
