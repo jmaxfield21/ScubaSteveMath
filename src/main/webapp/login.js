@@ -1,5 +1,10 @@
-//Author: Shane McKee <smckee6192@gmail.com>
 var loginClick = function(event){
+	/*
+	The dollar sign is basically short for jquery. All you're doing in the next line is saying "Hey, jquery, here is the ID of the 
+	HTML component that I want to pick." So all the next statement below is saying is "get the value from the field called 'username.'"
+	
+	This file is VERY basic, straight-forward JS, so it's a good starting point, I think.
+	*/
 	var username = $("#username").val();
 	var password = $("#password").val();
 	
