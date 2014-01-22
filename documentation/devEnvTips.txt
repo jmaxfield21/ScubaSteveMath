@@ -1,2 +1,0 @@
-eclipse will hate the javax.servlet package, so you have to go into the tomcat directory and add the jar "servlet-api.jar" to your eclipse build path (right click on project --> Properties --> Java Build Path --> add external jar)
-

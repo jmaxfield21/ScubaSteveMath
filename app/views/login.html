@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="@{'/public/stylesheets/common.css'}" type="text/css" />
+		
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-2.0.3.min.js")"></script>
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/login.js")"></script>
+	</head>
+	<body class="bodyStyle"  background="waterbubbles.jpg" >
+		<div id="loginDiv" class="loginDiv">
+			<text id="titleText" class="titleText">Scuba Steve's Math Adventure!</text>
+			<text id="titleText-hidden" class="titleText" hidden>Welcome :)</text>
+			<form action="/login" method="post" class="myform">
+				<input id="username" name="username" class="inputBox" type="text" placeholder="Username">
+				<input id="password" name="password" class="inputBox" type="password" placeholder="Password">
+				<button id="loginButton" type="submit" class="disabledButton textSettings" disabled="disabled">log in</button>
+			</form>
+			<button id="newUser" class="button textSettings">create new account</button>
+		</div>
+	</body>
+</html>
