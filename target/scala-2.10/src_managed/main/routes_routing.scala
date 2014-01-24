@@ -1,6 +1,6 @@
 // @SOURCE:/Users/Shane/Dropbox/ScubaSteveMath/conf/routes
-// @HASH:814a8edf371695f1082cefc3342cb587ad9afebf
-// @DATE:Wed Jan 22 02:29:24 MST 2014
+// @HASH:494b7cbb9b551cbfdf0523f2dff0eeb34d829349
+// @DATE:Thu Jan 23 22:11:09 MST 2014
 
 
 import play.core._
@@ -39,7 +39,11 @@ private[this] lazy val controllers_Assets_at1 = Route("GET", PathPattern(List(St
 // @LINE:10
 private[this] lazy val controllers_Assets_at2 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("login"))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Assets.at(path:String = "/public/html/", file:String = "login.html")""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+
+// @LINE:11
+private[this] lazy val controllers_Application_loginSubmit3 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("login"))))
+        
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Assets.at(path:String = "/public/html/", file:String = "login.html")"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.loginSubmit()""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -67,6 +71,14 @@ case controllers_Assets_at1(params) => {
 case controllers_Assets_at2(params) => {
    call(Param[String]("path", Right("/public/html/")), Param[String]("file", Right("login.html"))) { (path, file) =>
         invokeHandler(controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]),"GET", """""", Routes.prefix + """login"""))
+   }
+}
+        
+
+// @LINE:11
+case controllers_Application_loginSubmit3(params) => {
+   call { 
+        invokeHandler(controllers.Application.loginSubmit(), HandlerDef(this, "controllers.Application", "loginSubmit", Nil,"POST", """""", Routes.prefix + """login"""))
    }
 }
         

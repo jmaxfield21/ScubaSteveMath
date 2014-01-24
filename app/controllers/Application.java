@@ -1,9 +1,7 @@
 package controllers;
-
-import play.*;
-import play.mvc.*;
-
-import views.html.*;
+import play.mvc.Controller;
+import play.mvc.Http.RequestBody;
+import play.mvc.Result;
 
 public class Application extends Controller {
 
@@ -12,9 +10,11 @@ public class Application extends Controller {
     	return ok("Hello world");
     }
     
-//    public static Result hello() {
-//    	Result result = new Result();
-//    	  return ok("Hello world");
-//    	}
+    public static Result loginSubmit() {
+    	  RequestBody body = request().body();
+    	  String username = body.asFormUrlEncoded().get("username")[0];
+    	  String password = body.asFormUrlEncoded().get("password")[0];
+    	  return ok(username + "\n" + password);
+    	}
 
 }

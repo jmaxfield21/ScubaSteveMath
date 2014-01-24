@@ -1,6 +1,6 @@
 // @SOURCE:/Users/Shane/Dropbox/ScubaSteveMath/conf/routes
-// @HASH:814a8edf371695f1082cefc3342cb587ad9afebf
-// @DATE:Wed Jan 22 02:29:24 MST 2014
+// @HASH:494b7cbb9b551cbfdf0523f2dff0eeb34d829349
+// @DATE:Thu Jan 23 22:11:09 MST 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,6 +13,7 @@ import play.libs.F
 import Router.queryString
 
 
+// @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:6
@@ -40,9 +41,16 @@ case (path, file) if path == "/public/html/" && file == "login.html" => Call("GE
 }
                           
 
+// @LINE:11
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:11
+def loginSubmit(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "login")
+}
+                                                
 
 // @LINE:6
 def index(): Call = {
@@ -56,6 +64,7 @@ def index(): Call = {
                   
 
 
+// @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:6
@@ -86,9 +95,21 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:11
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:11
+def loginSubmit : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.loginSubmit",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
+      }
+   """
+)
+                        
 
 // @LINE:6
 def index : JavascriptReverseRoute = JavascriptReverseRoute(
@@ -107,6 +128,7 @@ def index : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
+// @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:6
@@ -127,9 +149,16 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:11
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:11
+def loginSubmit(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.loginSubmit(), HandlerDef(this, "controllers.Application", "loginSubmit", Seq(), "POST", """""", _prefix + """login""")
+)
+                      
 
 // @LINE:6
 def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
