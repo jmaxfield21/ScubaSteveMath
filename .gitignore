@@ -1,1 +1,9 @@
-/bin
+.gitignore
+.metadata
+RemoteSystemsTempFiles/*
+/bin/*
+/project/project/target/*
+/project/target/*
+/target/*
+/build/*
+*.class
