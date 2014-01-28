@@ -1,9 +1,6 @@
-.gitignore
+.classpath
 .metadata
-RemoteSystemsTempFiles/*
-/bin/*
-/project/project/target/*
-/project/target/*
-/target/*
-/build/*
+RemoteSystemsTempFiles/
 *.class
+*.cache
+logs/
