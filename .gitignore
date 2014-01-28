@@ -1,6 +1,8 @@
+*.class
+*.cache
 .classpath
 .metadata
 RemoteSystemsTempFiles/
-*.class
-*.cache
 logs/
+build/
+target/
