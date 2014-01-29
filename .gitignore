@@ -6,4 +6,5 @@ RemoteSystemsTempFiles/
 logs/
 build/
 target/*
-project/target/*
+project/target/resolution-cache/*
+project/target/streams/*
