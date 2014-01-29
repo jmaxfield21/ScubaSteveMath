@@ -5,5 +5,5 @@
 RemoteSystemsTempFiles/
 logs/
 build/
-target/
-project/target/
+target/*
+project/target/*
