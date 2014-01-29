@@ -27,6 +27,12 @@
 	background-color: #DC143C;
 	color: white;
 }
+
+button.button:hover {
+	color: #DC143C;
+	background-color: white;
+}
+
 .titleText{
 	float:left;
 	padding:10px;
@@ -112,6 +118,27 @@
 
 /*Welcome Page Stuff*/
 
+body {
+	background: url('../images/underwater_wallpaper.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+#pic_banner {
+	width: 18px;
+	float: left;
+	margin-left: 10px;
+}
+
+#game_banner {
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+	float: left;
+	display: inline-block;
+	padding: 20px 0 20px;
+}
+
 .bigbutton{
 	float:center;
 	width: 300px;
@@ -121,7 +148,7 @@
 	border-width : 3px;
 	background-color: #B2ECFF;
 	color: white;
-	font-size:30px;
+	font-size:35px;
 }
 
 .farRight{
@@ -133,8 +160,8 @@
 }
 
 .hugeTitleText{
-	float:left;
 	padding:10px;
+	margin-top: 10px;
 	font-size:50px;
 	font-family:'helvetica neue', 'segoe ui', sans-serif;
 	border-width: 2px;
@@ -144,4 +171,9 @@
 	background-color: #FFF7CC;
 	color: #DC143C;
 	width:307px;
+}
+
+button.bigbutton:hover {
+	background-color: white;
+	color: #B2ECFF;
 }
