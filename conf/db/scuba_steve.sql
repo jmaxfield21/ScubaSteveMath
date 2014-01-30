@@ -27,7 +27,7 @@ CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`users` (
   `level_4_lock` TINYINT(1) NULL DEFAULT True ,
   `level_5_lock` TINYINT(1) NULL DEFAULT True ,
   `admin` TINYINT(1) NULL ,
-  PRIMARY KEY (`UUID`, `username`) ,
+  PRIMARY KEY (`UUID`) ,
   INDEX `username_idx` (`username` ASC) ,
   CONSTRAINT `username`
     FOREIGN KEY (`username` )
@@ -38,67 +38,14 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `scuba_steve_db`.`addition`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`addition` (
-  `problem_id` VARCHAR(45) NOT NULL ,
-  `level_id` INT NULL ,
-  `sum_min` INT NULL ,
-  `sum_max` INT NULL ,
-  PRIMARY KEY (`problem_id`) ,
-  INDEX `prob_idx` () )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `scuba_steve_db`.`subtraction`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`subtraction` (
-  `problem_id` VARCHAR(45) NOT NULL ,
-  `level_id` INT NULL ,
-  `difference_min` INT NULL ,
-  `difference_max` INT NULL ,
-  PRIMARY KEY (`problem_id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `scuba_steve_db`.`number_recognition`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`number_recognition` (
-  `problem_id` VARCHAR(45) NOT NULL ,
-  `level_id` INT NULL ,
-  `number` INT NULL ,
-  `number_to_identify` INT NULL ,
-  PRIMARY KEY (`problem_id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `scuba_steve_db`.`math_problems`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`math_problems` (
   `level_id` INT NOT NULL ,
-  `problem_id` VARCHAR(45) NULL ,
-  PRIMARY KEY (`level_id`) ,
-  INDEX `problem_id_idx` (`problem_id` ASC) ,
-  INDEX `problem_id_idx1` (`problem_id` ASC) ,
-  INDEX `problem_id_idx2` (`problem_id` ASC) ,
-  CONSTRAINT `problem_id`
-    FOREIGN KEY (`problem_id` )
-    REFERENCES `scuba_steve_db`.`addition` (`problem_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `problem_id`
-    FOREIGN KEY (`problem_id` )
-    REFERENCES `scuba_steve_db`.`subtraction` (`problem_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `problem_id`
-    FOREIGN KEY (`problem_id` )
-    REFERENCES `scuba_steve_db`.`number_recognition` (`problem_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `addition_id` VARCHAR(45) NULL ,
+  `subtraction_id` VARCHAR(45) NULL ,
+  `number_rec_id` VARCHAR(45) NULL ,
+  PRIMARY KEY (`level_id`) )
 ENGINE = InnoDB;
 
 
@@ -112,7 +59,7 @@ CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`levels` (
   `UUID` VARCHAR(45) NOT NULL ,
   `score` DOUBLE NULL ,
   `date` DATETIME NULL ,
-  PRIMARY KEY (`score_id`, `level_id`) ,
+  PRIMARY KEY (`score_id`) ,
   INDEX `UUID_idx` (`UUID` ASC) ,
   INDEX `level_id_idx` (`level_id` ASC) ,
   CONSTRAINT `UUID`
@@ -142,6 +89,58 @@ CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`scores` (
   CONSTRAINT `UUID`
     FOREIGN KEY (`UUID` )
     REFERENCES `scuba_steve_db`.`users` (`UUID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `scuba_steve_db`.`addition`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`addition` (
+  `addition_id` VARCHAR(45) NOT NULL ,
+  `level_id` INT NULL ,
+  `sum_min` INT NULL ,
+  `sum_max` INT NULL ,
+  PRIMARY KEY (`addition_id`) ,
+  INDEX `addition_id_idx` (`addition_id` ASC) ,
+  CONSTRAINT `addition_id`
+    FOREIGN KEY (`addition_id` )
+    REFERENCES `scuba_steve_db`.`math_problems` (`addition_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `scuba_steve_db`.`subtraction`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`subtraction` (
+  `subtraction_id` VARCHAR(45) NOT NULL ,
+  `level_id` INT NULL ,
+  `difference_min` INT NULL ,
+  `difference_max` INT NULL ,
+  PRIMARY KEY (`subtraction_id`) ,
+  CONSTRAINT `fk_subtraction_math_problems1`
+    FOREIGN KEY (`subtraction_id` )
+    REFERENCES `scuba_steve_db`.`math_problems` (`subtraction_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `scuba_steve_db`.`number_recognition`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `scuba_steve_db`.`number_recognition` (
+  `number_rec_id` VARCHAR(45) NOT NULL ,
+  `level_id` INT NULL ,
+  `number` INT NULL ,
+  `number_to_identify` INT NULL ,
+  PRIMARY KEY (`number_rec_id`) ,
+  CONSTRAINT `fk_number_recognition_math_problems1`
+    FOREIGN KEY (`number_rec_id` )
+    REFERENCES `scuba_steve_db`.`math_problems` (`number_rec_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
