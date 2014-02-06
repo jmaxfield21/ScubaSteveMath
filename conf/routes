@@ -10,4 +10,8 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /login               controllers.Assets.at(path="/public/html/", file="login.html")
 POST	/login				controllers.Application.loginSubmit()
 GET		/welcome			controllers.Assets.at(path="/public/html/", file="welcome.html")
+<<<<<<< HEAD
 GET		/map				controllers.Assets.at(path="/public/html/", file="map.html")
+=======
+GET		/addingequationshome			controllers.Assets.at(path="/public/html/", file="addingequationshome.html")
+>>>>>>> e0d396bf5cd80ca3789520ed9d0a66ba75d58c8f
