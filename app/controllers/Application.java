@@ -4,11 +4,10 @@ import java.io.File;
 import org.springframework.util.Assert;
 
 import play.api.db.DB;
+import database.DatabaseConnectorDude;
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
-import database.DatabaseConnectorDude;
-import database.DatabaseConnectorMocked;
 
 public class Application extends Controller {
 	DatabaseConnectorDude mDbConnection = new DatabaseConnectorDude();
@@ -23,9 +22,6 @@ public class Application extends Controller {
     	  String username = body.asFormUrlEncoded().get("username")[0];
     	  String password = body.asFormUrlEncoded().get("password")[0];
     	  
-    	  //Not how it will actually look. I just need a database result of sorts. 
-//    	  String dbPassword = DatabaseConnectorMocked.query("goodLogin");
-    	  DB.withConnection(arg0, arg1)
     	  String tables = DatabaseConnectorDude.query("show tables;");
     	  
     	  String dbPassword = DatabaseConnectorDude.query("select password from login;");
@@ -40,6 +36,10 @@ public class Application extends Controller {
     		  return ok("Your username and password don't match anything in our records. Hint: username = \"admin\" and password = \"admin\" right now.");  
     	  }
     	  
+//    	  String result = DatabaseConnectorDude.query(query);
+    	  session("username", username);
+    	  session("password", password);
+    	  return ok(username + "\n" + password);
     	}
 
 }
