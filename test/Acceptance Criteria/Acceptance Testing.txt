@@ -1,0 +1,63 @@
+1)Login
+	The Setup
+		The user attempts to login in using username and password
+	Operations
+		1. Use a admin credentials
+		2. Use a students credentials
+		3. Use a incorrect credentials
+	Verify
+		The admin credentials will produce a prompt to ask admin if they want to be redirected to game or admin main 		page. The student credentials will open the student main page. The incorrect credentials will  inform the user 		the username or password is incorrect.
+
+2)Logout
+	The Setup
+		The user will select to logout from many different pages.
+	Operations
+		1. Attempt to logout from every page
+		2. Selecting no from the confrimation
+	Verify
+		Logging out will bring the user to the log in page. Selecting no from confrimation will close prompt.
+
+3)Add/Drop Students
+	The Setup
+		User will add and drop students from the database
+	Operations
+		1. Add two new students
+		2. Drop one student
+		3. Attempt to create new student while leaving sections blank
+	Verify
+		Adding students will add all their required information into the database. Dropping the student will remove all 		information about the student from the database. When attempting to add students while leaving sections blank 			the user will be prompted to fill in the sections.
+
+4)Entering Equations
+	The Setup
+		Starting from admins home page the user will be able to add a number of equations to each level
+	Operations
+		1. Add 5 or more different equations to each level
+		2. Enter a range
+	Verify
+		The created equations and set range be saved in the database, relevant to its level. When playing the level the 		created equations come up and all equations, besides the created, fit the range.  
+
+5)Student Main Page
+	The Setup
+		Attempt to login with a student username and password
+	Operations
+		1.Log in with a student username and password
+	Verify
+		Logging in with student credentials will bring the user to the student main page. The student page will contain
+		links to the game, high scores, log out, and view game progress.
+
+6)Student Stats
+	The Setup
+		Attempt to login with a admins username and password
+	Operations
+		1. Log in with a student username and password
+	Verify
+		Logging in with admin credentials will bring the user to the students stats(admins) page. The admin page will 		contain links to students statistics page, add/drop students, and entering equations.
+
+7)Map Page
+	The Setup
+		Select "Map" from the student main page
+	Operations
+		1. Click the map button in the student main page
+		2. In the map page select the back button to the main page
+	Verify
+		The user should be brought to the map page when they select the map button from the main page. The map will 	conatin all dive spots, locked or unlocked. Selecting the back button from the map will bring the user back to the 	student main page. 
