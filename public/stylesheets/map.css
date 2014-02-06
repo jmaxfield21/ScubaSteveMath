@@ -2,12 +2,6 @@
 /* CSS Document */
 
 /* Map Page */
-.map {
-	width: 99%;
-	height: 85%;
-	position: absolute;
-}
-
 #map_container {
 	background: url('../images/map.jpg');
 	background-size: 1350px 545px;
