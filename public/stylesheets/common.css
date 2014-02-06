@@ -122,16 +122,31 @@ button.button:hover {
 
 /*Welcome Page Stuff*/
 
-body {
+#title_banner {
+	width: 100%;
+}
+
+.logout_button {
+	float: right;
+	width: 90px;
+	height: 45px;
+	border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 18px;
+}
+
+button.logout_button:hover {
+	background-color: white;
+	color: #00008B;
+}
+
+.game_body {
 	background: url('../images/underwater_wallpaper.png');
 	background-repeat: no-repeat;
 	background-size: 100%;
-}
-
-#pic_banner {
-	width: 18px;
-	float: left;
-	margin-left: 10px;
 }
 
 #game_banner {
@@ -155,6 +170,11 @@ body {
 	font-size:35px;
 }
 
+button.bigbutton:hover {
+	background-color: white;
+	color: #00008B;
+}
+
 .farRight{
 	float:right;
 	display: block;
@@ -175,9 +195,4 @@ body {
 	background-color: #FFF7CC;
 	color: #DC143C;
 	width:307px;
-}
-
-button.bigbutton:hover {
-	background-color: white;
-	color: #00008B;
 }

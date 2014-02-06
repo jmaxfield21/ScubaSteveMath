@@ -1,18 +1,21 @@
 <html>
 	<head>
 		<title>Welcome Page</title>
-
+		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css">
 		<link rel="stylesheet" href="/assets/stylesheets/common.css" type="text/css" />
 		
 		<script type="text/javascript" src="/assets/javascripts/jquery-2.0.3.min.js"></script>
 	</head>
-	<body class="bodyStyle" >
-		<text class="hugeTitleText">Welcome to Scuba Steve's Math Adventure!</text>
+	<body class="game_body" >
+		<div id="title_banner">
+			<text class="hugeTitleText">Welcome to Scuba Steve's Math Adventure!</text>
+			<button class="logout_button">Logout</button>
+		</div>
 		<div id="game_banner">
 			<img alt="" src="/assets/images/scubasquad.png">
 		</div>
 		<div class="farRight buttonDivVertical">
-			<button id="map" class="bigbutton textSettings farRight">Map</button>
+			<button id="map" class="bigbutton textSettings farRight" onclick="location.href='/map';">Map</button>
 			<button id="progress" class="bigbutton textSettings farRight">Progress Report</button>
 		</div>
 	</body>
