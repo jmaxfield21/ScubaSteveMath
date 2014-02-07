@@ -12,6 +12,7 @@
 	height:150px;
 	border-radius:50px;
 	background-color:#FFF7CC;
+	box-shadow: 7px 7px 7px #000000;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -193,16 +194,17 @@ button.bigbutton:hover {
 	border-color:white;
 	border-style: solid;
 	border-radius: 30px;
+	box-shadow: 7px 7px 7px #000000;
 	background-color: #FFF7CC;
 	color: #DC143C;
 	width:307px;
 }
 
 .rotate {
-    -webkit-transition-duration: 0.8s;
-    -moz-transition-duration: 0.8s;
-    -o-transition-duration: 0.8s;
-    transition-duration: 0.8s;
+    -webkit-transition-duration: 1.2s;
+    -moz-transition-duration: 1.2s;
+    -o-transition-duration: 1.2s;
+    transition-duration: 1.2s;
      
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
