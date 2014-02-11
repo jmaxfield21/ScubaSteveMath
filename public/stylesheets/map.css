@@ -42,6 +42,7 @@
 #title_banner {
 	width: 100%;
 	margin-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 .logout_button {
@@ -88,7 +89,7 @@ img.resize {
 }
 
 #cancun {
-	left: 28%;
+	left: 29%;
 	top: 40%;
 }
 
