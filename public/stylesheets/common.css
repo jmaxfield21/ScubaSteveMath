@@ -251,6 +251,7 @@ button.bigbutton:hover {
 	background-color: #666666;
 	opacity: 0.3;
 	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	font-size: 25px;
 	border-color: #000000;
 	border-style: solid;
 	border-width: 2px;
