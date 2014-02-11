@@ -7,6 +7,11 @@
 	background-size: 1350px 545px;
 	background-repeat: no-repeat;
 	height: 545px;
+	width: 1335px;
+	border-style: outset;
+	border-width: 5px;
+	border-color: #999999;
+	position: relative;
 }
 
 .game_body {
@@ -16,8 +21,10 @@
 }
 
 .hugeTitleText {
-	padding:10px;
 	float: center;
+	padding-left: 0;
+	padding-bottom: 10px;
+	padding-right: 10px;
 	margin-top: 10px;
 	margin-left: 120px;
 	font-size:50px;
@@ -26,6 +33,7 @@
 	border-color:white;
 	border-style: solid;
 	border-radius:30px;
+	box-shadow: 7px 7px 7px #000000;
 	background-color: #FFF7CC;
 	color: #DC143C;
 	width:307px;
@@ -70,4 +78,36 @@ button.logout_button:hover {
 button.mainmenu_button:hover {
 	background-color: white;
 	color: #00008B;
+}
+
+/* CSS styling for the different location pins */
+img.resize {
+	width: 50px;
+	height: auto;
+	position: absolute;
+}
+
+#cancun {
+	left: 28%;
+	top: 40%;
+}
+
+#hawaii {
+	left: 6%;
+	top: 45%;
+}
+
+#barrier_reef {
+	left: 90%;
+	top: 48%;
+}
+
+#barracuda {
+	left: 80%;
+	top: 40%;
+}
+
+#frattuso {
+	left: 50%;
+	top: 22%;
 }
