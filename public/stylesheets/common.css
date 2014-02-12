@@ -147,10 +147,11 @@ button.logout_button:hover {
 	background: url('../images/underwater_wallpaper.png');
 	background-repeat: no-repeat;
 	background-size: 100%;
+	cursor: url('../images/scuba_dive_md_clr1.gif');
 }
 
 #game_banner {
-	width: 450px;
+	width: 200px;
 	margin-left: auto;
 	margin-right: auto;
 	float: left;
@@ -219,4 +220,95 @@ button.bigbutton:hover {
     -webkit-transform:rotate(360deg);
     -moz-transform:rotate(360deg);
     -o-transform:rotate(360deg);
-}  
+}
+
+.shuffle {
+	width: 500px;
+	height: 10px;
+	margin-left: 330px;
+	margin-top: 80px;
+	display: block;
+}
+
+.shuffle img {
+	width: 600px;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 7px 7px 7px #000000;
+}
+
+#music_controls {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	padding-right: 20px;
+	text-align: center;
+	color: white;
+	border-radius: 15px;
+	background-color: #666666;
+	opacity: 0.3;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	font-size: 25px;
+	border-color: #000000;
+	border-style: solid;
+	border-width: 2px;
+}
+
+#music_controls:hover {
+	opacity: 0.8;
+}
+
+#music_buttons {
+	padding: 15px;
+}
+
+.play {
+	float: right;
+	width: 90px;
+	height: 50px;
+	border-radius: 5px;
+	border-color: #000000;
+	background-color: #666666;
+	color: white;
+	font-size: 18px;
+	padding-right: 15px;
+}
+
+button.play:hover {
+	background-color: #B2B2B2;
+}
+
+.pause {
+	float: right;
+	width: 90px;
+	height: 50px;
+	border-radius: 5px;
+	border-color: #000000;
+	background-color: #666666;
+	color: white;
+	font-size: 18px;
+	padding-right: 15px;
+}
+
+button.pause:hover {
+	background-color: #B2B2B2;
+}
+
+.mute {
+	float: right;
+	width: 90px;
+	height: 50px;
+	border-radius: 5px;
+	border-color: #000000;
+	background-color: #666666;
+	color: white;
+	font-size: 18px;
+	padding-right: 15px;
+}
+
+button.mute:hover {
+	background-color: #B2B2B2;
+}
