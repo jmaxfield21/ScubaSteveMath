@@ -1,13 +1,13 @@
 package controllers;
-import java.io.File;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.springframework.util.Assert;
 
-import play.api.db.DB;
-import database.DatabaseConnectorDude;
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
+import database.DatabaseConnectorDude;
 
 public class Application extends Controller {
 	DatabaseConnectorDude mDbConnection = new DatabaseConnectorDude();
@@ -22,9 +22,14 @@ public class Application extends Controller {
     	  String username = body.asFormUrlEncoded().get("username")[0];
     	  String password = body.asFormUrlEncoded().get("password")[0];
     	  
-    	  String tables = DatabaseConnectorDude.query("show tables;");
-    	  
-    	  String dbPassword = DatabaseConnectorDude.query("select password from login;");
+    	  String dbPassword = null;
+		try {
+			ResultSet set = DatabaseConnectorDude.query("select password from login where username like \'" + username + "\';");
+			dbPassword = DatabaseConnectorDude.getStringFromResultSet(set);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	  
     	  Assert.notNull(password, "How did the password end up being null? We're confused");
     	  
@@ -35,11 +40,6 @@ public class Application extends Controller {
     	  } else {
     		  return ok("Your username and password don't match anything in our records. Hint: username = \"admin\" and password = \"admin\" right now.");  
     	  }
-    	  
-//    	  String result = DatabaseConnectorDude.query(query);
-    	  session("username", username);
-    	  session("password", password);
-    	  return ok(username + "\n" + password);
     	}
 
 }
