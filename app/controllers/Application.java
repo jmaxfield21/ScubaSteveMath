@@ -47,5 +47,10 @@ public class Application extends Controller {
 		}
 		return null;
     }
+    
+    public static Result logout() {
+    	session().clear();
+    	return ok("logged out successfully");
+    }
 
 }
