@@ -21,25 +21,31 @@ public class Application extends Controller {
     	  RequestBody body = request().body();
     	  String username = body.asFormUrlEncoded().get("username")[0];
     	  String password = body.asFormUrlEncoded().get("password")[0];
+    	  session().clear();
     	  
     	  String dbPassword = null;
+    	  boolean isAdmin = false;
+    	  
 		try {
-			ResultSet set = DatabaseConnectorDude.query("select password from login where username like \'" + username + "\';");
-			dbPassword = DatabaseConnectorDude.getStringFromResultSet(set);
+			ResultSet set = DatabaseConnectorDude.query("select password from login where username = \'" + username + "\';");
+			dbPassword = DatabaseConnectorDude.getStringsFromResultSet(set).get(0);
+			
+			set = DatabaseConnectorDude.query("select admin from users where username like \'" + username + "\';");
+			isAdmin = DatabaseConnectorDude.getBooleansFromResultSet(set).get(0).booleanValue();
+			
+			Assert.notNull(password, "How did the password end up being null? We're confused");
+	    	  
+	    	if(password.equals(dbPassword)){
+	    		  session("username", username);
+	    		  session("isAdmin", isAdmin + "");
+	    		  return ok("logged in successfully");
+	    	} else {
+	    		  return ok("Your username and password don't match anything in our records.");  
+	    	}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	  
-    	  Assert.notNull(password, "How did the password end up being null? We're confused");
-    	  
-    	  if(password.equals(dbPassword)){
-    		  session("username", username);
-//        	  return ok(new File("public/html/welcome.html")); 
-    		  return ok("logged in successfully");
-    	  } else {
-    		  return ok("Your username and password don't match anything in our records. Hint: username = \"admin\" and password = \"admin\" right now.");  
-    	  }
-    	}
+		return null;
+    }
 
 }
