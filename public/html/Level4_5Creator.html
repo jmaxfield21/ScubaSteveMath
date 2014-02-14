@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/assets/javascripts/Level4_5Creator.js"></script>
+    </head>
+    <body>
+        <h1>Equation Creator: Level 4/5</h1>
+        <h2>Addition and Subtraction Problems</h2>
+        <div id="directions">
+            <p>Enter two integers into the equation creation fields to create a specific equation.<br>
+            Alternatively, put a value into the range creation field to create a new range for generated equations.</p><br>
+        </div>
+        <h3>Equation</h3>
+        <form NAME="Equation Creator" ACTION="" METHOD="GET">
+            <p>First Integer:</p>
+            <input TYPE="number" NAME="firstNumber"><br>
+            <select name ="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+            <p>Second Integer:</p>
+            <input Type="number" Name="secondNumber" Value=""><br>
+            <input type="button" NAME="submit" Value="Submit" onClick="equationCreator(this.form)">
+        </form>
+        <h3>Range</h3>
+        <form Name="Range Set" Action="" Method="GET">
+            <p>Lower Integer:</p>
+            <input Type="number" Name="firstRange" Value=""><br>
+            <p>Larger Integer:</p>
+            <input Type="number" Name="secondRange" Value=""><br>
+            <input Type="button" Name="submit" Value="Submit" onClick="rangeSetter(this.form)">
+        </form>
+    </body>
+</html>
+
