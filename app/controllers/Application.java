@@ -38,9 +38,9 @@ public class Application extends Controller {
 	    	if(password.equals(dbPassword)){
 	    		  session("username", username);
 	    		  session("isAdmin", isAdmin + "");
-	    		  return ok("logged in successfully");
+	    		  return redirect("/welcome");
 	    	} else {
-	    		  return ok("Your username and password don't match anything in our records.");  
+	    		  return redirect("/login");  
 	    	}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,7 +50,7 @@ public class Application extends Controller {
     
     public static Result logout() {
     	session().clear();
-    	return ok("logged out successfully");
+    	return redirect("/login");
     }
 
 }
