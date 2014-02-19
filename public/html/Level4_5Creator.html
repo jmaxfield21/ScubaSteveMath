@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Level 4/5 Equation Creator</title>
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/EquationCreation.css">
         <script src="/assets/javascripts/Level4_5Creator.js"></script>
     </head>
-    <body>
+    <body background="/assets/images/waterbubbles.jpg">
+        <div id="equationDiv" class="equationDiv">
         <h1>Equation Creator: Level 4/5</h1>
         <h2>Addition and Subtraction Problems</h2>
         <div id="directions">
@@ -30,6 +33,8 @@
             <input Type="number" Name="secondRange" Value=""><br>
             <input Type="button" Name="submit" Value="Submit" onClick="rangeSetter(this.form)">
         </form>
+        <input type="button" name="back" value="Finished" onclick="location.href='/ECLevelSelect';">
+        </div>
     </body>
 </html>
 
