@@ -1,0 +1,299 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Map Page */
+#map_container {
+	background: url('../images/map.jpg');
+	background-size: 1350px 545px;
+	background-repeat: no-repeat;
+	height: 545px;
+	width: 1335px;
+	border-style: outset;
+	border-width: 5px;
+	border-color: #999999;
+	position: relative;
+}
+
+.game_body {
+	background: url('../images/underwater_wallpaper.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.hugeTitleText {
+	float: center;
+	padding-left: 0;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	margin-top: 10px;
+	margin-left: 120px;
+	font-size:50px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	border-width: 2px;
+	border-color:white;
+	border-style: solid;
+	border-radius:30px;
+	box-shadow: 7px 7px 7px #000000;
+	background-color: #FFF7CC;
+	color: #DC143C;
+	width:307px;
+}
+
+#title_banner {
+	width: 100%;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.logout_button {
+	float: right;
+	width: 110px;
+	height: 60px;
+	border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 20px;
+}
+
+button.logout_button:hover {
+	background-color: white;
+	color: #00008B;
+}
+
+.mainmenu_button {
+	float: left;
+	padding-top: 0;
+	vertical-align: top;
+	width: 130px;
+	height: 60px;
+	border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 20px;
+}
+
+button.mainmenu_button:hover {
+	background-color: white;
+	color: #00008B;
+}
+
+/* CSS styling for the different location pins */
+img.resize {
+	width: 50px;
+	height: auto;
+	position: absolute;
+}
+
+#cancun {
+	left: 29%;
+	top: 40%;
+}
+
+#hawaii {
+	left: 6%;
+	top: 45%;
+}
+
+#barrier_reef {
+	left: 90%;
+	top: 48%;
+}
+
+#barracuda {
+	left: 80%;
+	top: 40%;
+}
+
+#frattuso {
+	left: 50%;
+	top: 22%;
+}
+
+/* Map pin animation */
+img.resize:hover {
+	-webkit-animation: bounce 800ms ease-out;
+	-moz-animation: bounce 800ms ease-out;
+	-o-animation: bounce 800ms ease-out;
+	animation: bounce 800ms ease-out;
+}
+
+/* Webkit, Chrome and Safari */
+
+@-webkit-keyframes bounce {
+  15% {
+  	-webkit-transform:translateY(0);
+    padding-bottom: 5px;
+  }
+  30% {
+  	-webkit-transform:translateY(-50%);
+  }
+  40% {
+  	-webkit-transform:translateY(0%);
+    padding-bottom: 6px;
+  }
+  50% {
+  	-webkit-transform:translateY(-30%);
+  }
+  70% {
+  	-webkit-transform:translateY(0%);
+    padding-bottom: 7px;
+  }
+  80% {
+  	-webkit-transform:translateY(-15%);
+  }
+  90% {
+  	-webkit-transform:translateY(0%);
+  	padding-bottom: 8px;
+  }
+  95% {
+  	-webkit-transform:translateY(-10%);
+  }
+  97% {
+  	-webkit-transform:translateY(0%);
+  	padding-bottom: 9px;
+  }
+  99% {
+  	-webkit-transform:translateY(-5%);
+  }
+  100% {
+  	-webkit-transform:translateY(0);
+  	padding-bottom: 9px;
+    opacity: 1;
+  }
+}
+
+/* Mozilla Firefox 15 below */
+@-moz-keyframes bounce {
+  15% {
+  	-moz-transform:translateY(0);
+    padding-bottom: 5px;
+  }
+  30% {
+  	-moz-transform:translateY(-50%);
+  }
+  40% {
+  	-moz-transform:translateY(0%);
+    padding-bottom: 6px;
+  }
+  50% {
+  	-moz-transform:translateY(-30%);
+  }
+  70% {
+  	-moz-transform:translateY(0%);
+    padding-bottom: 7px;
+  }
+  80% {
+  	-moz-transform:translateY(-15%);
+  }
+  90% {
+  	-moz-transform:translateY(0%);
+  	padding-bottom: 8px;
+  }
+  95% {
+  	-moz-transform:translateY(-10%);
+  }
+  97% {
+  	-moz-transform:translateY(0%);
+  	padding-bottom: 9px;
+  }
+  99% {
+  	-moz-transform:translateY(-5%);
+  }
+  100% {
+  	-moz-transform:translateY(0);
+  	padding-bottom: 9px;
+    opacity: 1;
+  }
+}
+
+/* Opera 12.0 */
+@-o-keyframes bounce {
+  15% {
+  	-o-transform:translateY(0);
+    padding-bottom: 5px;
+  }
+  30% {
+  	-o-transform:translateY(-50%);
+  }
+  40% {
+  	-o-transform:translateY(0%);
+    padding-bottom: 6px;
+  }
+  50% {
+  	-o-transform:translateY(-30%);
+  }
+  70% {
+  	-o-transform:translateY(0%);
+    padding-bottom: 7px;
+  }
+  80% {
+  	-o-transform:translateY(-15%);
+  }
+  90% {
+  	-o-transform:translateY(0%);
+  	padding-bottom: 8px;
+  }
+  95% {
+  	-o-transform:translateY(-10%);
+  }
+  97% {
+  	-o-transform:translateY(0%);
+  	padding-bottom: 9px;
+  }
+  99% {
+  	-o-transform:translateY(-5%);
+  }
+  100% {
+  	-o-transform:translateY(0);
+  	padding-bottom: 9px;
+    opacity: 1;
+  }
+}
+
+/* W3, Opera 12+, Firefox 16+ */
+@keyframes bounce {
+  15% {
+  	transform:translateY(0);
+    padding-bottom: 5px;
+  }
+  30% {
+  	transform:translateY(-50%);
+  }
+  40% {
+  	transform:translateY(0%);
+    padding-bottom: 6px;
+  }
+  50% {
+  	transform:translateY(-30%);
+  }
+  70% {
+  	transform:translateY(0%);
+    padding-bottom: 7px;
+  }
+  80% {
+  	transform:translateY(-15%);
+  }
+  90% {
+  	transform:translateY(0%);
+  	padding-bottom: 8px;
+  }
+  95% {
+  	transform:translateY(-7%);
+  }
+  97% {
+  	transform:translateY(0%);
+  	padding-bottom: 9px;
+  }
+  99% {
+  	transform:translateY(-3%);
+  }
+  100% {
+  	transform:translateY(0);
+  	padding-bottom: 9px;
+    opacity: 1;
+  }
+}
