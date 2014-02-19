@@ -23,12 +23,29 @@ public class DatabaseConnectorDude {
 				try {
 						statement = connection.createStatement();
 						result = statement.executeQuery(query);
+						connection.commit();
 					} catch (SQLException e) {
 						e.printStackTrace();
 				}
 				
 			return result;
 		 }
+	
+	public static ResultSet insert(String query){
+	 	Statement statement = null;
+	 	Connection connection = DB.getConnection(false);
+		ResultSet result = null;
+		
+		try {
+				statement = connection.createStatement();
+				statement.executeUpdate(query);
+				connection.commit();
+			} catch (SQLException e) {
+				e.printStackTrace();
+		}
+		
+	return result;
+ }
 
 	public static List<String> getStringsFromResultSet(ResultSet result) throws SQLException {
 		

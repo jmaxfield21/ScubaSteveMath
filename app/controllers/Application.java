@@ -77,7 +77,7 @@ public class Application extends Controller {
 			}
 	    	  
 	    	if(password.equals(dbPassword)){
-	    		DatabaseConnectorDude.query(String.format("insert into login values ('%s','%s')", newUsername, newPassword));
+	    		DatabaseConnectorDude.insert(String.format("insert into login values ('%s','%s')", newUsername, newPassword));
 	    		return redirect("/adduser");
 	    	} else {
 	    		return unauthorized("Your password was incorrect");  

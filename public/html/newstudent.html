@@ -3,9 +3,11 @@
 <title>New Student Form</title>
 <body>
 
-<form Student="">
-New Username: <input type="text" name="user"><br>
-New Password: <input type="password" name="password">
+<form action="/adduser" method="post" enctype="application/json" class="myform">
+New Username: <input type="text" name="newUsername"><br>
+New Password: <input type="password" name="newPassword">
+Teacher Password: <input type="password" name="password">
+<button id="submitButton" type="submit" class="textSettings">submit</button>
 </form>
 
 
