@@ -7,6 +7,8 @@ GET     /                           controllers.Application.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /index               controllers.Application.index()
+GET     /records               controllers.Application.showStudentRecords()
 GET     /login               controllers.Assets.at(path="/public/html/", file="login.html")
 POST	/login				controllers.Application.loginSubmit()
 POST	/adduser				controllers.Application.addUser()
@@ -17,5 +19,5 @@ GET		/levelcreators				controllers.Assets.at(path="/public/html/", file="ECLevel
 GET		/Level1Creator				controllers.Assets.at(path="/public/html/", file="Level1Creator.html")
 GET		/Level2Creator				controllers.Assets.at(path="/public/html/", file="Level2Creator.html")
 GET		/Level3Creator				controllers.Assets.at(path="/public/html/", file="Level3Creator.html")
-GET		/Level4_5Creator				controllers.Assets.at(path="/public/html/", file="Level4Creator.html")
+GET		/Level4_5Creator				controllers.Assets.at(path="/public/html/", file="Level4_5Creator.html")
 GET		/addingequationshome			controllers.Assets.at(path="/public/html/", file="addingequationshome.html")

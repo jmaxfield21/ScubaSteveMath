@@ -1,0 +1,13 @@
+@(messages: List[String])
+<!DOCTYPE html>
+<html>
+<head>Here is an example of dynamic content</head>
+<ul>
+@for(message <- messages){
+<li>
+@message
+</li>
+}
+</ul>
+^That was done with a for loop. The list of strings was passed in from Application.java and is referred to in the first line as "messages"
+</html>

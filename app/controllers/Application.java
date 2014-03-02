@@ -7,14 +7,34 @@ import org.springframework.util.Assert;
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
+import java.util.List;
+import views.html.index;
+import views.html.studentrecords;
 import database.DatabaseConnectorDude;
 
 public class Application extends Controller {
 	DatabaseConnectorDude mDbConnection = new DatabaseConnectorDude();
 
     public static Result index() {
-//        return ok(index.render("Your new application is ready."));
-    	return ok("Hello world");
+    	try {
+			List<String> list = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select username from login;"));
+			return ok(index.render(list));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return ok("error");
+    }
+    
+    public static Result showStudentRecords() {
+//    	try {
+//			List<String> userIds = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users;"));
+//			List<String> firstnames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users;"));
+//			
+//			return ok(studentrecords.render(list));
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+    	return ok("error");
     }
     
     public static Result loginSubmit() {
@@ -48,7 +68,6 @@ public class Application extends Controller {
 		return ok("We're so sorry... Something bad happened.");
     }
     
-    //untested
     public static Result addUser(){
     	if(!isLoggedIn()){
     		return unauthorized("Scuba Steve wants you to login before proceeding!");
