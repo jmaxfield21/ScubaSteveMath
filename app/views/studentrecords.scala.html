@@ -1,11 +1,25 @@
-@(messages: List[String])
+@(names : List[String], levelIds : List[Integer], scores : List[Double])
 <!DOCTYPE html>
 <html>
-<ul>
-@for(message <- messages){
-<li>
-@message
-</li>
-}
-</ul>
+	<head>
+		<link rel="stylesheet" href="/assets/stylesheets/records.css">
+	</head>
+	<body>
+	
+		<div class="recordsdiv">
+			<h1>Grade Report for @names(0) @names(1)</h1>
+			<table class="recordtable">
+			
+				<th class="recordheader">Level</th>
+				<th class="recordheader">Score</th>
+				@for( a <- 0 to levelIds.length-1){
+				<tr class="recordrow">
+			        <td>Level @levelIds(a)</td>
+			        <td>@scores(a)%</td>
+		         </tr>
+		      	}
+			</table>
+		</div>
+	
+	</body>
 </html>

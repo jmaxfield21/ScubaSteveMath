@@ -76,6 +76,21 @@ public class DatabaseConnectorDude {
 		return doubles;
 	}
 	
+	//untested
+	public static List<Integer> getIntegersFromResultSet(ResultSet result) throws SQLException {
+		
+		List<Integer> integers = new ArrayList<Integer>();
+		
+		while(result.next()){
+			   int columns = result.getMetaData().getColumnCount();
+			   for(int i = 1; i <= columns; i++){
+				  integers.add(new Integer(result.getInt(i)));
+			   }
+			}
+		
+		return integers;
+	}
+	
 	//Untested
 	public static List<Timestamp> getTimestampFromResultSet(ResultSet result) throws SQLException {
 		
