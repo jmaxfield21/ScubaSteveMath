@@ -13,22 +13,77 @@ import views.html.studentrecords;
 import database.DatabaseConnectorDude;
 
 public class Application extends Controller {
-	DatabaseConnectorDude mDbConnection = new DatabaseConnectorDude();
 
-    public static Result index() {
-    	try {
-			List<String> list = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select username from login;"));
-			return ok(index.render(list));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	return ok("error");
+	//Start the security checks
+    public static Result welcome() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/welcome.html");
     }
     
+    public static Result adminwelcome() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/adminwelcome.html");
+    }
+    
+    public static Result map() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/map.html");
+    }
+    
+    public static Result levelcreators() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/ECLevelSelect.html");
+    }
+    
+    public static Result level1creator() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/Level1Creator.html");
+    }
+    
+    public static Result level2creator() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/Level2Creator.html");
+    }
+    
+    public static Result level3creator() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/Level3Creator.html");
+    }
+    
+    public static Result level4_5creator() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/Level4_5Creator.html");
+    }
+
+    //Start actual functions
     public static Result showStudentRecords() {
     	
     	if(!isLoggedIn()){
-    		return unauthorized("Scuba Steve wants you to login before proceeding!");
+    		 return redirect("/login");
     	}
     	
     	try {
@@ -48,7 +103,7 @@ public class Application extends Controller {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	return ok("Scuba Steve's database is having problems when trying to get your progress report for you.");
+    	return ok("Scuba Steve's database is having problems while trying to get your progress report for you.");
     }
     
     public static Result loginSubmit() {
