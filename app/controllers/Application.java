@@ -97,7 +97,7 @@ public class Application extends Controller {
     		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select first_name, last_name from users where username='%s';",username)));
     		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
     		
-    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='uuid1';"));
+    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
     		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
     		return ok(studentrecords.render(names, levelIds, scores));
 		} catch (SQLException e) {
