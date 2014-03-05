@@ -2,7 +2,7 @@ function subtractionCreator(form)
 {
     var firstNumber = form.firstNumber.value;
     var secondNumber = form.secondNumber.value;
-    alert("Equation created: " +firstNumber+ "+" +secondNumber);
+    alert("Equation created: " +firstNumber+ "-" +secondNumber);
     return;
     //alert(firstNumber);
     //alert(secondNumber);
