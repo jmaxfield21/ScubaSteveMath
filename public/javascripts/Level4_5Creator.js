@@ -1,6 +1,5 @@
 function equaitonCreator(form)
 {
-    alert("This shits working");
     var firstNumber = form.firstNumber.value;
     var secondNumber = form.secondNumber.value;
     var operator = form.operator.value;

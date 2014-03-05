@@ -78,6 +78,14 @@ public class Application extends Controller {
     	
     	return redirect("/assets/html/Level4_5Creator.html");
     }
+    
+    public static Result gamePage() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/gamePage.html");
+    }
 
     //Start actual functions
     public static Result showStudentRecords() {
