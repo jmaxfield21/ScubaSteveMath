@@ -11,3 +11,4 @@ target/*
 .target/*
 project/target/*
 .DS_Store
+.settings/*
