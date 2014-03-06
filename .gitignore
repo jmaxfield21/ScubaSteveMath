@@ -1,10 +1,13 @@
 *.class
 *.cache
+conf/application.conf
 .classpath
 .metadata
 RemoteSystemsTempFiles/
 logs/
 build/
+bin/*
 target/*
-project/target/resolution-cache/*
-project/target/streams/*
+.target/*
+project/target/*
+.DS_Store

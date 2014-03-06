@@ -1,20 +1,143 @@
 package controllers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.util.Assert;
 
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
+import views.html.index;
+import views.html.studentrecords;
+import views.html.certificate;
 import database.DatabaseConnectorDude;
 
 public class Application extends Controller {
-	DatabaseConnectorDude mDbConnection = new DatabaseConnectorDude();
 
-    public static Result index() {
-//        return ok(index.render("Your new application is ready."));
-    	return ok("Hello world");
+	//Start the security checks
+    public static Result welcome() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/welcome.html");
+    }
+    
+    public static Result adminwelcome() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/adminwelcome.html");
+    }
+    
+    public static Result map() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/map.html");
+    }
+    
+    public static Result levelcreators() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/ECLevelSelect.html");
+    }
+    
+    public static Result level1creator() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/Level1Creator.html");
+    }
+    
+    public static Result level2creator() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/Level2Creator.html");
+    }
+    
+    public static Result level3creator() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/Level3Creator.html");
+    }
+    
+    public static Result level4_5creator() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/Level4_5Creator.html");
+    }
+    
+    public static Result gamePage() {
+    	if(!isLoggedIn()){
+    		return redirect("/login");
+    	}
+    	
+    	return redirect("/assets/html/gamePage.html");
+    }
+
+    //Start actual functions
+    public static Result showStudentRecords() {
+    	
+    	if(!isLoggedIn()){
+    		 return redirect("/login");
+    	}
+    	
+    	try {
+    		
+    		String username = session("username");
+    		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select UUID from users where username='%s';",username)));
+    		/* What I'm about to do is SO hacky. Sorry about that. Just trying to get the functionality 
+    		 * there without doing several queries. This one just grabs the first and last names of the 
+    		 * user in one query rather than the annoying single call per column.
+    		  */
+    		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select first_name, last_name from users where username='%s';",username)));
+    		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
+    		
+    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
+    		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
+    		return ok(studentrecords.render(names, levelIds, scores));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return ok("Scuba Steve's database is having problems while trying to get your progress report for you.");
+    }
+    
+public static Result showCertificate() {
+    	
+    	if(!isLoggedIn()){
+    		 return redirect("/login");
+    	}
+    	
+    	try {
+    		
+    		String username = session("username");
+    		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select UUID from users where username='%s';",username)));
+    		/* What I'm about to do is SO hacky. Sorry about that. Just trying to get the functionality 
+    		 * there without doing several queries. This one just grabs the first and last names of the 
+    		 * user in one query rather than the annoying single call per column.
+    		  */
+    		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select first_name, last_name from users where username='%s';",username)));
+    		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
+    		
+    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
+    		return ok(certificate.render(names, scores.get(0)));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return ok("Scuba Steve's database is having problems while trying to get your certificate for you.");
     }
     
     public static Result loginSubmit() {
@@ -48,7 +171,6 @@ public class Application extends Controller {
 		return ok("We're so sorry... Something bad happened.");
     }
     
-    //untested
     public static Result addUser(){
     	if(!isLoggedIn()){
     		return unauthorized("Scuba Steve wants you to login before proceeding!");

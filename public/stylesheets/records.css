@@ -1,0 +1,31 @@
+.recordtable
+{
+	width:300px;
+	border:3px solid #00BFFF;
+	border-radius: 10px;
+	margin-left:auto; 
+    margin-right:auto;
+}
+
+.recordrow
+{
+background-color: #82CFFD;
+}
+.recordrow:hover
+{ 
+background-color:yellow;
+}
+
+.recordheader
+{
+background-color: #00BFFF;
+}
+
+.recordsdiv
+{
+background-color: #E6E6E6;
+border-radius: 10px;
+width: 50%;
+margin: 0 auto;
+text-align: center;
+}
