@@ -30,8 +30,7 @@ background-color: black;
 height: 100%;
 width: 100%;
 top: 0%;
-border-top-left-radius: 50px;
-border-top-right-radius: 50px;
+border-radius: 50px;
 z-index: 3;
 }
 
