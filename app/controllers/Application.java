@@ -133,7 +133,11 @@ public static Result showCertificate() {
     		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
     		
     		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
-    		return ok(certificate.render(names, scores.get(0)));
+    		if(scores.size() > 0){
+    			return ok(certificate.render(names, scores.get(0)));
+    		} else {
+    			return ok("We don't have a certificate for you because you haven't played yet!");
+    		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
