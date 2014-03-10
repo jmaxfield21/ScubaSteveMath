@@ -5,7 +5,16 @@
 		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/gamePage.css">
 		<script src="/assets/javascripts/gamePage.js"></script>
 	</head>
-	<body>
-		<img class="tank" id="scuba_tank" src="/assets/images/scuba_tank.JPG" alt="">
+	<body class="game_body">
+		<div id="tank">
+			<div id="filledTank">
+				<div id="emptyTank"></div>
+			</div>
+		</div>
+		<form name="percent input" action="" method="GET">
+			<p>Use incriments of 20</p><br>
+			<input type="number" name="input"><br>
+			<input type="button" name="submit" value="Submit" onClick="changeHeight(this.form)">
+		</form>
 	</body>
 </html>

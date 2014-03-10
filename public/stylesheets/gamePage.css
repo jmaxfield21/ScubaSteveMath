@@ -1,0 +1,37 @@
+/*Stylesheet for gamePage*/
+
+.gameBody{
+background-size: 100%;
+background-repeat: no-repeat;
+}
+
+#tank{
+background-color: red;
+height: 750px;
+width: 300px;
+border-radius: 50px;
+z-index: 1;
+}
+
+#filledTank{
+position: relative;
+background-color: blue;
+height: 90%;
+width: 70%;
+left: 15%;
+top: 4%;
+border-radius: 50px;
+z-index: 2;
+}
+
+#emptyTank{
+position: relative;
+background-color: black;
+height: 100%;
+width: 100%;
+top: 0%;
+border-top-left-radius: 50px;
+border-top-right-radius: 50px;
+z-index: 3;
+}
+
