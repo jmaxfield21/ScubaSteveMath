@@ -4,6 +4,7 @@
 		<title>Game Page</title>
 		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/gamePage.css">
 		<script src="/assets/javascripts/gamePage.js"></script>
+		<script src="/assets/javascripts/equation_generator.js"></script>
 	</head>
 	<body class="game_body">
 		<div id="tank">
@@ -16,5 +17,34 @@
 			<input type="number" name="input"><br>
 			<input type="button" name="submit" value="Submit" onClick="changeHeightDynamic(this.form)">
 		</form>
+
+		<div id="gen_tester">
+			<div id="level1">
+				<h3>Level 1 Test</h3>
+				<a id="numRec">Test Not Run</a>
+				<input type="button" onclick="level1()" value="Test" >
+			</div>
+			<div id="level2">
+				<h3>Level 2 Test</h3>
+				<a id="simAdd">Test Not Run</a>
+				<input type="button" onclick="level2()" value="Test" >
+			</div>
+			<div id="level3">
+				<h3>Level 3 Test</h3>
+				<a id="simSub">Test Not Run</a>
+				<input type="button" onclick="level3()" value="Test" >
+			</div>
+			<div id="level4">
+				<h3>Level 4 Test</h3>
+				<a id="addSub">Test Not Run</a>
+				<input type="button" onclick="level4()" value="Test" >
+			</div>
+			<div id="level5">
+				<h3>Level 5 Test</h3>
+				<a id="advAddSub">Test Not Run</a>
+				<input type="button" onclick="level5()" value="Test" >
+			</div>
+		</div>
+
 	</body>
 </html>
