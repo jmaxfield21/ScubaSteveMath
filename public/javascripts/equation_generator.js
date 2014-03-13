@@ -21,15 +21,15 @@ function level1() {
 	var two = Math.floor(Math.random() * ( max - min) ) + min;
 	var three = Math.floor(Math.random() * ( max - min) ) + min;
 	var digits = new Array();
-	digits[0] = "HUNDREDS place";
-	digits[1] = "TENS place";
-	digits[2] = "ONES place";
+	digits[0] = "HUNDREDS";
+	digits[1] = "TENS";
+	digits[2] = "ONES";
 
 	var bigNum = (100*one) + (10*two) + three;
 	var numPlace = Math.floor(Math.random() * ( 3 ));
 	var id = document.getElementById("numRec");
 
-	var str = "The number is " + bigNum + ". What number is in the " + digits[numPlace] + "?";
+	var str = "The number is " + bigNum + ". What number is in the " + digits[numPlace] + " place?";
 	id.innerHTML = str;
 }
 
