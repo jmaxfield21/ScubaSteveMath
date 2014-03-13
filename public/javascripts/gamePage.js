@@ -11,14 +11,25 @@ function changeHeightDynamic(form)
 	if(input == 0)
 	{
 		document.getElementById("emptyTank").style.height='100%';
-		document.getElementById("emptyTank").style.borderRadius = '50px';
-		alert("Tank set to empty");
+		document.getElementById("emptyTank").style.borderRadius = '0px';
 	}
 	else
 	{
 		document.getElementById("emptyTank").style.height=currentEmpty;
 		document.getElementById("emptyTank").style.borderBottomLeftRadius = '0px';
 		document.getElementById("emptyTank").style.borderBottomRightRadius = '0px';
-		alert("Set to " +input+ "% filled.");
+	}
+}
+
+//isCorrect checks whether the student's answer is correct or not then prints message to 'answer' div
+function isCorrect(correctAnswer, studentAnswer)
+{
+	if(studentAnswer == correctAnswer)
+	{
+		document.getElementById("answer").innerHTML = 'Correct!';
+	}
+	else
+	{
+		document.getElementById("answer").innerHTML = 'Incorrect, the answer was ' + correctAnswer + '.';
 	}
 }

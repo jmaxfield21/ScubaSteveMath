@@ -20,7 +20,6 @@ height: 90%;
 width: 70%;
 left: 15%;
 top: 4%;
-border-radius: 50px;
 z-index: 2;
 }
 
@@ -30,13 +29,18 @@ background-color: black;
 height: 100%;
 width: 100%;
 top: 0%;
-border-radius: 50px;
 z-index: 3;
 -webkit-transition: 3s;
 -moz-transition: 3s;
 -ms-transition: 3s;
 -o-transition: 3s;
 transition: 3s;	
+}
+
+#answer{
+height: 250px;
+width: 250px;
+background-color: white;
 }
 
 
