@@ -26,7 +26,14 @@ function level1() {
 	digits[2] = "ONES";
 
 	var bigNum = (100*one) + (10*two) + three;
-	var numPlace = Math.floor(Math.random() * ( 3 ));
+	if (one ==  0) {
+		var numPlace = Math.floor(Math.random() * 3) + 1;
+		if (numPlace >= 3) {
+			numPlace -= 1;
+		}
+	} else {
+		var numPlace = Math.floor(Math.random() * ( 3 ));
+	}
 	var id = document.getElementById("numRec");
 
 	var str = "The number is " + bigNum + ". What number is in the " + digits[numPlace] + " place?";

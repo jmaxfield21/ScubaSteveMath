@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Equation Creation</title>
+	<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css">
+	<link rel="stylesheet" href="/assets/stylesheets/admin.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/EquationCreation.css">
+
+    <script type="text/javascript" src="/assets/javascripts/jquery-2.0.3.min.js"></script>
+	<script src="/assets/javascripts/jquery.cycle.all.js"></script>
 </head>
 
 
-<body background="/assets/images/waterbubbles.jpg">
-<div class="recognitionDiv">
-<h1>Equation Creation</h1>
-<h3>Please select a level to edit</h3>
-<input type="button" value="Level 1" onclick="location.href='/Level1Creator';"><br>
-<input type="button" value="Level 2" onclick="location.href='/Level2Creator';"><br>
-<input type="button" value="Level 3" onclick="location.href='/Level3Creator';"><br>
-<input type="button" value="Level 4" onclick="location.href='/Level4_5Creator';"><br>
-<input type="button" value="Level 5" onclick="location.href='/Level4_5Creator';"><br>
-</div>
+<body class="admin_body">
+	<div id="title_banner">
+		<img id="logo" class="rotate" alt="" src="/assets/images/scubasquad.png">
+		<text class="hugeTitleText">Equation Creation</text>
+		<div id="admin_options">
+			<button class="button logout_button" onclick="location.href='/logout';">Logout</button>
+			<button class="button" onclick="location.href='/adminwelcome';">Home</button>
+			<button class="button" onclick="location.href='/adduser';">Add Students</button>
+			<button class="button" onclick="location.href='/records';">Student Progress Reports</button>
+			<button class="button" onclick="location.href='/levelcreators';">Add Equations to Level</button>
+		</div>
+	</div>
+	<div class="recognitionDiv">
+		<h2 id="eq_head">Please select a level to edit</h2>
+		<input class="button" type="button" value="Level 1" onclick="location.href='/Level1Creator';"><br>
+		<input class="button" type="button" value="Level 2" onclick="location.href='/Level2Creator';"><br>
+		<input class="button" type="button" value="Level 3" onclick="location.href='/Level3Creator';"><br>
+		<input class="button" type="button" value="Level 4/5" onclick="location.href='/Level4_5Creator';"><br>
+	</div>
 
 </body>
 </html>

@@ -94,6 +94,14 @@ button.button:hover {
 	display: block;
 }
 
+#username {
+	padding-left: 4px;
+}
+
+#password {
+	padding-left: 4px;
+}
+
 .indexBody{
 	padding:100px;
 	width:350px;
