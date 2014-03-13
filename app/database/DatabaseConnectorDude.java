@@ -106,7 +106,6 @@ public class DatabaseConnectorDude {
 		return integers;
 	}
 
-	//Untested
 	public static List<Timestamp> getTimestampFromResultSet(ResultSet result) throws SQLException {
 
 		List<Timestamp> doubles = new ArrayList<Timestamp>();

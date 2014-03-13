@@ -154,6 +154,12 @@ public static Result showCertificate() {
     	  RequestBody body = request().body();
     	  String username = body.asFormUrlEncoded().get("username")[0];
     	  String password = body.asFormUrlEncoded().get("password")[0];
+    	  String askedForAdmin = null;
+    	  try{
+    		  askedForAdmin = body.asFormUrlEncoded().get("admin")[0];
+    	  } catch(NullPointerException e) {
+    		  System.out.println(String.format("User %s not logging in as admin.",username));
+    	  }
     	  session().clear();
     	  
     	  String dbPassword = null;
@@ -169,9 +175,17 @@ public static Result showCertificate() {
 			Assert.notNull(password, "How did the password end up being null? We're confused");
 	    	  
 	    	if(password.equals(dbPassword)){
-	    		  session("username", username);
-	    		  session("isAdmin", isAdmin + "");
-	    		  return redirect("/welcome");
+	    		  if(askedForAdmin != null && isAdmin){
+	    			  session("username", username);
+		    		  session("isAdmin", isAdmin + "");
+		    		  session("mode", "admin");
+	    			  return redirect("/adminwelcome");
+	    		  } else {
+		    		  session("username", username);
+		    		  session("isAdmin", isAdmin + "");
+		    		  session("mode", "user");
+		    		  return redirect("/welcome");
+	    		  }
 	    	} else {
 	    		  return redirect("/login");  
 	    	}
