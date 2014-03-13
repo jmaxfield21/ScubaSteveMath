@@ -1,42 +1,13 @@
-function changeHeight(form)
-{
-	var input = form.input.value;
-	switch(true)
-	{
-		case (input==0):
-			document.getElementById("emptyTank").style.height='100%';
-			alert("Set to 0% filled");
-			break;
-		case (input==20):
-			document.getElementById("emptyTank").style.height='80%';
-			alert("Set to 20% filled");
-			break;
-		case (input==40):
-			document.getElementById("emptyTank").style.height='60%';
-			alert("Set to 40% filled");
-			break;
-		case (input==60):
-			document.getElementById("emptyTank").style.height='40%';
-			alert("Set to 60% filled");
-			break;
-		case (input==80):
-			document.getElementById("emptyTank").style.height='20%';
-			alert("Set to 80% filled");
-			break;
-		case (input==100):
-			document.getElementById("emptyTank").style.height='0%';
-			alert("Set to 100% filled");
-			break;
-		default:
-			alert("Please enter an increment of 20");
-	}
-}
-
 function changeHeightDynamic(form)
 {
+	//This method adjust the height of the emptyTank div
+	//Input is the percent of tank that should be filled
 	var input = form.input.value;
 	var currentEmpty = 100-input;
+	
+	//Converts  from number to string
 	currentEmpty = currentEmpty + "%";
+	
 	if(input == 0)
 	{
 		document.getElementById("emptyTank").style.height='100%';
