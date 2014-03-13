@@ -1,6 +1,5 @@
 *.class
 *.cache
-conf/application.conf
 .classpath
 .metadata
 RemoteSystemsTempFiles/
@@ -12,3 +11,4 @@ target/*
 project/target/*
 .DS_Store
 .settings/*
+./conf/application.conf
