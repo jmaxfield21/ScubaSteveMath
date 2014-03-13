@@ -1,4 +1,4 @@
-@(names : List[String], levelIds : List[Integer], scores : List[Double])
+@(names : List[String], levelIds : List[Integer], scores : List[Double], times: List[String])
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,10 +12,13 @@
 			
 				<th class="recordheader">Level</th>
 				<th class="recordheader">Score</th>
+				<th class="recordheader">Time</th>
 				@for( a <- 0 to levelIds.length-1){
 				<tr class="recordrow">
 			        <td>Level @levelIds(a)</td>
 			        <td>@scores(a)</td>
+			        <td>@times(a)</td>
+			        
 		         </tr>
 		      	}
 			</table>

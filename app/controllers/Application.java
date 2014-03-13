@@ -1,6 +1,11 @@
 package controllers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.util.Assert;
@@ -8,9 +13,8 @@ import org.springframework.util.Assert;
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
-import views.html.index;
-import views.html.studentrecords;
 import views.html.certificate;
+import views.html.studentrecords;
 import database.DatabaseConnectorDude;
 
 public class Application extends Controller {
@@ -107,8 +111,10 @@ public class Application extends Controller {
     		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
     		
     		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
+    		List<Timestamp> times = DatabaseConnectorDude.getTimestampFromResultSet(DatabaseConnectorDude.query(String.format("select scores.date from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
+    		
     		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
-    		return ok(studentrecords.render(names, levelIds, scores));
+    		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times)));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -217,6 +223,18 @@ public static Result showCertificate() {
     public static Result logout() {
     	session().clear();
     	return redirect("/login");
+    }
+    
+    public static List<String> getStringsFromTimestamps(List<Timestamp> times){
+    	List<String> stringys = new ArrayList<String>();
+    	Date date = new Date();
+    	DateFormat dateFormat = new SimpleDateFormat();
+    	
+    	for(Timestamp time : times){
+    		date.setTime(time.getTime());
+    		stringys.add(dateFormat.format(date));
+    	}
+    	return stringys;
     }
 
     private static boolean isLoggedIn(){
