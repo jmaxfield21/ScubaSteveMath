@@ -70,3 +70,8 @@
 	margin-right: 5px;
 	font-family:'helvetica neue', 'segoe ui', sans-serif;
 }
+
+button.button:hover {
+	background-color: #FFFFFF;
+	color: #DC143C;
+}
