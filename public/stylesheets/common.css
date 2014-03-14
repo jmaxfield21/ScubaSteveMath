@@ -94,12 +94,20 @@ button.button:hover {
 	display: block;
 }
 
+.myform > p {
+	display: inline-block;
+	margin: 0;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+}
+
 #username {
 	padding-left: 4px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
 }
 
 #password {
 	padding-left: 4px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
 }
 
 .indexBody{
