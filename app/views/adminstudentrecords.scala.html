@@ -1,0 +1,36 @@
+@(firstnames : List[String], lastnames : List[String], bestscores : List[List[Double]])
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="/assets/stylesheets/records.css">
+	</head>
+	<body>
+	
+		<div class="recordsdiv">
+			<h1>Grade Report</h1>
+			<table class="recordtable">
+			
+				<th class="recordheader">Name</th>
+				<th class="recordheader">Level 1</th>
+				<th class="recordheader">Level 2</th>
+				<th class="recordheader">Level 3</th>
+				<th class="recordheader">Level 4</th>
+				<th class="recordheader">Level 5</th>
+				@for( a <- 0 to firstnames.length-1){
+				<tr class="recordrow">
+				
+				        <td>@firstnames(a) @lastnames(a)</td>
+				        @for(b <- 0 to bestscores(a).length-1){
+				        	<td>@bestscores(a)(b)</td>
+				        }
+				        
+				        @for(b <- bestscores(a).length to 4){
+				        	<td>---</td>
+				        }
+		         </tr>
+		      	}
+			</table>
+		</div>
+	
+	</body>
+</html>

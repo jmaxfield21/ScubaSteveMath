@@ -15,6 +15,7 @@ import play.mvc.Http.RequestBody;
 import play.mvc.Result;
 import views.html.certificate;
 import views.html.studentrecords;
+import views.html.adminstudentrecords;
 import database.DatabaseConnectorDude;
 
 public class Application extends Controller {
@@ -109,12 +110,39 @@ public class Application extends Controller {
     		  */
     		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select first_name, last_name from users where username='%s';",username)));
     		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
-    		
     		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
     		List<Timestamp> times = DatabaseConnectorDude.getTimestampFromResultSet(DatabaseConnectorDude.query(String.format("select scores.date from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
     		
     		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
     		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times)));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return ok("Scuba Steve's database is having problems while trying to get your progress report for you.");
+    }
+    
+    public static Result showAdminStudentRecords() {
+    	
+    	if(!isLoggedIn()){
+    		 return redirect("/login");
+    	}
+    	
+    	try {
+    		
+    		String username = session("username");
+    		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select UUID from users where username='%s';",username)));
+    		//Grab the non-admins
+    		List<String> fnames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select first_name from users where admin='0';"));
+    		List<String> lnames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select last_name from users where admin='0';"));
+    		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
+    		
+    		List<List<Double>> scores = new ArrayList<List<Double>>();
+    		for(int i = 0; i < fnames.size(); i++){
+    			List<Double> levelscores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select max(scores.score) from scores inner join users on users.UUID=scores.UUID where users.first_name='%s' and users.last_name='%s' group by score_level_id;", fnames.get(i),lnames.get(i))));
+    			scores.add(levelscores);
+    		}
+    		
+    		return ok(adminstudentrecords.render(fnames, lnames, scores));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

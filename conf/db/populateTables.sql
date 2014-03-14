@@ -87,7 +87,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('admin','admin'),('shane','shane'), ('jace','jace'), ('drew','drew'), ('dillon','dillon'), ('dan','<3 men');
+INSERT INTO `login` VALUES ('admin','admin'),('shane','shane'), ('jace','jace'), ('drew','drew'), ('dillon','dillon'), ('dan','<3 men'), ('barney','barney'),('doctor','doctor'), ('rose','rose');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +180,10 @@ INSERT INTO `scores` VALUES ('score1','1','uuid1','90','2013-12-18 14:17:17'),('
 ('score7','1','uuid3','90','2013-12-18 14:17:17'),('score8','1','uuid3','72','2013-11-18 13:19:17'),('score9','2','uuid3','85','2013-12-18 14:17:17'),
 ('score10','1','uuid4','90','2013-12-18 14:17:17'),('score11','1','uuid4','72','2013-11-18 13:19:17'),('score12','2','uuid4','85','2013-12-18 14:17:17'),
 ('score13','1','uuid5','90','2013-12-18 14:17:17'),('score14','1','uuid5','72','2013-11-18 13:19:17'),('score15','2','uuid5','85','2013-12-18 14:17:17'),
-('score16','1','uuid6','90','2013-12-18 14:17:17'),('score17','1','uuid6','72','2013-11-18 13:19:17'),('score18','2','uuid6','85','2013-12-18 14:17:17');
+('score16','1','uuid6','70','2013-12-18 14:17:17'),('score17','1','uuid6','72','2013-11-18 13:19:17'),('score18','2','uuid6','85','2013-12-18 14:17:17'),
+('score26','1','uuid7','85','2013-12-18 14:17:17'),('score27','1','uuid7','91','2013-11-18 13:19:17'),('score28','2','uuid7','89','2013-12-18 14:17:17'),('score25','3','uuid7','87','2013-12-18 14:17:17'),
+('score29','1','uuid8','98','2013-12-18 14:17:17'),('score30','1','uuid8','67','2013-11-18 13:19:17'),('score31','2','uuid8','88','2013-12-18 14:17:17'),('score22','3','uuid8','80','2013-12-18 14:17:17'),('score23','4','uuid8','99','2013-12-18 14:17:17'),('score24','5','uuid8','100','2013-12-18 14:17:17'),
+('score32','1','uuid9','92','2013-12-18 14:17:17'),('score33','1','uuid9','100','2013-11-18 13:19:17'),('score34','2','uuid9','92','2013-12-18 14:17:17'),('score19','3','uuid9','87','2013-12-18 14:17:17'),('score20','4','uuid9','90','2013-12-18 14:17:17'),('score21','5','uuid9','82','2013-12-18 14:17:17');
 /*!40000 ALTER TABLE `scores` DISABLE KEYS */;
 /*!40000 ALTER TABLE `scores` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -245,7 +248,8 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES ('uuid1','Shane','McKee','shane','2013-12-18 13:17:17',0,0,1,0,0,0),('uuid2','Hi','guys','admin','2013-12-18 13:17:17',0,0,1,0,0,0),
 ('uuid3','Jace','Maxfield','jace','2013-12-18 13:17:17',0,0,1,0,0,0), ('uuid4','Drew','Olsen','drew','2013-12-18 13:17:17',0,0,1,0,0,0), ('uuid5','Dillon','Irish','dillon','2013-12-18 13:17:17',0,0,1,0,0,0),
-('uuid6','Dan','Barton','dan','2013-12-18 13:17:17',0,0,0,0,0,0);
+('uuid6','Dan','Barton','dan','2013-12-18 13:17:17',0,0,0,0,0,0), ('uuid7','Barney','Stinson','barney','2013-12-18 13:17:17',0,0,0,0,0,0), ('uuid8','The','Doctor','doctor','2013-12-18 13:17:17',0,0,0,0,0,0),
+('uuid9','Rose','Tyler','rose','2013-12-18 13:17:17',0,0,0,0,0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
