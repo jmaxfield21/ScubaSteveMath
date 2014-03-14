@@ -2,14 +2,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="/assets/stylesheets/records.css">
+		<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+		<title>Progress Report</title>
+		<link rel="stylesheet" href="/assets/stylesheets/records.css"/>
 	</head>
-	<body>
-	
+	<body class="game_body">
+		<div id="title_banner">
+			<text id="recordtitle">Grade Report for @names(0) @names(1)</text>
+			<button class="mainmenu_button" onclick="location.href='/welcome';">Main Menu</button>
+			<button class="logout_button" onclick="location.href='/logout';">Logout</button>
+		</div>
 		<div class="recordsdiv">
-			<h1>Grade Report for @names(0) @names(1)</h1>
 			<table class="recordtable">
-			
 				<th class="recordheader">Level</th>
 				<th class="recordheader">Score</th>
 				<th class="recordheader">Time</th>
