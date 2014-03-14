@@ -22,7 +22,7 @@ function changeHeightDynamic(form)
 }
 
 //isCorrect checks whether the student's answer is correct or not then prints message to 'answer' div
-function isCorrect(correctAnswer, studentAnswer)
+function isCorrect(studentAnswer, correctAnswer)
 {
 	if(studentAnswer == correctAnswer)
 	{
