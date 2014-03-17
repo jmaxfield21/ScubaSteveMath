@@ -10,4 +10,6 @@ libraryDependencies ++= Seq(
     
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.27"
 
+libraryDependencies += "com.jolbox" % "bonecp" % "0.8.0-rc3"
+
 play.Project.playJavaSettings
