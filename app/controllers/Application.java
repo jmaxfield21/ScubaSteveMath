@@ -10,9 +10,14 @@ import java.util.List;
 
 import org.springframework.util.Assert;
 
+import play.api.libs.Jsonp;
+import play.api.libs.json.JsString;
+import play.api.libs.json.JsValue;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
+import transportobjects.LevelStatusTO;
 import views.html.certificate;
 import views.html.studentrecords;
 import views.html.adminstudentrecords;
@@ -92,6 +97,22 @@ public class Application extends Controller {
     	
     	return redirect("/assets/html/gamePage.html");
     }
+    
+    public static Result getLevelsCompleted() {
+    	
+    	RequestBody body = request().body();
+    	String username = body.asFormUrlEncoded().get("username")[0];
+    	
+    	LevelStatusTO transportObject = new LevelStatusTO();
+    	transportObject.l1 = hasFinishedLevel(username,1);
+    	transportObject.l2 = hasFinishedLevel(username,2);
+    	transportObject.l3 = hasFinishedLevel(username,3);
+    	transportObject.l4 = hasFinishedLevel(username,4);
+    	transportObject.l5 = hasFinishedLevel(username,5);
+    	
+    	return ok(Json.toJson(transportObject));
+    	
+    }
 
     //Start actual functions
     public static Result showStudentRecords() {
@@ -132,6 +153,7 @@ public class Application extends Controller {
     		List<String> fnames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select first_name from users where admin='0';"));
     		List<String> lnames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select last_name from users where admin='0';"));
     		List<List<Double>> scores = new ArrayList<List<Double>>();
+    		
     		for(int i = 0; i < fnames.size(); i++){
     			List<Double> levelscores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select max(scores.score) from scores inner join users on users.UUID=scores.UUID where users.first_name='%s' and users.last_name='%s' group by score_level_id;", fnames.get(i),lnames.get(i))));
     			scores.add(levelscores);
@@ -288,5 +310,18 @@ public static Result showCertificate() {
 			return true;
 		}
 		return false;
+	}
+    
+    private static boolean hasFinishedLevel(String username, int level) {
+    	List<Boolean> hasFinishedList = new ArrayList<Boolean>();
+		try {
+			hasFinishedList = DatabaseConnectorDude.getBooleansFromResultSet(DatabaseConnectorDude.query(String.format("select level_%d_complete from users where username='%s';",level,username)));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		Assert.notEmpty(hasFinishedList, "For some reason, we aren't getting any levels back from the database.");
+    	boolean hasFinished = hasFinishedList.get(0).booleanValue();
+    	return hasFinished;
 	}
 }
