@@ -1,0 +1,45 @@
+@charset "utf-8"
+
+.recordtable {
+	width: auto;
+	height: auto;
+}
+
+.recordsdiv {
+	margin-top: 15px 15px 15px;
+	padding: 15px;
+	border-radius: 10px;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.recordrow {
+	background-color: #FFF7CC;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+}
+
+.recordrow td, th.recordheader {
+	white-space: nowrap;
+	padding: 5px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+}
+
+.recordrow:hover { 
+	background-color:#DC143C;
+	color: #FFFFFF;
+}
+
+.recordheader, h1 {
+	width: 100%;
+	background-color: #328FB3;
+	color:#B33239;
+	color: #FFFF4D;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+}
+
+h1 {
+	font-size: 35px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}

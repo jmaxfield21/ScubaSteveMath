@@ -34,7 +34,7 @@ function level1() {
 	} else {
 		var numPlace = Math.floor(Math.random() * ( 3 ));
 	}
-	var id = document.getElementById("numRec");
+	var id = document.getElementById("output");
 
 	var str = "The number is " + bigNum + ". What number is in the " + digits[numPlace] + " place?";
 	id.innerHTML = str;
@@ -135,5 +135,5 @@ function randomAnswers(){
 	var max = 10;
 	var first = Math.floor(Math.random() * ( max - min + 1) ) + min;
 	var second = Math.floor(Math.random() * ( max - min + 1) ) + min;
-}
+	return [first, second];
 }

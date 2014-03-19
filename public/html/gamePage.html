@@ -12,6 +12,13 @@
 				<div id="emptyTank"></div>
 			</div>
 		</div>
+		<form name="game play" action="" method="GET">
+			<button name="play" id="play" onclick="play();" value="Play"><br>
+			<a id="output"> Click Play to Begin</a><br>
+			<button name="answer1" id="answer1" onclick="" value="">
+			<button name="answer2" id="answer2" onclick="" value="">
+			<button name="answer3" id="answer3" onclick="" value="">
+		</form>
 		<form name="percent input" action="" method="GET">
 			<p>Enter your percent filled:</p>
 			<input type="number" name="input" value="0%"><br>
@@ -49,6 +56,6 @@
 			</div>
 		</div>
 		<div id="answer"><p>Result:</p></div>
-		<input type="button" onclick="begin()" value="Begin">
+		<input type="button" onclick="play()" value="Play">
 	</body>
 </html>

@@ -1,31 +1,102 @@
-.recordtable
-{
+@charset 'utf-8'
+
+.recordtable {	
 	width:300px;
-	border:3px solid #00BFFF;
 	border-radius: 10px;
+	padding: 5px 5px 5px;
 	margin-left:auto; 
     margin-right:auto;
 }
 
-.recordrow
-{
-background-color: #82CFFD;
-}
-.recordrow:hover
-{ 
-background-color:yellow;
+#recordtitle {
+	padding-left: 0;
+	padding-bottom:10px;
+	padding-right: 10px;
+	margin-top: 10px;
+	margin-left: 15%;
+	font-size:50px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	border-width: 2px;
+	border-color:white;
+	border-style: solid;
+	border-radius: 30px;
+	box-shadow: 7px 7px 7px #000000;
+	background-color: #FFF7CC;
+	color: #DC143C;
+	width:307px;
 }
 
-.recordheader
-{
-background-color: #00BFFF;
+.game_body {
+	background: url('../images/underwater_wallpaper.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
-.recordsdiv
-{
-background-color: #E6E6E6;
-border-radius: 10px;
-width: 50%;
-margin: 0 auto;
-text-align: center;
+.recordrow {
+	background-color: #82CFFD;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	padding: 5px 5px 5px;
+}
+
+.recordrow:hover { 
+	background-color:yellow;
+}
+
+.recordheader {
+	background-color: #00BFFF;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	padding: 5px 5px 5px;
+}
+
+.recordsdiv {
+	border-radius: 10px;
+	width: 240px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px 10px 5px;
+	text-align: center;
+	background-color: #E7E7E7;
+	opacity: 0.85;
+}
+
+#title_banner {
+	width: 100%;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.logout_button {
+	float: right;
+	width: 110px;
+	height: 60px;
+	border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 20px;
+}
+
+button.logout_button:hover {
+	background-color: white;
+	color: #00008B;
+}
+
+.mainmenu_button {
+	float: left;
+	padding-top: 0;
+	vertical-align: top;
+	width: 130px;
+	height: 60px;
+	border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 20px;
+}
+
+button.mainmenu_button:hover {
+	background-color: white;
+	color: #00008B;
 }

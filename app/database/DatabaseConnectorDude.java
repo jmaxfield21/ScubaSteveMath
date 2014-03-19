@@ -24,10 +24,11 @@ public class DatabaseConnectorDude {
 			statement = connection.createStatement();
 			result = statement.executeQuery(query);
 			connection.commit();
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
 		return result;
 	}
 
@@ -40,6 +41,7 @@ public class DatabaseConnectorDude {
 			statement = connection.createStatement();
 			statement.executeUpdate(query);
 			connection.commit();
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

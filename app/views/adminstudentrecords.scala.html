@@ -2,10 +2,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="/assets/stylesheets/records.css">
+		<title>Student Records</title>
+		<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css">
+		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/admin.css">
+		<link rel="stylesheet" href="/assets/stylesheets/adminrecords.css" type="text/css" />
+		
+		<script type="text/javascript" src="/assets/javascripts/jquery-2.0.3.min.js"></script>
+		<script src="/assets/javascripts/jquery.cycle.all.js"></script>
 	</head>
-	<body>
-	
+	<body class="admin_body">
+		<div id="title_banner">
+			<img id="logo" class="rotate" alt="" src="/assets/images/scubasquad.png">
+			<text class="hugeTitleText">Welcome Admin!</text>
+			<div id="admin_options">
+				<button class="button logout_button" onclick="location.href='/logout';">Logout</button>
+				<button class="button" onclick="location.href='/adminwelcome';">Home</button>
+				<button class="button" onclick="location.href='/adduser';">Add Students</button>
+				<button class="button" onclick="location.href='/adminrecords';">Student Progress Reports</button>
+				<button class="button" onclick="location.href='/levelcreators';">Add Equations to Level</button>
+			</div>
 		<div class="recordsdiv">
 			<h1>Grade Report</h1>
 			<table class="recordtable">
