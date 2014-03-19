@@ -9,8 +9,16 @@
 	margin: 0;
 }
 
+.score{
+	position:absolute;
+	font-size:200%;
+	left:20%;
+	top:73%;
+}
+
 .name{
 	position:absolute;
+	font-size:250%;
 	left:40%;
-	top:40%;
+	top:47%;
 }
