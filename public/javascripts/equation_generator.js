@@ -38,6 +38,7 @@ function level1() {
 
 	var str = "The number is " + bigNum + ". What number is in the " + digits[numPlace] + " place?";
 	id.innerHTML = str;
+	return digits[numPlace];
 }
 
 /**
@@ -53,6 +54,7 @@ function level2() {
 	var id = document.getElementById("simAdd");
 	var str = first + " + " + second;
 	id.innerHTML = str;
+	return first + second;
 }
 
  /**
@@ -68,6 +70,7 @@ function level3() {
 	var id = document.getElementById("simSub");
 	var str = first + " - " + second;
 	id.innerHTML = str; 
+	return first - second;
 }
 
 
@@ -92,6 +95,10 @@ function level4() {
 	var id = document.getElementById("addSub");
 	var str = first + " " + sym[symbol] + " " + second;
 	id.innerHTML = str;
+	if(sym[symbol] == '-')
+		return first - second;
+	else
+		return first + second;
 }
 
 
@@ -117,4 +124,16 @@ function level5() {
 	var id = document.getElementById("advAddSub");
 	var str = first + " " + sym[symbol] + " " + second;
 	id.innerHTML = str;
+		if(sym[symbol] == '-')
+		return first - second;
+	else
+		return first + second;
+}
+/*Random answer generator for testing*/
+function randomAnswers(){
+	var min = 0;
+	var max = 10;
+	var first = Math.floor(Math.random() * ( max - min + 1) ) + min;
+	var second = Math.floor(Math.random() * ( max - min + 1) ) + min;
+}
 }
