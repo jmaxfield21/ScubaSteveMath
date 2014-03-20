@@ -81,6 +81,14 @@ button.mainmenu_button:hover {
 	color: #00008B;
 }
 
+/* Tooltips */
+.tooltip {
+  display: none;
+  font-family:'helvetica neue', 'segoe ui', sans-serif;
+  font-size: 15px;
+  padding: 5px;
+}
+
 /* CSS styling for the different location pins */
 img.resize {
 	width: 50px;
