@@ -18,32 +18,34 @@
 			<button class="logout_button" onclick="location.href='/logout';">Logout</button>
 		</div>
 		<div id="map_container">
-			<img class="resize" id="cancun" src="/assets/images/Map_symbol-pin.svg" alt="">
+			<img class="resize" id="cancun" src="/assets/images/Map_symbol-pin.svg" alt="Level 3">
 			<div class="tooltip">
-				<a class="ttitle">Level 3</a> Cancun, Mexico
+				Cancun, Mexico
 			</div>
-			<img class="resize" id="hawaii" src="/assets/images/Map_symbol-pin.svg" alt="">
+			<img class="resize" id="hawaii" src="/assets/images/Map_symbol-pin.svg" alt="Level 1">
 			<div class="tooltip">
-				<b>Level 1</b> Hawaii
+				Hawaii
 			</div>
-			<img class="resize" id="barrier_reef" src="/assets/images/Map_symbol-pin.svg" alt="">
+			<img class="resize" id="barrier_reef" src="/assets/images/Map_symbol-pin.svg" alt="Level 2">
 			<div class="tooltip">
-				<b>Level 2</b> Great Barrier Reef
+				Great Barrier Reef
 			</div>
-			<img class="resize" id="barracuda" src="/assets/images/Map_symbol-pin.svg" alt="">
+			<img class="resize" id="barracuda" src="/assets/images/Map_symbol-pin.svg" alt="Level 5">
 			<div class="tooltip">
-				<b>Level 5</b> Barracuda Point, Malaysia
+				Barracuda Point, Malaysia
 			</div>
-			<img class="resize" id="frattuso" src="/assets/images/Map_symbol-pin.svg" alt="">
+			<img class="resize" id="frattuso" src="/assets/images/Map_symbol-pin.svg" alt="Level 4">
 			<div class="tooltip">
-				<b>Level 4</b> San Frattuoso, Italy
+				San Frattuoso, Italy
 			</div>
 			<script type="text/javascript">
 				$(document).ready(function() {
-    				// MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
     				$('img').each(function() {
         				$(this).qtip({
             				content: {
+            					title: function(event, api) {
+            						return $(this).attr('alt')
+            					},
                 				text: $(this).next('.tooltip')
             				},
             				position: {
