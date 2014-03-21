@@ -81,6 +81,84 @@ button.mainmenu_button:hover {
 	color: #00008B;
 }
 
+#music_controls {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  /*background-color: #666666;*/
+  opacity: 0.3;
+  font-family:'helvetica neue', 'segoe ui', sans-serif;
+  font-size: 25px;
+  /*border-color: #000000;
+  border-style: solid;
+  border-width: 2px;*/
+}
+
+#music_controls:hover {
+  opacity: 0.8;
+}
+
+#music_buttons {
+  padding: 15px;
+}
+
+/*.play {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #000000;
+  background-color: #666666;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.play:hover {
+  background-color: #B2B2B2;
+}
+
+.pause {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #000000;
+  background-color: #666666;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.pause:hover {
+  background-color: #B2B2B2;
+}*/
+
+.mute {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #00008B;
+  border-width : 3px;
+  background-color: #6495ED;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.mute:hover {
+  background-color: white;
+  color: #00008B;
+}
+
 /* Tooltips */
 .tooltip {
   display: none;

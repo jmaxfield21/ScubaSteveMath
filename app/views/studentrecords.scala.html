@@ -27,6 +27,17 @@
 		      	}
 			</table>
 		</div>
-	
+		<div id="music_controls">
+				<!-- <h4>MUSIC CONTROLS</h4> -->
+				<div id="music_buttons">
+					<!-- <button class="play" onclick="document.getElementById('player').play()">Play Music</button>
+					<button class="pause" onclick="document.getElementById('player').pause()">Pause Music</button> -->
+					<button class="mute" onclick="document.getElementById('player').muted=!document.getElementById('player').muted">Mute Music</button>
+				</div>
+			</div>
+			<audio id="player" autoplay loop>
+				<source src="/assets/audio/SteveThemeRepeat.ogg" type="audio/ogg" >
+				<source src="/assets/audio/SteveThemeRepeat.mp3" type="audio/mpeg" >
+			</audio>
 	</body>
 </html>

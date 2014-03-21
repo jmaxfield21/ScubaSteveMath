@@ -18,26 +18,38 @@
 			<button class="logout_button" onclick="location.href='/logout';">Logout</button>
 		</div>
 		<div id="map_container">
-			<img class="resize" id="cancun" src="/assets/images/Map_symbol-pin.svg" alt="Level 3">
+			<img class="resize" id="cancun" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 3  Cancun, Mexico">
 			<div class="tooltip">
-				Cancun, Mexico
+				Simple Subtraction
 			</div>
-			<img class="resize" id="hawaii" src="/assets/images/Map_symbol-pin.svg" alt="Level 1">
+			<img class="resize" id="hawaii" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 1  Hawaii">
 			<div class="tooltip">
-				Hawaii
+				Number Recognition
 			</div>
-			<img class="resize" id="barrier_reef" src="/assets/images/Map_symbol-pin.svg" alt="Level 2">
+			<img class="resize" id="barrier_reef" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 2 Great Barrier Reef">
 			<div class="tooltip">
-				Great Barrier Reef
+				Simple Addition
 			</div>
-			<img class="resize" id="barracuda" src="/assets/images/Map_symbol-pin.svg" alt="Level 5">
+			<img class="resize" id="barracuda" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 5 Barracuda Point, Malaysia">
 			<div class="tooltip">
-				Barracuda Point, Malaysia
+				Advanced Addition & Subtraction
 			</div>
-			<img class="resize" id="frattuso" src="/assets/images/Map_symbol-pin.svg" alt="Level 4">
+			<img class="resize" id="frattuso" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 4 San Frattuoso, Italy">
 			<div class="tooltip">
-				San Frattuoso, Italy
+				Intermediate Addition & Subtraction
 			</div>
+			<div id="music_controls">
+				<!-- <h4>MUSIC CONTROLS</h4> -->
+				<div id="music_buttons">
+					<!-- <button class="play" onclick="document.getElementById('player').play()">Play Music</button>
+					<button class="pause" onclick="document.getElementById('player').pause()">Pause Music</button> -->
+					<button class="mute" onclick="document.getElementById('player').muted=!document.getElementById('player').muted">Mute Music</button>
+				</div>
+			</div>
+			<audio id="player" autoplay loop>
+				<source src="/assets/audio/SteveThemeRepeat.ogg" type="audio/ogg" >
+				<source src="/assets/audio/SteveThemeRepeat.mp3" type="audio/mpeg" >
+			</audio>
 			<script type="text/javascript">
 				$(document).ready(function() {
     				$('img').each(function() {
