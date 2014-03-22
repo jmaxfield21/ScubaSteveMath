@@ -172,34 +172,34 @@ public class Application extends Controller {
     	return ok("Scuba Steve's database is having problems while trying to get your students' progress report for you.");
     }
     
-//public static Result showCertificate() {
-//    	
-//    	if(!isLoggedIn()){
-//    		 return redirect("/login");
-//    	}
-//    	
-//    	try {
-//    		
-//    		String username = session("username");
-//    		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select UUID from users where username='%s';",username)));
-//    		/* What I'm about to do is SO hacky. Sorry about that. Just trying to get the functionality 
-//    		 * there without doing several queries. This one just grabs the first and last names of the 
-//    		 * user in one query rather than the annoying single call per column.
-//    		  */
-//    		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select first_name, last_name from users where username='%s';",username)));
-//    		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
-//    		
-//    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
-//    		if(scores.size() > 0){
-//    			return ok(certificate.render(names, scores.get(0) + ""));
-//    		} else {
-//    			return ok("We don't have a certificate for you because you haven't played yet!");
-//    		}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//    	return ok("Scuba Steve's database is having problems while trying to get your certificate for you.");
-//    }
+public static Result showCertificate() {
+    	
+    	if(!isLoggedIn()){
+    		 return redirect("/login");
+    	}
+    	
+    	try {
+    		
+    		String username = session("username");
+    		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select UUID from users where username='%s';",username)));
+    		/* What I'm about to do is SO hacky. Sorry about that. Just trying to get the functionality 
+    		 * there without doing several queries. This one just grabs the first and last names of the 
+    		 * user in one query rather than the annoying single call per column.
+    		  */
+    		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query(String.format("select first_name, last_name from users where username='%s';",username)));
+    		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
+    		
+    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query(String.format("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='%s';", uuids.get(0))));
+    		if(scores.size() > 0){
+    			return ok(certificate.render(names.get(0) + " " + names.get(1), scores.get(0) + ""));
+    		} else {
+    			return ok("We don't have a certificate for you because you haven't played yet!");
+    		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return ok("Scuba Steve's database is having problems while trying to get your certificate for you.");
+    }
     
     public static Result loginSubmit() {
     	  RequestBody body = request().body();

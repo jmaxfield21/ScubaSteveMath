@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,20 +10,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import play.db.DB;
+import scalaz.std.effect.sql.statement;
 
 public class DatabaseConnectorDude {
 
 	public DatabaseConnectorDude(){
 	}
 
-	public static ResultSet query(String query){
-		Statement statement = null;
+	//userInputArgs is here to prevent SQL injection
+	public static ResultSet query(String query, List<String> userInputArgs){
+		PreparedStatement statement = null;
 		Connection connection = DB.getConnection(false);
 		ResultSet result = null;
-
 		try {
-			statement = connection.createStatement();
-			result = statement.executeQuery(query);
+			statement = connection.prepareStatement(query);
+			for(int i = 0; i < userInputArgs.size(); i++){
+				statement.setString(i, userInputArgs.get(i));
+			}
+			
+			result = statement.executeQuery();
 			connection.commit();
 			connection.close();
 		} catch (SQLException e) {
