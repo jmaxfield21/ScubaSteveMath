@@ -10,11 +10,12 @@
 		
 		<script type="text/javascript" src="/assets/javascripts/jquery-2.0.3.min.js"></script>
 		<script src="/assets/javascripts/jquery.cycle.all.js"></script>
+		<script type="text/javascript" src="/assets/javascripts/adminstudentrecords.js"></script>
 	</head>
 	<body class="admin_body">
 		<div id="title_banner">
 			<img id="logo" class="rotate" alt="" src="/assets/images/scubasquad.png">
-			<text class="hugeTitleText">Welcome Admin!</text>
+			<text class="hugeTitleText">Progress Reports</text>
 			<div id="admin_options">
 				<button class="button logout_button" onclick="location.href='/logout';">Logout</button>
 				<button class="button" onclick="location.href='/adminwelcome';">Home</button>
@@ -33,7 +34,7 @@
 				<th class="recordheader">Level 4</th>
 				<th class="recordheader">Level 5</th>
 				@for( a <- 0 to firstnames.length-1){
-				<tr class="recordrow">
+				<tr class="recordrow" onclick="sendCurrentStudent('@firstnames(a) @lastnames(a)')">
 				
 				        <td>@firstnames(a) @lastnames(a)</td>
 				        @for(b <- 0 to bestscores(a).length-1){

@@ -1,11 +1,47 @@
 @charset 'utf-8'
 
 .recordtable {	
-	width:300px;
+	width: auto;
+	height: auto;
 	border-radius: 10px;
 	padding: 5px 5px 5px;
 	margin-left:auto; 
     margin-right:auto;
+}
+
+.recordsdiv {
+	margin-top: 15px 15px 15px;
+	padding: 15px;
+	border-radius: 10px;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.recordrow {
+	background-color: #FFF7CC;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+}
+
+.recordrow td, th.recordheader {
+	white-space: nowrap;
+	padding: 5px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+}
+
+.recordrow:hover { 
+	background-color:#DC143C;
+	color: #FFFFFF;
+}
+
+.recordheader {
+	width: 100%;
+	background-color: #328FB3;
+	color:#B33239;
+	color: #FFFF4D;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 #recordtitle {
@@ -30,33 +66,6 @@
 	background: url('../images/underwater_wallpaper.png');
 	background-repeat: no-repeat;
 	background-size: 100%;
-}
-
-.recordrow {
-	background-color: #82CFFD;
-	font-family:'helvetica neue', 'segoe ui', sans-serif;
-	padding: 5px 5px 5px;
-}
-
-.recordrow:hover { 
-	background-color:yellow;
-}
-
-.recordheader {
-	background-color: #00BFFF;
-	font-family:'helvetica neue', 'segoe ui', sans-serif;
-	padding: 5px 5px 5px;
-}
-
-.recordsdiv {
-	border-radius: 10px;
-	width: 240px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 5px 10px 5px;
-	text-align: center;
-	background-color: #E7E7E7;
-	opacity: 0.85;
 }
 
 #title_banner {
@@ -99,4 +108,93 @@ button.logout_button:hover {
 button.mainmenu_button:hover {
 	background-color: white;
 	color: #00008B;
+}
+
+.certButton{
+	float: left;
+	padding-top: 0;
+	vertical-align: top;
+	border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 20px;
+	}
+#music_controls {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  /*background-color: #666666;*/
+  opacity: 0.3;
+  font-family:'helvetica neue', 'segoe ui', sans-serif;
+  font-size: 25px;
+  /*border-color: #000000;
+  border-style: solid;
+  border-width: 2px;*/
+}
+
+#music_controls:hover {
+  opacity: 0.8;
+}
+
+#music_buttons {
+  padding: 15px;
+}
+
+/*.play {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #000000;
+  background-color: #666666;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.play:hover {
+  background-color: #B2B2B2;
+}
+
+.pause {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #000000;
+  background-color: #666666;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.pause:hover {
+  background-color: #B2B2B2;
+}*/
+
+.mute {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #00008B;
+  border-width : 3px;
+  background-color: #6495ED;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.mute:hover {
+  background-color: white;
+  color: #00008B;
 }
