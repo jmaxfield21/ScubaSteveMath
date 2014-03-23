@@ -30,7 +30,6 @@ public class DatabaseConnectorDude {
 			}
 			
 			result = statement.executeQuery();
-			connection.commit();
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

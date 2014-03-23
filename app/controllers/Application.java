@@ -23,76 +23,58 @@ import database.DatabaseConnectorDude;
 
 public class Application extends Controller {
 
+	public static void loginCheck(){
+		if(!isLoggedIn()){
+    		redirectToLogin();
+    	}
+	}
+	
+	public static Result redirectToLogin(){
+		return redirect("/login");
+	}
+	
 	//Start the security checks
     public static Result welcome() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
     	return redirect("/assets/html/welcome.html");
     }
     
     public static Result adminwelcome() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	return redirect("/assets/html/adminwelcome.html");
     }
     
     public static Result map() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	return redirect("/assets/html/map.html");
     }
     
     public static Result levelcreators() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	return redirect("/assets/html/ECLevelSelect.html");
     }
     
     public static Result level1creator() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	return redirect("/assets/html/Level1Creator.html");
     }
     
     public static Result level2creator() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	return redirect("/assets/html/Level2Creator.html");
     }
     
     public static Result level3creator() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	return redirect("/assets/html/Level3Creator.html");
     }
     
     public static Result level4_5creator() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	return redirect("/assets/html/Level4_5Creator.html");
     }
     
     public static Result gamePage() {
-    	if(!isLoggedIn()){
-    		return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	return redirect("/assets/html/gamePage.html");
     }
     
@@ -112,21 +94,9 @@ public class Application extends Controller {
     	
     }
     
-    public static Result getCertificate(){
-    	
-	    	RequestBody body = request().body();
-	    	String name = body.asFormUrlEncoded().get("name")[0];
-	    	String score = body.asFormUrlEncoded().get("score")[0];
-	    	return ok(certificate.render(name, score));
-    }
-
     //Start actual functions
     public static Result showStudentRecords() {
-    	
-    	if(!isLoggedIn()){
-    		 return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	try {
     		
     		String username = session("username");
@@ -149,11 +119,7 @@ public class Application extends Controller {
     }
     
     public static Result showAdminStudentRecords() {
-    	
-    	if(!isLoggedIn() || !isAdmin()){
-    		 return redirect("/login");
-    	}
-    	
+    	loginCheck();
     	try {
     		//Grab the non-admins
     		List<String> fnames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select first_name from users where admin='0';", new ArrayList<String>()));
@@ -173,24 +139,29 @@ public class Application extends Controller {
     	return ok("Scuba Steve's database is having problems while trying to get your students' progress report for you.");
     }
     
+public static Result getCertificate(){
+    	
+    	RequestBody body = request().body();
+    	String name = body.asFormUrlEncoded().get("name")[0];
+    	String score = body.asFormUrlEncoded().get("score")[0];
+    	String resultString = certificate.render(name, score).toString();
+    	return ok(resultString).as("text/html");
+}
+
 public static Result showCertificate() {
-    	
-    	if(!isLoggedIn()){
-    		 return redirect("/login");
-    	}
-    	
+		loginCheck();
     	try {
     		
     		String username = session("username");
-    		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users where username='?';",Arrays.asList(username)));
+    		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users where username=?;",Arrays.asList(username)));
     		/* What I'm about to do is SO hacky. Sorry about that. Just trying to get the functionality 
     		 * there without doing several queries. This one just grabs the first and last names of the 
     		 * user in one query rather than the annoying single call per column.
     		  */
-    		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select first_name, last_name from users where username='?';",Arrays.asList(username)));
+    		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select first_name, last_name from users where username=?;",Arrays.asList(username)));
     		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
     		
-    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID='?';", Arrays.asList(uuids.get(0))));
+    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID=?;", Arrays.asList(uuids.get(0))));
     		if(scores.size() > 0){
     			return ok(certificate.render(names.get(0) + " " + names.get(1), scores.get(0) + ""));
     		} else {
@@ -251,10 +222,7 @@ public static Result showCertificate() {
     }
     
     public static Result addUser(){
-    	if(!isLoggedIn()){
-    		return unauthorized("Scuba Steve wants you to login before proceeding!");
-    	}
-    	
+    	loginCheck();
     	RequestBody body = request().body();
     	String username = session("username");
     	String password = body.asFormUrlEncoded().get("password")[0];

@@ -1,7 +1,13 @@
 var sendDemNamesAndScores = function(id, name){
-	var score = $($("td[name='score']")[2]).text();
-	var page = $.post("/getcertificate",{"name":name, "score":score}, function(){});
-	$("#certificateDiv").load("https://www.google.com");
+	var self = this;
+	var res = undefined;
+	var score = $($("td[name='score']")[id]).text();
+	var page = $.post("/getcertificate",{"name":name, "score":score}, function(response){
+		$("body").empty()
+		$("body").html(response);
+		res = response;
+	});
+	var bp = undefined;
 }
 
 var bindToButtons = function(event){
