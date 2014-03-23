@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import play.db.DB;
-import scalaz.std.effect.sql.statement;
 
 public class DatabaseConnectorDude {
 
@@ -24,8 +23,10 @@ public class DatabaseConnectorDude {
 		ResultSet result = null;
 		try {
 			statement = connection.prepareStatement(query);
-			for(int i = 0; i < userInputArgs.size(); i++){
-				statement.setString(i, userInputArgs.get(i));
+			if(userInputArgs.size() > 0){
+				for(int i = 0; i < userInputArgs.size(); i++){
+					statement.setString(i+1, userInputArgs.get(i));
+				}
 			}
 			
 			result = statement.executeQuery();
