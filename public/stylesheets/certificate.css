@@ -17,14 +17,14 @@
 
 .score{
 	position:absolute;
-	font-size:200%;
+	font-size:250%;
 	left:20%;
-	top:73%;
+	top:115%;
 }
 
 .name{
 	position:absolute;
 	font-size:250%;
-	left:40%;
-	top:47%;
+	left:45%;
+	top:75%;
 }
