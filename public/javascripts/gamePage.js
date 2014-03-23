@@ -62,7 +62,7 @@ function setButtons(correctAnswer, wrong1, wrong2){
 				{
 					document.getElementById("answer2").innerHTML= wrong2;
 					middleButtonValue = wrong2;
-					docuemnt.getElementById("answer3").innerHTML= wrong1;
+					document.getElementById("answer3").innerHTML= wrong1;
 					rightButtonValue = wrong1;
 				}
 			break;
