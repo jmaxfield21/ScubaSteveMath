@@ -169,8 +169,6 @@ function randomAnswers(level){
 				max = 198;
 				break;
 	}
-	var min = 0;
-	var max = 10;
 	var first = Math.floor(Math.random() * ( max - min + 1) ) + min;
 	var second = Math.floor(Math.random() * ( max - min + 1) ) + min;
 	return [first, second];
