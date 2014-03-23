@@ -1,3 +1,5 @@
+@(l1 : Boolean, l2 : Boolean, l3 : Boolean, l4 : Boolean, l5 : Boolean)
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Scuba Steve</title>
@@ -30,14 +32,26 @@
 			<div class="tooltip">
 				Simple Addition
 			</div>
-			<img class="resize" id="barracuda" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 5 Barracuda Point, Malaysia">
-			<div class="tooltip">
-				Advanced Addition & Subtraction
-			</div>
-			<img class="resize" id="frattuso" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 4 San Frattuoso, Italy">
-			<div class="tooltip">
-				Intermediate Addition & Subtraction
-			</div>
+			
+			@if(l4){
+				<img class="resize" id="barracuda" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 5 Barracuda Point, Malaysia">
+				<div class="tooltip">
+					Advanced Addition & Subtraction
+				</div>
+			} 
+			
+			@if(l1 && l2 && l3){
+				<img class="resize" id="frattuso" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 4 San Frattuoso, Italy">
+				<div class="tooltip">
+					Intermediate Addition & Subtraction
+				</div>
+			} 
+			
+			<div>@l1</div>
+			<div>@l2</div>
+			<div>@l3</div>
+			<div>@l4</div>
+			<div>@l5</div>
 			<div id="music_controls">
 				<!-- <h4>MUSIC CONTROLS</h4> -->
 				<div id="music_buttons">

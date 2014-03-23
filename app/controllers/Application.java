@@ -11,14 +11,13 @@ import java.util.List;
 
 import org.springframework.util.Assert;
 
-import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
-import transportobjects.LevelStatusTO;
 import views.html.adminstudentrecords;
 import views.html.certificate;
 import views.html.studentrecords;
+import views.html.map;
 import database.DatabaseConnectorDude;
 
 public class Application extends Controller {
@@ -41,11 +40,6 @@ public class Application extends Controller {
     public static Result adminwelcome() {
     	loginCheck();
     	return redirect("/assets/html/adminwelcome.html");
-    }
-    
-    public static Result map() {
-    	loginCheck();
-    	return redirect("/assets/html/map.html");
     }
     
     public static Result levelcreators() {
@@ -78,28 +72,34 @@ public class Application extends Controller {
     	return redirect("/assets/html/gamePage.html");
     }
     
-    public static Result getLevelsCompleted() {
+    public static Result map() {
+    	loginCheck();
+    	String username = session("username");
     	
-    	RequestBody body = request().body();
-    	String username = body.asFormUrlEncoded().get("username")[0];
-    	
-    	LevelStatusTO transportObject = new LevelStatusTO();
-    	transportObject.l1 = hasFinishedLevel(username,1);
-    	transportObject.l2 = hasFinishedLevel(username,2);
-    	transportObject.l3 = hasFinishedLevel(username,3);
-    	transportObject.l4 = hasFinishedLevel(username,4);
-    	transportObject.l5 = hasFinishedLevel(username,5);
-    	
-    	return ok(Json.toJson(transportObject));
-    	
+    	return ok(map.render(hasFinishedLevel(username,1), hasFinishedLevel(username,2),hasFinishedLevel(username,3), hasFinishedLevel(username,4), hasFinishedLevel(username,5)));
     }
     
     //Start actual functions
+    
+    //Sets the current student being viewed
+    public static Result setCurrentStudent(){
+    	RequestBody body = request().body();
+    	String student = body.asFormUrlEncoded().get("student")[0];
+    	session("student", student);
+    	return ok("Posted");
+    }
+    
     public static Result showStudentRecords() {
     	loginCheck();
     	try {
-    		
     		String username = session("username");
+    		String student = session("student");
+    		if(student != null){
+    			List<String> usernames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select username from users where first_name=? and last_name=?;", Arrays.asList(student.split(" "))));
+    			Assert.isTrue(usernames.size() == 1, String.format("Got multiple users for student %s", student));
+    			username =  usernames.get(0);
+    		}
+    		
     		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users where username=?;",Arrays.asList(username)));
     		/* What I'm about to do is SO hacky. Sorry about that. Just trying to get the functionality 
     		 * there without doing several queries. This one just grabs the first and last names of the 
@@ -237,7 +237,7 @@ public static Result showCertificate() {
   	  	
   	  	//shouldn't ever be null since we already checked if they are logged in. 
   	  	//If a null pointer happens here, I'm sorry about that bad logic
-  	  	isAdmin = new Boolean(session("isAdmin")).booleanValue();
+  	  	isAdmin = isAdmin();
   	  
 		try {
 			ResultSet set = DatabaseConnectorDude.query("select password from login where username = ?;", Arrays.asList(username));
@@ -294,16 +294,16 @@ public static Result showCertificate() {
 		return false;
 	}
     
-    private static boolean hasFinishedLevel(String username, int level) {
+    private static Boolean hasFinishedLevel(String username, int level) {
     	List<Boolean> hasFinishedList = new ArrayList<Boolean>();
 		try {
-			hasFinishedList = DatabaseConnectorDude.getBooleansFromResultSet(DatabaseConnectorDude.query("select level_?_complete from users where username=?;", Arrays.asList(level + "",username)));
+			hasFinishedList = DatabaseConnectorDude.getBooleansFromResultSet(DatabaseConnectorDude.query("select level_" + level + "_complete from users where username=?;", Arrays.asList(username)));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		Assert.notEmpty(hasFinishedList, "For some reason, we aren't getting any levels back from the database.");
-    	boolean hasFinished = hasFinishedList.get(0).booleanValue();
+    	boolean hasFinished = hasFinishedList.get(0);
     	return hasFinished;
 	}
 }
