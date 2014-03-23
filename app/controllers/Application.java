@@ -255,6 +255,8 @@ public static Result showCertificate() {
     	String username = session("username");
     	String password = body.asFormUrlEncoded().get("password")[0];
     	
+        String newFirstName = body.asFormUrlEncoded().get("newFirstName")[0];
+        String newLastName = body.asFormUrlEncoded().get("newLastName")[0];
     	String newUsername = body.asFormUrlEncoded().get("newUsername")[0];
     	String newPassword = body.asFormUrlEncoded().get("newPassword")[0];
     	
@@ -275,6 +277,8 @@ public static Result showCertificate() {
 	    	  
 	    	if(password.equals(dbPassword)){
 	    		DatabaseConnectorDude.insert(String.format("insert into login values ('%s','%s')", newUsername, newPassword));
+                DatabaseConnectorDude.insert(String.format("insert into users values ('%s', '%s', '%s', '%s')",
+                    newFirstName, newLastName, newUsername, newPassword));
 	    		return redirect("/adduser");
 	    	} else {
 	    		return unauthorized("Your password was incorrect");  
