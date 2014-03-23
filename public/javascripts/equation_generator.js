@@ -38,7 +38,21 @@ function level1() {
 
 	var str = "The number is " + bigNum + ". What number is in the " + digits[numPlace] + " place?";
 	id.innerHTML = str;
-	return digits[numPlace];
+	switch(digits[numPlace])
+	{
+		case "HUNDREDS":
+			return one;
+			break;
+		case "TENS":
+			return two;
+			break;
+		case "ONES":
+			return three;
+			break;
+		default:
+			alert("case is not catching");
+			break;
+	}
 }
 
 /**
@@ -79,8 +93,8 @@ function level3() {
  * Intermediate Addition & Subtraction - San Fruttuoso, Italy
  */
 function level4() {
-	var min = 1;
-	var max = 30;
+	var min = 0;
+	var max = 50;
 	var sym = new Array();
 	sym[0] = "+";
 	sym[1] = "-";
@@ -107,8 +121,8 @@ function level4() {
  * Advanced Addition & Subtraction - Barracuda Point, Malaysia
  */
 function level5() {
-	var min = 1;
-	var max = 999;
+	var min = 0;
+	var max = 99;
 	var sym = new Array();
 	sym[0] = "+";
 	sym[1] = "-";
@@ -130,7 +144,31 @@ function level5() {
 		return first + second;
 }
 /*Random answer generator for testing*/
-function randomAnswers(){
+function randomAnswers(level){
+	var min, max;
+	switch(level)
+	{
+		case 1:
+				min = 0;
+				max = 8;
+				break;
+		case 2:
+				min = 0;
+				max = 20;
+				break;
+		case 3:
+				min = 0;
+				max = 10;
+				break;
+		case 4:
+				min = 0;
+				max = 100;
+				break;
+		case 5:
+				min = 0;
+				max = 198;
+				break;
+	}
 	var min = 0;
 	var max = 10;
 	var first = Math.floor(Math.random() * ( max - min + 1) ) + min;
