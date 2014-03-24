@@ -67,9 +67,29 @@ public class Application extends Controller {
     	return redirect("/assets/html/Level4_5Creator.html");
     }
     
-    public static Result gamePage() {
+    public static Result level1() {
     	loginCheck();
-    	return redirect("/assets/html/gamePage.html");
+    	return redirect("/assets/html/Level1.html");
+    }
+
+    public static Result level2() {
+        loginCheck();
+        return redirect("/assets/html/Level2.html");
+    }
+
+    public static Result level3() {
+        loginCheck();
+        return redirect("/assets/html/Level3.html");
+    }
+
+    public static Result level4() {
+        loginCheck();
+        return redirect("/assets/html/Level4.html");
+    }
+
+    public static Result level5() {
+        loginCheck();
+        return redirect("/assets/html/Level5.html");
     }
     
     public static Result map() {
