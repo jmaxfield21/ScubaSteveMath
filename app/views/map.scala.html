@@ -20,28 +20,28 @@
 			<button class="logout_button" onclick="location.href='/logout';">Logout</button>
 		</div>
 		<div id="map_container">
-			<img class="resize" id="cancun" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 3  Cancun, Mexico">
+			<img class="resize" id="cancun" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 3  Cancun, Mexico" onclick="location.href='/Level3';">
 			<div class="tooltip">
 				Simple Subtraction
 			</div>
-			<img class="resize" id="hawaii" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 1  Hawaii" onclick="location.href='/gamePage';">
+			<img class="resize" id="hawaii" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 1  Hawaii" onclick="location.href='/Level1';">
 			<div class="tooltip">
 				Number Recognition
 			</div>
-			<img class="resize" id="barrier_reef" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 2 Great Barrier Reef">
+			<img class="resize" id="barrier_reef" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 2 Great Barrier Reef" onclick="location.href='Level2';">
 			<div class="tooltip">
 				Simple Addition
 			</div>
 			
 			@if(l4){
-				<img class="resize" id="barracuda" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 5 Barracuda Point, Malaysia">
+				<img class="resize" id="barracuda" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 5 Barracuda Point, Malaysia" onclick="location.href='Level5';">
 				<div class="tooltip">
 					Advanced Addition & Subtraction
 				</div>
 			} 
 			
 			@if(l1 && l2 && l3){
-				<img class="resize" id="frattuso" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 4 San Frattuoso, Italy">
+				<img class="resize" id="frattuso" src="/assets/images/Map_symbol-pin.svg" alt="LEVEL 4 San Frattuoso, Italy" onclick="location.href='Level4';">
 				<div class="tooltip">
 					Intermediate Addition & Subtraction
 				</div>
