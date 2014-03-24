@@ -133,7 +133,7 @@ public class Application extends Controller {
     		List<Timestamp> times = DatabaseConnectorDude.getTimestampFromResultSet(DatabaseConnectorDude.query("select scores.date from scores inner join users on users.UUID=scores.UUID where users.UUID=?;", Arrays.asList(uuids.get(0))));
     		
     		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query("select scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID=?;", Arrays.asList(uuids.get(0))));
-    		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times)));
+    		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times), new Boolean(isCurrentAdmin()) ));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -315,6 +315,14 @@ public static Result showCertificate() {
 		}
 		return false;
 	}
+
+    private static boolean isCurrentAdmin() {
+        String isCurrentAdmin = session("mode");
+        if ( "admin".equals(isCurrentAdmin) ) {
+            return true;
+        }
+        return false;
+    }
     
     private static String getCurrentTimeString(){
     	String time = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());

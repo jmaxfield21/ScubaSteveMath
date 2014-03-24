@@ -1,4 +1,4 @@
-@(names : List[String], levelIds : List[Integer], scores : List[Double], times: List[String])
+@(names : List[String], levelIds : List[Integer], scores : List[Double], times: List[String], admin: Boolean)
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,7 +12,11 @@
 	<body class="game_body">
 		<div id="title_banner">
 			<text id="recordtitle">Grade Report for @names(0) @names(1)</text>
-			<button class="mainmenu_button" onclick="location.href='/welcome';">Main Menu</button>
+			@if(admin) {
+				<button class="mainmenu_button" onclick="location.href='/adminwelcome';">Main Menu</button>
+			} else {
+				<button class="mainmenu_button" onclick="location.href='/welcome';">Main Menu</button>
+			}
 			<button class="logout_button" onclick="location.href='/logout';">Logout</button>
 		</div>
 		<div class="recordsdiv">
