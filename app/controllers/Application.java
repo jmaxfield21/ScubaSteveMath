@@ -270,9 +270,9 @@ public static Result showCertificate() {
 			}
 	    	  
 	    	if(password.equals(dbPassword)){
-	    		DatabaseConnectorDude.insert(String.format("insert into login values ('%s','%s')", newUsername, newPassword));
-                DatabaseConnectorDude.insert(String.format("insert into users values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', %s, '%s', %s)",
-                   UUID.randomUUID().toString(), newFirstName, newLastName, newUsername, getCurrentTimeString(), 0, 0, 0,0,0,0));
+	    		DatabaseConnectorDude.insert("insert into login values (?,?);", Arrays.asList(newUsername, newPassword));
+                DatabaseConnectorDude.insert("insert into users values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+                   Arrays.asList(UUID.randomUUID().toString(), newFirstName, newLastName, newUsername, getCurrentTimeString(), 0 + "", 0 + "", 0 + "", 0 + "", 0 + "", 0 + ""));
 	    		return redirect("/adduser");
 	    	} else {
 	    		return unauthorized("Your password was incorrect");  

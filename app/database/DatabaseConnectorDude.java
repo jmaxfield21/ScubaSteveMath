@@ -38,14 +38,19 @@ public class DatabaseConnectorDude {
 		return result;
 	}
 
-	public static ResultSet insert(String query){
-		Statement statement = null;
+	public static ResultSet insert(String query, List<String> userArgs){
+		PreparedStatement statement = null;
 		Connection connection = DB.getConnection(false);
 		ResultSet result = null;
 
 		try {
-			statement = connection.createStatement();
-			statement.executeUpdate(query);
+			statement = connection.prepareStatement(query);
+			if(userArgs.size() > 0){
+				for(int i = 0; i < userArgs.size(); i++){
+					statement.setString(i+1, userArgs.get(i));
+				}
+			}
+			statement.executeUpdate();
 			connection.commit();
 			connection.close();
 		} catch (SQLException e) {
