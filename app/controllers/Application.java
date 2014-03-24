@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.util.Assert;
 
@@ -118,6 +119,7 @@ public class Application extends Controller {
     			List<String> usernames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select username from users where first_name=? and last_name=?;", Arrays.asList(student.split(" "))));
     			Assert.isTrue(usernames.size() == 1, String.format("Got multiple users for student %s", student));
     			username =  usernames.get(0);
+    			session().remove("student");
     		}
     		
     		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users where username=?;",Arrays.asList(username)));
@@ -269,8 +271,8 @@ public static Result showCertificate() {
 	    	  
 	    	if(password.equals(dbPassword)){
 	    		DatabaseConnectorDude.insert(String.format("insert into login values ('%s','%s')", newUsername, newPassword));
-                DatabaseConnectorDude.insert(String.format("insert into users values ('%s', '%s', '%s', '%s')",
-                    newFirstName, newLastName, newUsername, newPassword));
+                DatabaseConnectorDude.insert(String.format("insert into users values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', %s, '%s', %s)",
+                   UUID.randomUUID().toString(), newFirstName, newLastName, newUsername, getCurrentTimeString(), 0, 0, 0,0,0,0));
 	    		return redirect("/adduser");
 	    	} else {
 	    		return unauthorized("Your password was incorrect");  
@@ -313,6 +315,11 @@ public static Result showCertificate() {
 		}
 		return false;
 	}
+    
+    private static String getCurrentTimeString(){
+    	String time = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+    	return time;
+    }
     
     private static Boolean hasFinishedLevel(String username, int level) {
     	List<Boolean> hasFinishedList = new ArrayList<Boolean>();
