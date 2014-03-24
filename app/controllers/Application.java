@@ -21,86 +21,100 @@ import views.html.adminstudentrecords;
 import views.html.certificate;
 import views.html.map;
 import views.html.studentrecords;
-
-import com.fasterxml.jackson.databind.JsonNode;
-
 import database.DatabaseConnectorDude;
 import database.DatabaseHelper;
 
 public class Application extends Controller {
-
-	public static void loginCheck(){
-		if(!isLoggedIn()){
-    		redirectToLogin();
-    	}
-	}
-	
-	public static Result redirectToLogin(){
-		return redirect("/login");
-	}
 	
 	//Start the security checks
     public static Result welcome() {
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	return redirect("/assets/html/welcome.html");
     }
     
     public static Result adminwelcome() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	return redirect("/assets/html/adminwelcome.html");
     }
     
     public static Result levelcreators() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	return redirect("/assets/html/ECLevelSelect.html");
     }
     
     public static Result level1creator() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	return redirect("/assets/html/Level1Creator.html");
     }
     
     public static Result level2creator() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	return redirect("/assets/html/Level2Creator.html");
     }
     
     public static Result level3creator() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	return redirect("/assets/html/Level3Creator.html");
     }
     
     public static Result level4_5creator() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	return redirect("/assets/html/Level4_5Creator.html");
     }
     
     public static Result level1() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	return redirect("/assets/html/Level1.html");
     }
 
     public static Result level2() {
-        loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
         return redirect("/assets/html/Level2.html");
     }
 
     public static Result level3() {
-        loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
         return redirect("/assets/html/Level3.html");
     }
 
     public static Result level4() {
-        loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
         return redirect("/assets/html/Level4.html");
     }
 
     public static Result level5() {
-        loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
         return redirect("/assets/html/Level5.html");
     }
     
     public static Result map() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	String username = session("username");
     	
     	return ok(map.render(hasFinishedLevel(username,1), hasFinishedLevel(username,2),hasFinishedLevel(username,3), hasFinishedLevel(username,4), hasFinishedLevel(username,5)));
@@ -117,7 +131,10 @@ public class Application extends Controller {
     }
     
     public static Result showStudentRecords() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
+    	
     	try {
     		String username = session("username");
     		String student = session("student");
@@ -147,7 +164,9 @@ public class Application extends Controller {
     }
     
     public static Result showAdminStudentRecords() {
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	try {
     		//Grab the non-admins
     		List<String> fnames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select first_name from users where admin='0';", new ArrayList<String>()));
@@ -194,7 +213,10 @@ public static Result getEquationsForLevel(){
 }
 
 public static Result showCertificate() {
-		loginCheck();
+		if(!isLoggedIn()){
+			return redirect("/login");
+		}
+		
     	try {
     		
     		String username = session("username");
@@ -267,7 +289,9 @@ public static Result showCertificate() {
     }
     
     public static Result addUser(){
-    	loginCheck();
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
     	RequestBody body = request().body();
     	String username = session("username");
     	String password = body.asFormUrlEncoded().get("password")[0];
