@@ -4,6 +4,7 @@ var correctAnswer;
 var leftButtonValue;
 var middleButtonValue;
 var rightButtonValue;
+var self = this;
 
 function setup()
 {
@@ -11,9 +12,27 @@ function setup()
 	var wrongAnswers;
 	var wrong1;
 	var wrong2;
+	
 	switch(level)
 	{
 		case 1:
+			$.ajax({
+			  type: "POST",
+			  url: '/getequations',
+			  data:{level:"1"},
+			  dataType: 'json',
+			  success: successL1Callback,
+			  error: function(response){
+			    console.log("cannont get equations");
+				console.log(response);
+			  }
+			});
+			// $.post("/getequations",{"level":"1"}, function(response){})
+// 			.success(function(){
+// 				self.numbers = response.numbers;
+// 				self.numbersToIdentify = response.numbersToIdentify;
+// 			});
+			
 			index = 10;
 			var answerArray = level1();
 			correctAnswer = answerArray[0];
@@ -158,6 +177,20 @@ function isCorrect(selectedButton)
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
 		changeHeightDynamic(score/index);
 	}
+	
+
 	setup();
 }
+
+var successL1Callback = function(response){
+	self.numbers = response.numbers;
+	self.numbersToIdentify = response.numbersToIdentify;
+	var numOfProblems = self.numbers.length;
+	
+	// while(numOfProblems > 0){
+// 		break;
+// 	}
+};
+
+
 

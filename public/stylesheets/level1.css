@@ -1,0 +1,85 @@
+/*Stylesheet for gamePage*/
+
+.game_body {
+	background: url('/assets/images/hawaii_backdrop.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+#tank{
+	background-color: #FF0000;
+	height: 450px;
+	width: 150px;
+	border-radius: 50px;
+	z-index: 1;
+}
+
+#filledTank{
+	position: relative;
+	background-color: #80B2FF;
+	height: 90%;
+	width: 70%;
+	left: 15%;
+	top: 4%;
+	z-index: 2;
+}
+
+#emptyTank{
+	position: relative;
+	background-color: #800000;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	z-index: 3;
+	-webkit-transition: 3s;
+	-moz-transition: 3s;
+	-ms-transition: 3s;
+	-o-transition: 3s;
+	transition: 3s;	
+}
+
+#answer{
+	height: 250px;
+	width: 250px;
+	background-color: white;
+}
+
+#playButton{
+	visibility:visible;
+}
+
+
+
+.gameplay {
+	opacity:0.9;
+    padding: 25px 75px 75px;
+	width:40%;
+	height:30%;
+	border-radius:50px;
+	background-color:#FFF7CC;
+	box-shadow: 7px 7px 7px #000000;
+	position: absolute;
+	top: 30%;
+	left:30%;
+	margin-left: 15px;
+	margin-right: 15px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+}
+
+.button {
+	background-color: #DC143C;
+	color: #FFFFFF;
+	border-radius: 5px;
+	width:60px;
+	height:40px;
+	padding: 5px 5px 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	font-size:150%;
+}
+
+button.button:hover {
+	background-color: #FFFFFF;
+	color: #DC143C;
+}
