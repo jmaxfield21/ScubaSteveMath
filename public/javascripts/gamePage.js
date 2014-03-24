@@ -15,10 +15,10 @@ function setup()
 	{
 		case 1:
 			index = 10;
-			correctAnswer = level1();
-			wrongAnswers = randomAnswers(level);
-			wrong1 = wrongAnswers[0];
-			wrong2 = wrongAnswers[1];
+			var answerArray = level1();
+			correctAnswer = answerArray[0];
+			wrong1 = answerArray[1];
+			wrong2 = answerArray[2];
 			setButtons(correctAnswer, wrong1, wrong2);
 			break;
 		case 2:

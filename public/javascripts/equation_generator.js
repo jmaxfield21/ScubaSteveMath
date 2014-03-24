@@ -38,16 +38,26 @@ function level1() {
 
 	var str = "The number is " + bigNum + ". What number is in the " + digits[numPlace] + " place?";
 	id.innerHTML = str;
+	var array = new Array();
 	switch(digits[numPlace])
 	{
 		case "HUNDREDS":
-			return one;
+			array[0]=one;
+			array[1]=two;
+			array[2]=three;
+			return array;
 			break;
 		case "TENS":
-			return two;
+			array[0]=two;
+			array[1]=one;
+			array[2]=three;
+			return array;
 			break;
 		case "ONES":
-			return three;
+			array[0]=three;
+			array[1]=two;
+			array[2]=one;
+			return array;
 			break;
 		default:
 			alert("case is not catching");
