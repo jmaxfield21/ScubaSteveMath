@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.util.Assert;
 
@@ -67,9 +68,29 @@ public class Application extends Controller {
     	return redirect("/assets/html/Level4_5Creator.html");
     }
     
-    public static Result gamePage() {
+    public static Result level1() {
     	loginCheck();
-    	return redirect("/assets/html/gamePage.html");
+    	return redirect("/assets/html/Level1.html");
+    }
+
+    public static Result level2() {
+        loginCheck();
+        return redirect("/assets/html/Level2.html");
+    }
+
+    public static Result level3() {
+        loginCheck();
+        return redirect("/assets/html/Level3.html");
+    }
+
+    public static Result level4() {
+        loginCheck();
+        return redirect("/assets/html/Level4.html");
+    }
+
+    public static Result level5() {
+        loginCheck();
+        return redirect("/assets/html/Level5.html");
     }
     
     public static Result map() {
@@ -98,6 +119,7 @@ public class Application extends Controller {
     			List<String> usernames = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select username from users where first_name=? and last_name=?;", Arrays.asList(student.split(" "))));
     			Assert.isTrue(usernames.size() == 1, String.format("Got multiple users for student %s", student));
     			username =  usernames.get(0);
+    			session().remove("student");
     		}
     		
     		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users where username=?;",Arrays.asList(username)));
@@ -111,7 +133,7 @@ public class Application extends Controller {
     		List<Timestamp> times = DatabaseConnectorDude.getTimestampFromResultSet(DatabaseConnectorDude.query("select scores.date from scores inner join users on users.UUID=scores.UUID where users.UUID=?;", Arrays.asList(uuids.get(0))));
     		
     		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query("select scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID=?;", Arrays.asList(uuids.get(0))));
-    		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times)));
+    		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times), new Boolean(isCurrentAdmin()) ));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -249,8 +271,8 @@ public static Result showCertificate() {
 	    	  
 	    	if(password.equals(dbPassword)){
 	    		DatabaseConnectorDude.insert(String.format("insert into login values ('%s','%s')", newUsername, newPassword));
-                DatabaseConnectorDude.insert(String.format("insert into users values ('%s', '%s', '%s', '%s')",
-                    newFirstName, newLastName, newUsername, newPassword));
+                DatabaseConnectorDude.insert(String.format("insert into users values ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', %s, '%s', %s)",
+                   UUID.randomUUID().toString(), newFirstName, newLastName, newUsername, getCurrentTimeString(), 0, 0, 0,0,0,0));
 	    		return redirect("/adduser");
 	    	} else {
 	    		return unauthorized("Your password was incorrect");  
@@ -293,6 +315,19 @@ public static Result showCertificate() {
 		}
 		return false;
 	}
+
+    private static boolean isCurrentAdmin() {
+        String isCurrentAdmin = session("mode");
+        if ( "admin".equals(isCurrentAdmin) ) {
+            return true;
+        }
+        return false;
+    }
+    
+    private static String getCurrentTimeString(){
+    	String time = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+    	return time;
+    }
     
     private static Boolean hasFinishedLevel(String username, int level) {
     	List<Boolean> hasFinishedList = new ArrayList<Boolean>();

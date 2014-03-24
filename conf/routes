@@ -3,11 +3,11 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Assets.at(path="/public/html/", file="login.html")
+GET     /					controllers.Assets.at(path="/public/html/", file="login.html")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file		controllers.Assets.at(path="/public", file)
-POST     /setcurrentstudent controllers.Application.setCurrentStudent()
+POST    /setcurrentstudent 	controllers.Application.setCurrentStudent()
 GET     /records            controllers.Application.showStudentRecords()
 GET     /adminrecords 		controllers.Application.showAdminStudentRecords()
 GET     /certificate 		controllers.Application.showCertificate()
@@ -25,4 +25,8 @@ GET		/Level1Creator		controllers.Application.level1creator()
 GET		/Level2Creator		controllers.Application.level2creator()
 GET		/Level3Creator		controllers.Application.level3creator()
 GET		/Level4_5Creator	controllers.Application.level4_5creator()
-GET		/gamePage			controllers.Application.gamePage()
+GET		/Level1				controllers.Application.level1()
+GET 	/Level2 			controllers.Application.level2()
+GET 	/Level3				controllers.Application.level3()
+GET 	/Level4				controllers.Application.level4()
+GET 	/Level5				controllers.Application.level5()
