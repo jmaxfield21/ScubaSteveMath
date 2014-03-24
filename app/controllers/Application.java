@@ -12,14 +12,20 @@ import java.util.UUID;
 
 import org.springframework.util.Assert;
 
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
+import transportobjects.EquationsTO;
 import views.html.adminstudentrecords;
 import views.html.certificate;
-import views.html.studentrecords;
 import views.html.map;
+import views.html.studentrecords;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 import database.DatabaseConnectorDude;
+import database.DatabaseHelper;
 
 public class Application extends Controller {
 
@@ -168,6 +174,23 @@ public static Result getCertificate(){
     	String score = body.asFormUrlEncoded().get("score")[0];
     	String resultString = certificate.render(name, score).toString();
     	return ok(resultString).as("text/html");
+}
+
+public static Result getEquationsForLevel(){
+	
+	RequestBody body = request().body();
+	String level = body.asFormUrlEncoded().get("level")[0];
+	EquationsTO transObject = new EquationsTO();
+	
+	if("1".equals(level) || "5".equals(level)){
+		List<Integer> numbers = DatabaseHelper.getNumbersFromNumRecognition(level);
+		List<Integer> numbersToIdentify = DatabaseHelper.getNumbersToIdentifyFromNumRecognition(level);
+		transObject.numbers = numbers;
+		transObject.numbersToIdentify = numbersToIdentify;
+	}
+	
+	response().setContentType("text/json");
+	return ok(Json.toJson(transObject));
 }
 
 public static Result showCertificate() {
