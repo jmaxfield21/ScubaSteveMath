@@ -22,6 +22,8 @@ function setup()
 	wrong1 = answerArray[1];
 	wrong2 = answerArray[2];
 	setButtons(correctAnswer, wrong1, wrong2);
+	var playButton = document.getElementById("play");
+	playButton.style.display = "none";
 };
 
 var checkForEquations = function() 
