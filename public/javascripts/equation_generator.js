@@ -60,7 +60,6 @@ function level1() {
 			return array;
 			break;
 		default:
-			alert("case is not catching");
 			break;
 	}
 }
@@ -75,10 +74,13 @@ function level2() {
 	var max = 10;
 	var first = Math.floor(Math.random() * ( max - min + 1) ) + min;
 	var second = Math.floor(Math.random() * ( max - min + 1) ) + min;
-	var id = document.getElementById("simAdd");
-	var str = first + " + " + second;
+	var id = document.getElementById("output");
+	var str = first + " + " + second + " = ";
 	id.innerHTML = str;
-	return first + second;
+	var array = new Array();
+	array[0] = first;
+	array[1] = second;
+	return array;
 }
 
  /**
@@ -153,14 +155,15 @@ function level5() {
 	else
 		return first + second;
 }
-/*Random answer generator for testing*/
-function randomAnswers(level){
+//Called from setup()
+//Creates random numbers to populate other multiple choices
+function randomAnswer(level){
 	var min, max;
 	switch(level)
 	{
 		case 1:
 				min = 0;
-				max = 8;
+				max = 9;
 				break;
 		case 2:
 				min = 0;
@@ -179,7 +182,6 @@ function randomAnswers(level){
 				max = 198;
 				break;
 	}
-	var first = Math.floor(Math.random() * ( max - min + 1) ) + min;
-	var second = Math.floor(Math.random() * ( max - min + 1) ) + min;
-	return [first, second];
+	var ranNum = Math.floor(Math.random() * ( max - min + 1) ) + min;
+	return ranNum;
 }
