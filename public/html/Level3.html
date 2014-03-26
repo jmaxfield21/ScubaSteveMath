@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Game Page</title>
-		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/gamePage.css">
-		<script src="/assets/javascripts/gamePage.js"></script>
+		<title>Level 3</title>
+		<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/level3.css">
+		
+		<script type="text/javascript" src="/assets/javascripts/jquery-2.0.3.min.js"></script>
+		<script src="/assets/javascripts/level3.js"></script>
 		<script src="/assets/javascripts/equation_generator.js"></script>
 	</head>
 	<body class="game_body">
+		<div id="title_banner">
+			<text class="hugeTitleText">Welcome to Cancun!!</text>
+			<button class="logout_button" onclick="location.href='/map';">Back to Map</button>
+		</div>
 		<div id="tank">
 			<div id="filledTank">
 				<div id="emptyTank"></div>
 			</div>
 		</div>
-			<div id="level3">
-				<h3>Level 3</h3>
-				<a id="simSub">Test Not Run</a>
-				<input type="button" onclick="level3()" value="Generate" >
-			</div>
+		<div class="gameplay">
+			<button name="play" class="button" id="play" onclick="setup()">Play</button><br>
+			<a id="output"> Click Play to Begin</a><br>
+			<button name="answer1" class="button" id="answer1" onclick="isCorrect('left')"> </button>
+			<button name="answer2" class="button" id="answer2" onclick="isCorrect('middle')"> </button>
+			<button name="answer3" class="button" id="answer3" onclick="isCorrect('right')"> </button><br>
+			<a id="result"></a>
 		</div>
+		<div id="music_controls">
+				<!-- <h4>MUSIC CONTROLS</h4> -->
+				<div id="music_buttons">
+					<!-- <button class="play" onclick="document.getElementById('player').play()">Play Music</button>
+					<button class="pause" onclick="document.getElementById('player').pause()">Pause Music</button> -->
+					<button class="mute" onclick="document.getElementById('player').muted=!document.getElementById('player').muted">Mute Music</button>
+				</div>
+			</div>
+			<audio id="player" autoplay loop>
+				<source src="/assets/audio/Hawaii.ogg" type="audio/ogg" >
+				<source src="/assets/audio/Hawaii.mp3" type="audio/mpeg" >
+			</audio>
 	</body>
 </html>
