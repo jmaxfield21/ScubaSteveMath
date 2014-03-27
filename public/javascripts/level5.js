@@ -10,13 +10,16 @@ var rightButtonValue;
 function setup()
 {
 	isGameOver();
-	var wrong1 = randomAnswer(3);
-	var wrong2 = randomAnswer(3);
-	var answerArray = level3();
-	correctAnswer = answerArray[0] - answerArray[1];
+	var wrong1 = randomAnswer(5);
+	var wrong2 = randomAnswer(5);
+	var answerArray = level5();
+	if(answerArray[2] == '-')
+		correctAnswer = answerArray[0] - answerArray[1];
+	else
+		correctAnswer = answerArray[0] + answerArray[1];
 	while(correctAnswer == wrong1 || correctAnswer == wrong2 || wrong1 == wrong2){
-		wrong1 = randomAnswer(3);
-		wrong2 = randomAnswer(3);
+		wrong1 = randomAnswer(5);
+		wrong2 = randomAnswer(5);
 	}
 	setButtons(correctAnswer, wrong1, wrong2);
 	var playButton = document.getElementById("play");
@@ -121,7 +124,7 @@ function isCorrect(selectedButton)
 	}
 	if(studentAnswer == correctAnswer)
 	{
-		score = score + 5;
+		score = score + 4;
 		document.getElementById("result").innerHTML = 'Correct!';
 		changeHeightDynamic(score);
 	}
@@ -138,7 +141,7 @@ function isCorrect(selectedButton)
 //Checks whether the game is over
 //If it is, start game over animation
 function isGameOver(){
-	if(index == 20){
+	if(index == 30){
 		alert("Game Over!");
 	}
 }
