@@ -93,10 +93,13 @@ function level3() {
 	var first = Math.floor(Math.random() * ( max - min + 1) ) + min;
 	// Doing this ensure that the difference is positive
 	var second = Math.floor(Math.random() * ( first - min + 1) ) + min;
-	var id = document.getElementById("simSub");
-	var str = first + " - " + second;
-	id.innerHTML = str; 
-	return first - second;
+	var id = document.getElementById("output");
+	var str = first + " - " + second + " = ";
+	id.innerHTML = str;
+	var array = new Array();
+	array[0] = first;
+	array[1] = second; 
+	return array;
 }
 
 
@@ -118,13 +121,14 @@ function level4() {
 	} else {
 		second = Math.floor(Math.random() * ( first - min + 1) ) + min;
 	}
-	var id = document.getElementById("addSub");
+	var id = document.getElementById("output");
 	var str = first + " " + sym[symbol] + " " + second;
 	id.innerHTML = str;
-	if(sym[symbol] == '-')
-		return first - second;
-	else
-		return first + second;
+	var array = new Array();
+	array[0] = first;
+	array[1] = second;
+	array[2] = sym[symbol];
+	return array;
 }
 
 
@@ -147,13 +151,14 @@ function level5() {
 		first = Math.floor(Math.random() * ( max - min + 1) ) + min;
 		second = Math.floor(Math.random() * ( first - min + 1) ) + min;
 	}
-	var id = document.getElementById("advAddSub");
+	var id = document.getElementById("output");
 	var str = first + " " + sym[symbol] + " " + second;
 	id.innerHTML = str;
-		if(sym[symbol] == '-')
-		return first - second;
-	else
-		return first + second;
+	var array = new Array();
+	array[0] = first;
+	array[1] = second;
+	array[2] = sym[symbol];
+	return array;
 }
 //Called from setup()
 //Creates random numbers to populate other multiple choices

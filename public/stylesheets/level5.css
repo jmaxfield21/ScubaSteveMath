@@ -1,0 +1,202 @@
+/*Stylesheet for gamePage*/
+
+.game_body {
+	background: url('/assets/images/hawaii_backdrop.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.hugeTitleText {
+	float: center;
+	padding-left: 0;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	margin-top: 10px;
+	margin-left: 120px;
+	font-size:50px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	border-width: 2px;
+	border-color:white;
+	border-style: solid;
+	border-radius:30px;
+	box-shadow: 7px 7px 7px #000000;
+	background-color: #FFF7CC;
+	color: #DC143C;
+	width:307px;
+}
+
+#title_banner {
+	width: 100%;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.logout_button {
+	float: right;
+	width: 110px;
+	height: 60px;
+	border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 20px;
+}
+
+button.logout_button:hover {
+	background-color: white;
+	color: #00008B;
+}
+
+#tank{
+	background-color: #FF0000;
+	height: 450px;
+	width: 150px;
+	border-radius: 50px;
+	z-index: 1;
+}
+
+#filledTank{
+	position: relative;
+	background-color: #80B2FF;
+	height: 90%;
+	width: 70%;
+	left: 15%;
+	top: 4%;
+	z-index: 2;
+}
+
+#emptyTank{
+	position: relative;
+	background-color: #800000;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	z-index: 3;
+	-webkit-transition: 3s;
+	-moz-transition: 3s;
+	-ms-transition: 3s;
+	-o-transition: 3s;
+	transition: 3s;	
+}
+
+#answer{
+	height: 250px;
+	width: 250px;
+	background-color: white;
+}
+
+#playButton{
+	visibility:visible;
+}
+
+.gameplay {
+	opacity:0.9;
+    padding: 25px 75px 75px;
+	width:40%;
+	height:30%;
+	border-radius:50px;
+	background-color:#FFF7CC;
+	box-shadow: 7px 7px 7px #000000;
+	position: absolute;
+	top: 30%;
+	left:30%;
+	margin-left: 15px;
+	margin-right: 15px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+}
+
+.button {
+	background-color: #DC143C;
+	color: #FFFFFF;
+	border-radius: 5px;
+	width:60px;
+	height:40px;
+	padding: 5px 5px 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	font-size:150%;
+}
+
+button.button:hover {
+	background-color: #FFFFFF;
+	color: #DC143C;
+}
+
+#music_controls {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  /*background-color: #666666;*/
+  opacity: 0.3;
+  font-family:'helvetica neue', 'segoe ui', sans-serif;
+  font-size: 25px;
+  /*border-color: #000000;
+  border-style: solid;
+  border-width: 2px;*/
+}
+
+#music_controls:hover {
+  opacity: 0.8;
+}
+
+#music_buttons {
+  padding: 15px;
+}
+
+/*.play {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #000000;
+  background-color: #666666;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.play:hover {
+  background-color: #B2B2B2;
+}
+
+.pause {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #000000;
+  background-color: #666666;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.pause:hover {
+  background-color: #B2B2B2;
+}*/
+
+.mute {
+  float: right;
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  border-color: #00008B;
+  border-width : 3px;
+  background-color: #6495ED;
+  color: white;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+button.mute:hover {
+  background-color: white;
+  color: #00008B;
