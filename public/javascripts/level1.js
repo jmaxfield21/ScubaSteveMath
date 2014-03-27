@@ -113,33 +113,22 @@ function setButtons(correctAnswer, wrong1, wrong2)
 	}
 }
 
+//Called from isCorrect()
+//Accepts the percent of the tank that should be filled
 function changeHeightDynamic(percent)
 {
-	//This method adjust the height of the emptyTank div
-	//Input is the percent of tank that should be filled
-	var input = percent * 100;
-	var currentEmpty = 100-input;
+
+	var currentEmpty = 100-percent;
 	
 	//Converts  from number to string
 	currentEmpty = currentEmpty + "%";
-	
-	if(input == 0)
-	{
-		document.getElementById("emptyTank").style.height='100%';
-		document.getElementById("emptyTank").style.borderRadius = '0px';
-	}
-	else
-	{
-		document.getElementById("emptyTank").style.height=currentEmpty;
-		document.getElementById("emptyTank").style.borderBottomLeftRadius = '0px';
-		document.getElementById("emptyTank").style.borderBottomRightRadius = '0px';
-	}
-	return input;
+	document.getElementById("emptyTank").style.height=currentEmpty;
 }
 
 //isCorrect checks whether the student's answer is correct or not then prints message to 'answer' div
 function isCorrect(selectedButton)
 {
+	index++;
 	var studentAnswer;
 	switch(selectedButton)
 	{
@@ -173,4 +162,11 @@ function getPlaceForNumber(number, numberToIdentify){
 	(self.numbers[0] + "")[0] == numberToIdentify;
 }
 
-checkForEquations();
+//Called from setup()
+//Checks whether the game is over
+//If it is, start game over animation
+function isGameOver(){
+	if(index == 10){
+		alert("Game Over!");
+	}
+}

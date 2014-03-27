@@ -9,6 +9,7 @@ var rightButtonValue;
 //Sets up the equation
 function setup()
 {
+	isGameOver();
 	var wrong1 = randomAnswer(3);
 	var wrong2 = randomAnswer(3);
 	var answerArray = level3();
@@ -88,24 +89,11 @@ function setButtons(correctAnswer, wrong1, wrong2)
 function changeHeightDynamic(percent)
 {
 
-	var input = percent * 100;
-	var currentEmpty = 100-input;
+	var currentEmpty = 100-percent;
 	
 	//Converts  from number to string
 	currentEmpty = currentEmpty + "%";
-	
-	if(input == 0)
-	{
-		document.getElementById("emptyTank").style.height='100%';
-		document.getElementById("emptyTank").style.borderRadius = '0px';
-	}
-	else
-	{
-		document.getElementById("emptyTank").style.height=currentEmpty;
-		document.getElementById("emptyTank").style.borderBottomLeftRadius = '0px';
-		document.getElementById("emptyTank").style.borderBottomRightRadius = '0px';
-	}
-	return input;
+	document.getElementById("emptyTank").style.height=currentEmpty;
 }
 
 //Called from html Answer buttons onclick
@@ -113,6 +101,7 @@ function changeHeightDynamic(percent)
 //Prints dialog along with adjusting tank
 function isCorrect(selectedButton)
 {
+	index++;
 	var studentAnswer;
 	switch(selectedButton)
 	{
@@ -128,16 +117,24 @@ function isCorrect(selectedButton)
 	}
 	if(studentAnswer == correctAnswer)
 	{
-		score++;
+		score = score + 5;
 		document.getElementById("result").innerHTML = 'Correct!';
-		changeHeightDynamic(score/index);
+		changeHeightDynamic(score);
 	}
 	else
 	{
-		index++;
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
-		changeHeightDynamic(score/index);
+		changeHeightDynamic(score);
 	}
 	
 	setup();
+}
+
+//Called from setup()
+//Checks whether the game is over
+//If it is, start game over animation
+function isGameOver(){
+	if(index == 20){
+		alert("Game Over!");
+	}
 }

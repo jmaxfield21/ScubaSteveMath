@@ -137,7 +137,7 @@ function isCorrect(selectedButton)
 //Checks whether the game is over
 //If it is, start game over animation
 function isGameOver(){
-	if(index == 24){
+	if(index == 25){
 		alert("Game Over!");
 	}
 }

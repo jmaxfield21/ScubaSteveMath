@@ -49,26 +49,26 @@ button.logout_button:hover {
 }
 
 #tank{
-	background-color: #FF0000;
-	height: 450px;
-	width: 150px;
-	border-radius: 50px;
+	position: absolute;
+	background-image: url('../images/scuba_tank.png');
+	height: 640px;
+	width: 195px;
 	z-index: 1;
 }
 
 #filledTank{
 	position: relative;
-	background-color: #80B2FF;
-	height: 90%;
-	width: 70%;
+	background-color: Blue;
+	height: 60%;
+	width: 75%;
 	left: 15%;
-	top: 4%;
+	top: 23%;
 	z-index: 2;
 }
 
 #emptyTank{
 	position: relative;
-	background-color: #800000;
+	background-color: Red;
 	height: 100%;
 	width: 100%;
 	top: 0%;
