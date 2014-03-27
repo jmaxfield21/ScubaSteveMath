@@ -13,14 +13,18 @@ function setup()
 	var wrong1;
 	var wrong2;
 	
-	index = self.remainingProblems;
+	/*index = self.remainingProblems;
 	while(self.numbers.length > 0){
 		correctAnswer = numbers
-	}
+	}*/
 	var answerArray = level1();
 	correctAnswer = answerArray[0];
 	wrong1 = answerArray[1];
 	wrong2 = answerArray[2];
+	while(correctAnswer == wrong1 || correctAnswer == wrong2 || wrong1 == wrong2){
+		wrong1 = randomAnswer(1);
+		wrong2 = randomAnswer(1);
+	}
 	setButtons(correctAnswer, wrong1, wrong2);
 	var playButton = document.getElementById("play");
 	playButton.style.display = "none";

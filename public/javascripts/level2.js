@@ -14,6 +14,10 @@ function setup()
 	var wrong2 = randomAnswer(2);
 	var answerArray = level2();
 	correctAnswer = answerArray[0] + answerArray[1];
+	while(correctAnswer == wrong1 || correctAnswer == wrong2 || wrong1 == wrong2){
+		wrong1 = randomAnswer(2);
+		wrong2 = randomAnswer(2);
+	}
 	setButtons(correctAnswer, wrong1, wrong2);
 	var playButton = document.getElementById("play");
 	playButton.style.display = "none";
