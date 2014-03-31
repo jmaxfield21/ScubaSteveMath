@@ -15,7 +15,7 @@ function setup()
 	
 	index = self.remainingProblems;
 	while(self.numbers.length > 0){
-		correctAnswer = numbers
+		correctAnswer = self.numbersToIdentify[self.numbersToIdentify.length-1];
 	}
 	var answerArray = level1();
 	correctAnswer = answerArray[0];
@@ -169,8 +169,24 @@ function isCorrect(selectedButton)
 	setup();
 }
 
-function getPlaceForNumber(number, numberToIdentify){
-	(self.numbers[0] + "")[0] == numberToIdentify;
+function getPlaceForNumber(number, numberToIdentify)
+{
+	if((number + "")[0] == numberToIdentify){
+		return "HUNDREDS";
+	} else if((number + "")[1] == numberToIdentify){
+		return "TENS";
+	} else if ((number + "")[2] == numberToIdentify){
+		return "ONES";
+	}
+}
+
+function getOtherNumbersFromNumber(number, numberToIdentify)
+{
+	var numberStr = number + "";
+	for(int i = 0; i < numberStr.length; i++)
+	{
+		
+	}
 }
 
 checkForEquations();
