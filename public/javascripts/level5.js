@@ -4,59 +4,30 @@ var correctAnswer;
 var leftButtonValue;
 var middleButtonValue;
 var rightButtonValue;
-var self = this;
 
+//Called from html play button on click
+//Sets up the equation
 function setup()
 {
-	var level = 1;
-	var wrongAnswers;
-	var wrong1;
-	var wrong2;
-	
-	/*index = self.remainingProblems;
-	while(self.numbers.length > 0){
-		correctAnswer = self.numbersToIdentify[self.numbersToIdentify.length-1];
-	}
-		correctAnswer = numbers
-	}*/
-
-	var answerArray = level1();
-	correctAnswer = answerArray[0];
-	wrong1 = answerArray[1];
-	wrong2 = answerArray[2];
+	isGameOver();
+	var wrong1 = randomAnswer(5);
+	var wrong2 = randomAnswer(5);
+	var answerArray = level5();
+	if(answerArray[2] == '-')
+		correctAnswer = answerArray[0] - answerArray[1];
+	else
+		correctAnswer = answerArray[0] + answerArray[1];
 	while(correctAnswer == wrong1 || correctAnswer == wrong2 || wrong1 == wrong2){
-		wrong1 = randomAnswer(1);
-		wrong2 = randomAnswer(1);
+		wrong1 = randomAnswer(5);
+		wrong2 = randomAnswer(5);
 	}
 	setButtons(correctAnswer, wrong1, wrong2);
 	var playButton = document.getElementById("play");
 	playButton.style.display = "none";
-};
-
-var checkForEquations = function() 
-{
-	$.ajax({
-	  type: "POST",
-	  url: '/getequations',
-	  data:{level:"1"},
-	  dataType: 'json',
-	  success: successL1Callback,
-	  error: function(response){
-	    console.log("cannont get equations");
-		console.log(response);
-	  }
-	});
 }
 
-
-var successL1Callback = function(response)
-{
-	self.numbers = response.numbers;
-	self.numbersToIdentify = response.numbersToIdentify;
-	var numOfProblems = self.numbers.length;
-	self.remainingProblems = 10 - numOfProblems;
-};
-
+//Called from setup()
+//Used to set up the multiple choice buttons
 function setButtons(correctAnswer, wrong1, wrong2)
 {
 	var randomAssignment = Math.floor(Math.random() * ( 3 - 1 + 1) ) + 1;
@@ -132,7 +103,9 @@ function changeHeightDynamic(percent)
 	document.getElementById("emptyTank").style.height=currentEmpty;
 }
 
-//isCorrect checks whether the student's answer is correct or not then prints message to 'answer' div
+//Called from html Answer buttons onclick
+//Accepts the students answer
+//Prints dialog along with adjusting tank
 function isCorrect(selectedButton)
 {
 	index++;
@@ -151,45 +124,24 @@ function isCorrect(selectedButton)
 	}
 	if(studentAnswer == correctAnswer)
 	{
-		score++;
+		score = score + 4;
 		document.getElementById("result").innerHTML = 'Correct!';
-		changeHeightDynamic(score/index);
+		changeHeightDynamic(score);
 	}
 	else
 	{
-		index++;
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
-		changeHeightDynamic(score/index);
+		changeHeightDynamic(score);
 	}
 	
 	setup();
-}
-
-function getPlaceForNumber(number, numberToIdentify)
-{
-	if((number + "")[0] == numberToIdentify){
-		return "HUNDREDS";
-	} else if((number + "")[1] == numberToIdentify){
-		return "TENS";
-	} else if ((number + "")[2] == numberToIdentify){
-		return "ONES";
-	}
-}
-
-function getOtherNumbersFromNumber(number, numberToIdentify)
-{
-	var numberStr = number + "";
-	for(int i = 0; i < numberStr.length; i++)
-	{
-		
-	}
 }
 
 //Called from setup()
 //Checks whether the game is over
 //If it is, start game over animation
 function isGameOver(){
-	if(index == 10){
+	if(index == 30){
 		alert("Game Over!");
 	}
 }
