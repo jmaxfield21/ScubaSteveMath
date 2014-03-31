@@ -62,15 +62,23 @@ button.logout_button:hover {
 	width: 75%;
 	left: 15%;
 	top: 23%;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
 	z-index: 2;
 }
 
 #emptyTank{
 	position: relative;
-	background-color: Red;
+	background-color: #CC9900;
 	height: 100%;
 	width: 100%;
 	top: 0%;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
 	z-index: 3;
 	-webkit-transition: 3s;
 	-moz-transition: 3s;
