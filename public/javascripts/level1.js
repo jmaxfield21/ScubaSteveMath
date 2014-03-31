@@ -178,11 +178,11 @@ function getPlaceForNumber(number, numberToIdentify)
 
 function getOtherNumbersFromNumber(number, numberToIdentify)
 {
-	var numberStr = number + "";
-	for(int i = 0; i < numberStr.length; i++)
-	{
-		
-	}
+	// var numberStr = number + "";
+// 	for(int i = 0; i < numberStr.length; i++)
+// 	{
+// 		
+// 	}
 }
 
 //Called from setup()
