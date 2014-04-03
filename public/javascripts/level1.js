@@ -33,6 +33,12 @@ function setup()
 	setButtons(correctAnswer, wrong1, wrong2);
 	var playButton = document.getElementById("play");
 	playButton.style.display = "none";
+	var answer1 = document.getElementById("answer1");
+	answer1.style.visibility = "visible";
+	var answer2 = document.getElementById("answer2");
+	answer2.style.visibility = "visible";
+	var answer3 = document.getElementById("answer3");
+	answer3.style.visibility = "visible";
 };
 
 var checkForEquations = function() 

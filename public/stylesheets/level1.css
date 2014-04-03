@@ -6,33 +6,37 @@
 	background-repeat: no-repeat;
 }
 
-.hugeTitleText {
-	float: center;
-	padding-left: 10px;
-	padding-bottom: 10px;
-	padding-right: 10px;
-	margin-top: 10px;
-	margin-left: 100px;
-	font-size:50px;
-	font-family:'helvetica neue', 'segoe ui', sans-serif;
-	border-width: 2px;
-	border-top-left-radius: 30px;
-	border-bottom-left-radius: 30px;
-	background-color: #0066FF;
-	background: -webkit-linear-gradient(left, #0066FF, #A3C2FF);
-	color: #FFFFFF;
-	width:307px;
-}
-
 #title_banner {
-	width: 100%;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 }
 
+.hugeTitleText {
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	margin-top: 15px;
+	font-size:60px;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	border-width: 2px;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	background-color: #000000066FF;
+	background: -webkit-linear-gradient(left, rgba(0, 102, 255, 1), rgba(163, 194, 255, 0));
+	background: -moz-linear-gradient(left, rgba(0, 102, 255, 1), rgba(163, 194, 255, 0));
+	color: #FFFFFF;
+}
+
 .logout_button {
-	float: right;
-	width: 110px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: 10px;
+	margin-top: 10px;
 	height: 60px;
 	border-radius: 5px;
 	border-color: #00008B;
@@ -47,11 +51,17 @@ button.logout_button:hover {
 	color: #00008B;
 }
 
-#tank{
+#tank {
 	position: absolute;
-	background-image: url('../images/scuba_tank.png');
-	height: 640px;
+	top: 5%;
+	height: 575px;
 	width: 195px;
+	z-index: 1;
+}
+
+#tank > img {
+	position: absolute;
+	height: 575px;
 	z-index: 1;
 }
 
@@ -59,9 +69,9 @@ button.logout_button:hover {
 	position: relative;
 	background-color: Blue;
 	height: 60%;
-	width: 75%;
-	left: 15%;
-	top: 23%;
+	width: 60%;
+	left: 17%;
+	top: 22%;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
 	border-bottom-right-radius: 10px;
@@ -93,6 +103,18 @@ button.logout_button:hover {
 	background-color: white;
 }
 
+#answer1 {
+	visibility: hidden;
+}
+
+#answer2 {
+	visibility: hidden;
+}
+
+#answer3 {
+	visibility: hidden;
+}
+
 #playButton{
 	visibility:visible;
 }
@@ -100,8 +122,8 @@ button.logout_button:hover {
 .gameplay {
 	opacity:0.9;
     padding: 25px 75px 75px;
-	width:40%;
-	height:30%;
+	width:400px;
+	height:200px;
 	border-radius:50px;
 	background-color:#FFF7CC;
 	box-shadow: 7px 7px 7px #000000;
@@ -113,17 +135,39 @@ button.logout_button:hover {
 	font-family:'helvetica neue', 'segoe ui', sans-serif;
 }
 
+.gameplay > a {
+	font-size: 30px;
+}
+
+.gameplay > button {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 .button {
 	background-color: #DC143C;
 	color: #FFFFFF;
 	border-radius: 5px;
-	width:60px;
-	height:40px;
+	width: 80px;
+	height:60px;
 	padding: 5px 5px 5px;
 	margin-left: 5px;
 	margin-right: 5px;
 	font-family:'helvetica neue', 'segoe ui', sans-serif;
-	font-size:150%;
+	font-size:175%;
+}
+
+#play {
+	background-color: #DC143C;
+	color: #FFFFFF;
+	border-radius: 5px;
+	width:100px;
+	height:80px;
+	padding: 5px 5px 5px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:'helvetica neue', 'segoe ui', sans-serif;
+	font-size:200%;	
 }
 
 button.button:hover {
@@ -142,13 +186,9 @@ button.button:hover {
   text-align: center;
   color: white;
   border-radius: 15px;
-  /*background-color: #666666;*/
   opacity: 0.3;
   font-family:'helvetica neue', 'segoe ui', sans-serif;
   font-size: 25px;
-  /*border-color: #000000;
-  border-style: solid;
-  border-width: 2px;*/
 }
 
 #music_controls:hover {
@@ -158,38 +198,6 @@ button.button:hover {
 #music_buttons {
   padding: 15px;
 }
-
-/*.play {
-  float: right;
-  width: 90px;
-  height: 50px;
-  border-radius: 5px;
-  border-color: #000000;
-  background-color: #666666;
-  color: white;
-  font-size: 18px;
-  padding-right: 15px;
-}
-
-button.play:hover {
-  background-color: #B2B2B2;
-}
-
-.pause {
-  float: right;
-  width: 90px;
-  height: 50px;
-  border-radius: 5px;
-  border-color: #000000;
-  background-color: #666666;
-  color: white;
-  font-size: 18px;
-  padding-right: 15px;
-}
-
-button.pause:hover {
-  background-color: #B2B2B2;
-}*/
 
 .mute {
   float: right;
