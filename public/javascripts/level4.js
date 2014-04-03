@@ -1,5 +1,6 @@
 var index = 0;
 var score = 0;
+var tankSize = 0;
 var correctAnswer;
 var leftButtonValue;
 var middleButtonValue;
@@ -124,14 +125,15 @@ function isCorrect(selectedButton)
 	}
 	if(studentAnswer == correctAnswer)
 	{
-		score = score + 4;
+		score++;
+		tankSize = tankSize + 4;
 		document.getElementById("result").innerHTML = 'Correct!';
-		changeHeightDynamic(score);
+		changeHeightDynamic(tankSize);
 	}
 	else
 	{
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
-		changeHeightDynamic(score);
+		changeHeightDynamic(tankSize);
 	}
 	
 	setup();
@@ -142,6 +144,22 @@ function isCorrect(selectedButton)
 //If it is, start game over animation
 function isGameOver(){
 	if(index == 25){
-		alert("Game Over!");
+		if(score/index >= .9)
+			dialog('win');
+		else
+			dialog('loser');
 	}
+}
+
+function dialog(result){
+	if(result === 'win'){
+		$(function() {
+    		$( "#success_dialog" ).dialog();
+  		});
+  	}
+  	else{
+  		$(function() {
+    		$( "#failed_dialog" ).dialog();
+  		});
+  	}
 }

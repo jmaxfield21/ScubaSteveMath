@@ -1,5 +1,6 @@
 var index = 0;
 var score = 0;
+var tankSize = 0;
 var correctAnswer;
 var leftButtonValue;
 var middleButtonValue;
@@ -8,6 +9,7 @@ var self = this;
 
 function setup()
 {
+	isGameOver();
 	var level = 1;
 	var wrongAnswers;
 	var wrong1;
@@ -152,14 +154,14 @@ function isCorrect(selectedButton)
 	if(studentAnswer == correctAnswer)
 	{
 		score++;
+		tankSize = tankSize + 10;
 		document.getElementById("result").innerHTML = 'Correct!';
-		changeHeightDynamic(score/index);
+		changeHeightDynamic(tankSize);
 	}
 	else
 	{
-		index++;
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
-		changeHeightDynamic(score/index);
+		changeHeightDynamic(tankSize);
 	}
 	
 	setup();
@@ -190,6 +192,22 @@ function getOtherNumbersFromNumber(number, numberToIdentify)
 //If it is, start game over animation
 function isGameOver(){
 	if(index == 10){
-		alert("Game Over!");
+		if(score/index >= .9)
+			dialog('win');
+		else
+			dialog('loser');
 	}
+}
+
+function dialog(result){
+	if(result === 'win'){
+		$(function() {
+    		$( "#success_dialog" ).dialog();
+  		});
+  	}
+  	else{
+  		$(function() {
+    		$( "#failed_dialog" ).dialog();
+  		});
+  	}
 }

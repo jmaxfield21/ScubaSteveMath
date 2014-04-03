@@ -6,7 +6,7 @@ var leftButtonValue;
 var middleButtonValue;
 var rightButtonValue;
 
-//Called from html play button on click
+//Called from HTML play button on click
 //Sets up the equation
 function setup()
 {
@@ -138,7 +138,7 @@ function isCorrect(selectedButton)
 
 //Called from setup()
 //Checks whether the game is over
-//If it is, start game over animation
+//If it is, prints dialog window informing student of result
 function isGameOver(){
 	if(index == 15){
 		if(score/index >= .9)
@@ -148,6 +148,9 @@ function isGameOver(){
 	}
 }
 
+//Called from isGameOver()
+//JQuery function that creates dialog window
+//Informs student of level result
 function dialog(result){
 	if(result === 'win'){
 		$(function() {
