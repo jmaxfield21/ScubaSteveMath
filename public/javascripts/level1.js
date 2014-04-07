@@ -24,7 +24,7 @@ function setup()
 	var wrong1;
 	var wrong2;
 	
-	var bigNumbersArray = self.numbers.concat(level1Generator(self.remainingProblems));
+	self.bigNumbersArray = self.numbers.concat(level1Generator(self.remainingProblems));
 	var answerArray =  self.answers[self.currentProblem-1];
 	
 	//for the randomly generated problems
@@ -257,7 +257,10 @@ function isCorrect(selectedButton)
 	}
 	else
 	{
-		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
+		self.prevBigNum = bigNumbersArray[self.currentProblem-1];
+		self.prevNumPos = getPlaceForNumber( self.prevBigNum, correctAnswer );
+		document.getElementById("result").innerHTML = 'Incorrect, the number was ' + self.prevBigNum + ', the number in the ' 
+				+ self.prevNumPos + ' place is ' +correctAnswer+ '.';
 		changeHeightDynamic(tankSize);
 	}
 	

@@ -123,7 +123,7 @@ button.logout_button:hover {
 	opacity:0.9;
     padding: 25px 75px 75px;
 	width:400px;
-	height:200px;
+	height:auto;
 	border-radius:50px;
 	background-color:#FFF7CC;
 	box-shadow: 7px 7px 7px #000000;
