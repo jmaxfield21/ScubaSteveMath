@@ -27,4 +27,30 @@ public class DatabaseHelper {
 		
 		return numbersToIdentify;
 	}
+	
+	public static List<ArrayList<String>> getAdditionProblemsForLevel(String level){
+		List<ArrayList<String>> problems = new ArrayList<ArrayList<String>>();
+		List<String> bigProblemList = new ArrayList<String>();
+		ArrayList<String> problem = new ArrayList<String>();
+		
+		try {
+			bigProblemList = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select sum_min,sum_max from addition where addition_level_id=" + level, new ArrayList<String>()));
+			for(int i = 0; i < bigProblemList.size(); i++){
+				if(i%2 == 0){
+					problem = new ArrayList<String>();
+					problem.add(bigProblemList.get(i));
+					problem.add(bigProblemList.get(i+1));
+					problems.add(problem);
+				} 
+//				if (i == bigProblemList.size() - 1){
+//					problems.add((ArrayList<String>)Arrays.asList(bigProblemList.get(i-1), bigProblemList.get(i)));
+//				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return problems;
+	}
 }

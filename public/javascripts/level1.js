@@ -96,7 +96,7 @@ var successL1Callback = function(response)
 		self.answers[i] = getAnswerArrayForNumber(self.numbers[i], numbersToIdentify[i]);
 	}
 	var numOfProblems = self.numbers.length;
-	self.remainingProblems = 10 - numOfProblems;
+	self.remainingProblems = self.totalQuestions - numOfProblems;
 };
 
 function level1Generator(number) {
@@ -131,20 +131,7 @@ function level1Generator(number) {
 	
 		//Fills up the array with the correct answer first and returns it
 		
-		switch(digits[numPlace])
-		{
-			case "HUNDREDS":
-				problemArray[problemArray.length] = bigNum;
-				break;
-			case "TENS":
-				problemArray[problemArray.length] = bigNum;
-				break;
-			case "ONES":
-				problemArray[problemArray.length] = bigNum;
-				break;
-			default:
-				break;
-		}
+		problemArray[problemArray.length] = bigNum;
 	}
 	
 	return problemArray;
@@ -267,11 +254,22 @@ function isCorrect(selectedButton)
 
 function getPlaceForNumber(number, numberToIdentify)
 {
-	if((number + "")[0] == numberToIdentify){
-		return "HUNDREDS";
-	} else if((number + "")[1] == numberToIdentify){
-		return "TENS";
-	} else if ((number + "")[2] == numberToIdentify){
+	var numString = number + "";
+	if(numString.length == 3){
+		if(numString[0] == numberToIdentify){
+			return "HUNDREDS";
+		} else if(numString[1] == numberToIdentify){
+			return "TENS";
+		} else if (numString[2] == numberToIdentify){
+			return "ONES";
+		}
+	} else if(numString.length == 2){
+		if(numString[0] == numberToIdentify){
+			return "TENS";
+		} else if(numString[1] == numberToIdentify){
+			return "ONES";
+		}
+	} else {
 		return "ONES";
 	}
 }
@@ -312,7 +310,7 @@ function getAnswerArrayForNumber(number, answer)
 //If it is, start game over animation
 function isGameOver(){
 	if(index == 10){
-		if(score/index >= .9){
+		if(self.correctAnswers/self.totalQuestions >= .9){
 			dialog('win');
 		} else {
 			dialog('loser');
