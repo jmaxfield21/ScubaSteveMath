@@ -28,8 +28,8 @@
 			<button name="answer2" class="button" id="answer2" onclick="isCorrect('middle')"> </button>
 			<button name="answer3" class="button" id="answer3" onclick="isCorrect('right')"> </button><br>
 			<a id="result"></a><br>
-			<img src="/assets/images/correct.PNG" style="visibility:hidden;" id="correct_image">
-			<img src="/assets/images/incorrect.PNG" style="visibility:hidden;" id="incorrect_image">
+			<img src="/assets/images/correct.PNG" style="display:none;" id="correct_image">
+			<img src="/assets/images/incorrect.PNG" style="display:none;" id="incorrect_image">
 		</div>
 		<div id="music_controls">
 				<!-- <h4>MUSIC CONTROLS</h4> -->
@@ -39,6 +39,7 @@
 					<button class="mute" onclick="document.getElementById('player').muted=!document.getElementById('player').muted">Mute Music</button>
 				</div>
 		</div>
+		<div
 		<div id="success_dialog" title="You Win!" style="display:none;">
 			<p>Dive successful!</p>
 			<button class="replay_button" onclick="location.href='/Level4';">Replay</button>
