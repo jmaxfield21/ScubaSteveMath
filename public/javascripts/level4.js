@@ -128,11 +128,15 @@ function isCorrect(selectedButton)
 		score++;
 		tankSize = tankSize + 4;
 		document.getElementById("result").innerHTML = 'Correct!';
+		document.getElementById("incorrect_image").style.visibility="hidden";
+		document.getElementById("correct_image").style.visibility="visible";
 		changeHeightDynamic(tankSize);
 	}
 	else
 	{
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
+		document.getElementById("correct_image").style.visibility="hidden";
+		document.getElementById("incorrect_image").style.visibility="visible";
 		changeHeightDynamic(tankSize);
 	}
 	

@@ -330,6 +330,24 @@ public static Result showCertificate() {
 		return ok("We're so sorry... Something bad happened.");
     }
     
+    public static Result addScore(){
+    	RequestBody body = request().body();
+    	String username = session("username");
+    	String score = body.asFormUrlEncoded().get("score")[0];
+    	String level = body.asFormUrlEncoded().get("level")[0];
+    	List<String> uuids;
+    	
+		try {
+			uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users where username=?;", Arrays.asList(username)));
+			Assert.isTrue(uuids.size() == 1, "Too many IDs associated with a username.");
+	    	DatabaseConnectorDude.insert("insert into scores values (?,?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,uuids.get(0),score, getCurrentTimeString()));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return ok();
+    }
+    
     public static Result logout() {
     	session().clear();
     	return redirect("/login");

@@ -200,3 +200,14 @@ button.pause:hover {
 button.mute:hover {
   background-color: white;
   color: #00008B;
+}
+
+#correct_image{
+	height: 100px;
+	width: 100px;
+}
+
+#incorrect_image{
+	height: 100px;
+	width: 100px;
+}
