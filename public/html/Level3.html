@@ -4,10 +4,12 @@
 		<title>Level 3</title>
 		<link rel="icon" type="image/png" href="/assets/images/favicon.png">
 		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/level3.css">
+		<link rel="stylesheet" type="text/css" href="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/themes/base/jquery-ui.css">
 		
 		<script type="text/javascript" src="/assets/javascripts/jquery-2.0.3.min.js"></script>
 		<script src="/assets/javascripts/level3.js"></script>
 		<script src="/assets/javascripts/equation_generator.js"></script>
+		<script src="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/ui/jquery-ui.js"></script>
 	</head>
 	<body class="game_body">
 		<div id="title_banner">
@@ -34,7 +36,17 @@
 					<button class="pause" onclick="document.getElementById('player').pause()">Pause Music</button> -->
 					<button class="mute" onclick="document.getElementById('player').muted=!document.getElementById('player').muted">Mute Music</button>
 				</div>
-			</div>
+		</div>
+		<div id="success_dialog" title="You Win!" style="display:none;">
+			<p>Dive successful!</p>
+			<button class="replay_button" onclick="location.href='/Level3';">Replay</button>
+			<button class="back_to_map" onclick="location.href='/map';">Back to Map</button>
+		</div>
+		<div id="failed_dialog" title="Good Try" style="display:none;">
+			<p>Dive failed, try again?</p>
+			<button class="replay_button" onclick="location.href='/Level3';">Replay</button>
+			<button class="back_to_map" onclick="location.href='/map';">Back to Map</button>
+		</div>
 			<audio id="player" autoplay loop>
 				<source src="/assets/audio/Hawaii.ogg" type="audio/ogg" >
 				<source src="/assets/audio/Hawaii.mp3" type="audio/mpeg" >

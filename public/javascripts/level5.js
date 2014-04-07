@@ -1,5 +1,6 @@
 var index = 0;
 var score = 0;
+var tankSize = 0;
 var correctAnswer;
 var leftButtonValue;
 var middleButtonValue;
@@ -141,7 +142,7 @@ function isCorrect(selectedButton)
 //Called from setup()
 //Checks whether the game is over
 //If it is, start game over animation
-unction isGameOver(){
+function isGameOver(){
 	if(index == 30){
 		if(score/index >= .9)
 			dialog('win');
@@ -153,12 +154,14 @@ unction isGameOver(){
 function dialog(result){
 	if(result === 'win'){
 		$(function() {
-    		$( "#success_dialog" ).dialog();
+    		$("#success_dialog").dialog();
+    		$("#success_dialog").draggable({disabled:true});
   		});
   	}
   	else{
   		$(function() {
-    		$( "#failed_dialog" ).dialog();
+    		$("#failed_dialog").dialog();
+    		$("#failed_dialog").draggable({disabled:true});
   		});
   	}
 }
