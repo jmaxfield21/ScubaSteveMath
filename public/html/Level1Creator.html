@@ -26,11 +26,10 @@
         <div id="recognitionDiv" class="recognitionDiv">
         <h2>Number Recognition</h2>
         <p>Enter desired number in the box:</p>
-        <form NAME="Number Recignition" ACTION="" METHOD="GET">
-            <input TYPE="number" NAME="inputbox" VALUE=""><br>
-            <input class="button" TYPE="button" NAME="submit" Value="Submit" onClick="recognitionCreator(this.form)"><br>
-        </form>
-        <input class="button" type="button" name="back" value="Finished" onclick="location.href='/ECLevelSelect';">
+        <input id="number" name="number" class="inputBox" type="text" placeholder="Original Number"><br>
+        <input id="answer" name="answer" class="inputBox" type="text" placeholder="Answer"><br>
+        <input class="button" TYPE="button" NAME="submit" Value="Submit" onClick="recognitionCreator(this.form)"><br>
+        <input class="button" type="button" name="back" value="Finished" onclick="location.href='/levelcreators';">
         </div>
     </body>
 </html>

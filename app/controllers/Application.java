@@ -222,6 +222,22 @@ public static Result getEquationsForLevel(){
 	return ok(Json.toJson(transObject));
 }
 
+public static Result addEquationsForLevel(){
+	
+	RequestBody body = request().body();
+	String level = body.asFormUrlEncoded().get("level")[0];
+	if("1".equals(level)){
+		String number = body.asFormUrlEncoded().get("number")[0];
+		String answer = body.asFormUrlEncoded().get("answer")[0];
+		DatabaseConnectorDude.insert("insert into number_recognition values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,number, answer));
+	} else if("2".equals(level)){
+		String first = body.asFormUrlEncoded().get("first")[0];
+		String second = body.asFormUrlEncoded().get("second")[0];
+		DatabaseConnectorDude.insert("insert into addition values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,first, second));
+	}
+	return ok();
+}
+
 public static Result showCertificate() {
 		if(!isLoggedIn()){
 			return redirect("/login");
