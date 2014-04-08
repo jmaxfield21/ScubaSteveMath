@@ -206,6 +206,9 @@ public static Result getEquationsForLevel(){
 		List<Integer> numbersToIdentify = DatabaseHelper.getNumbersToIdentifyFromNumRecognition(level);
 		transObject.numbers = numbers;
 		transObject.numbersToIdentify = numbersToIdentify;
+	} else if("2".equals(level)){
+		List<ArrayList<String>> problems = DatabaseHelper.getAdditionProblemsForLevel(level);
+		transObject.additionProblems = problems;
 	}
 	
 	response().setContentType("text/json");
