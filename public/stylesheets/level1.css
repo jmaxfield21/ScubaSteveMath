@@ -216,3 +216,25 @@ button.mute:hover {
   background-color: white;
   color: #00008B;
 }
+
+#correct_image{
+	width: 300px;
+   	height: 300px;
+   	position: absolute;
+   	left: 50%;
+   	top: 50%; 
+   	margin-left: -150px;
+   	margin-top: -150px;
+	z-index: 4;
+}
+
+#incorrect_image{
+   	width: 300px;
+   	height: 300px;
+   	position: absolute;
+   	left: 50%;
+   	top: 50%; 
+   	margin-left: -150px;
+   	margin-top: -150px;
+	z-index: 4;
+}
