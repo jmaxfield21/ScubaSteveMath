@@ -215,6 +215,17 @@ public static Result getEquationsForLevel(){
 	return ok(Json.toJson(transObject));
 }
 
+public static Result addEquationsForLevel(){
+	
+	RequestBody body = request().body();
+	String number = body.asFormUrlEncoded().get("number")[0];
+	String answer = body.asFormUrlEncoded().get("answer")[0];
+	String level = body.asFormUrlEncoded().get("level")[0];
+	DatabaseConnectorDude.insert("insert into number_recognition values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,number, answer));
+	
+	return ok();
+}
+
 public static Result showCertificate() {
 		if(!isLoggedIn()){
 			return redirect("/login");

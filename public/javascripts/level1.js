@@ -85,7 +85,7 @@ function sendScore(score)
 	  },
 	  async:   false
 	});
-}
+};
 
 
 var successL1Callback = function(response)
