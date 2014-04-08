@@ -110,6 +110,13 @@ public class Application extends Controller {
     	}
         return redirect("/assets/html/Level5.html");
     }
+
+    public static Result levelSuccess() {
+        if(!isLoggedIn()) {
+            return redirect("/login");
+        }
+        return redirect("/assets/html/levelsuccess.html");
+    }
     
     public static Result map() {
     	if(!isLoggedIn()){
