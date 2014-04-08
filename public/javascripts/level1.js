@@ -240,6 +240,10 @@ function isCorrect(selectedButton)
 		self.correctAnswers++;
 		tankSize = tankSize + 10;
 		document.getElementById("result").innerHTML = 'Correct!';
+		$(function(){
+			$("#correct_image").fadeIn(500);
+			$("#correct_image").fadeOut(1500);
+		});
 		changeHeightDynamic(tankSize);
 	}
 	else
@@ -248,6 +252,10 @@ function isCorrect(selectedButton)
 		self.prevNumPos = getPlaceForNumber( self.prevBigNum, correctAnswer );
 		document.getElementById("result").innerHTML = 'Incorrect, the number was ' + self.prevBigNum + ', the number in the ' 
 				+ self.prevNumPos + ' place is ' +correctAnswer+ '.';
+		$(function(){
+			$("#incorrect_image").fadeIn(500);
+			$("#incorrect_image").fadeOut(1500);
+		});
 		changeHeightDynamic(tankSize);
 	}
 	

@@ -200,11 +200,19 @@ function isCorrect(selectedButton)
 		self.correctAnswers++;
 		tankSize = tankSize + 6.66666;
 		document.getElementById("result").innerHTML = 'Correct!';
+		$(function(){
+			$("#correct_image").fadeIn(500);
+			$("#correct_image").fadeOut(1500);
+		});
 		changeHeightDynamic(tankSize);
 	}
 	else
 	{
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
+		$(function(){
+			$("#incorrect_image").fadeIn(500);
+			$("#incorrect_image").fadeOut(1500);
+		});		
 		changeHeightDynamic(tankSize);
 	}
 	self.currentProblem++;

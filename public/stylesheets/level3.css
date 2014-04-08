@@ -1,7 +1,7 @@
 /*Stylesheet for gamePage*/
 
 .game_body {
-	background: url('/assets/images/hawaii_backdrop.png');
+	background: url('/assets/images/cancun_backdrop.png');
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
@@ -200,3 +200,26 @@ button.pause:hover {
 button.mute:hover {
   background-color: white;
   color: #00008B;
+}
+
+#correct_image{
+	width: 300px;
+   	height: 300px;
+   	position: absolute;
+   	left: 50%;
+   	top: 50%; 
+   	margin-left: -150px;
+   	margin-top: -150px;
+	z-index: 4;
+}
+
+#incorrect_image{
+   	width: 300px;
+   	height: 300px;
+   	position: absolute;
+   	left: 50%;
+   	top: 50%; 
+   	margin-left: -150px;
+   	margin-top: -150px;
+	z-index: 4;
+}
