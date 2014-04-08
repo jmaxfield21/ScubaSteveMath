@@ -24,19 +24,18 @@
                 <button class="button" onclick="location.href='/levelcreators';">Add Equations to Level</button>
             </div>
         </div>
+        
         <div class="levelTwo">
             <div id="equationDiv" class="equationDiv">
                 <p>Addition Problems</p>
                 <p>Enter two integers into the equation creation fields to create a specific equation.<br></p><br>
                 <h3>Equation</h3>
-                <form NAME="Addition Creator" ACTION="" METHOD="GET">
-                    <p>First Integer:</p>
-                    <input TYPE="number" NAME="firstNumber"><br>
-                    <p>+</p>
-                    <p>Second Integer:</p>
-                    <input Type="number" Name="secondNumber" Value=""><br>
-                    <input class="button" type="button" NAME="submit" Value="Submit" onClick="additionCreator(this.form)">
-                </form>
+                <p>First Integer:</p>
+                <input type="number" id="firstNumber"><br>
+                <p>+</p>
+                <p>Second Integer:</p>
+                <input type="number" id="secondNumber" Value=""><br>
+                <input class="button" type="button" NAME="submit" Value="Submit" onClick="additionCreator(this.form)">
                 <input class="button" type="button" name="back" value="Finished" onclick="location.href='/ECLevelSelect';">
           </div>
         </div>
