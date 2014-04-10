@@ -1,9 +1,18 @@
 .certimage{
-	position:aboslute;
-	left: 0%;
-	top: 0%;
-	width:100%;
-	height:100%;
+	background-size: 0px 0px;
+	background-repeat: repeat;
+	height: 700px;
+	width: 906px;
+	border-style: outset;
+	border-width: 5px;
+	border-color: #999999;
+	position: relative;
+
+}
+.seal{
+	position:absolute;
+	left:77%;
+	top:10%;
 }
 
 .body{
@@ -18,13 +27,13 @@
 .score{
 	position:absolute;
 	font-size:250%;
-	left:20%;
-	top:115%;
+	left:10%;
+	top:77%;
 }
 
 .name{
 	position:absolute;
 	font-size:250%;
-	left:45%;
-	top:75%;
+	left:27%;
+	top:50%;
 }
