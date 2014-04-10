@@ -9,7 +9,7 @@ function startMoving(img) {
         img$.css("right", -imgWidth);
         amount = screenWidth + imgWidth;
     }
-    var moveRate = 90;   // pixels per second to move
+    var moveRate = 75;   // pixels per second to move
     var time = amount * 1000 / moveRate;
     img$.stop(true)
         .animate({
@@ -41,7 +41,7 @@ function swimmingUp(img) {
         img$.css("top", + screenHeight);
         amount = screenHeight + imgHeight;
     }
-    var moveRate = 75;   // pixels per second to move
+    var moveRate = 90;   // pixels per second to move
     var time = amount * 1000 / moveRate;
     img$.stop(true)
         .animate({
