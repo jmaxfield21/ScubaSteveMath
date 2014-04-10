@@ -1,4 +1,5 @@
 package controllers;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -21,6 +22,11 @@ import views.html.adminstudentrecords;
 import views.html.certificate;
 import views.html.map;
 import views.html.studentrecords;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import database.DatabaseConnectorDude;
 import database.DatabaseHelper;
 
@@ -146,17 +152,22 @@ public class Application extends Controller {
     		}
     		
     		List<String> uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users where username=?;",Arrays.asList(username)));
+    		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
     		/* What I'm about to do is SO hacky. Sorry about that. Just trying to get the functionality 
     		 * there without doing several queries. This one just grabs the first and last names of the 
     		 * user in one query rather than the annoying single call per column.
     		  */
-    		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select first_name, last_name from users where username=?;",Arrays.asList(username)));
-    		Assert.isTrue(uuids.size()==1,"Should not have multiple UUIDs associated with a username.");
-    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query("select scores.score from scores inner join users on users.UUID=scores.UUID where users.UUID=?;", Arrays.asList(uuids.get(0))));
-    		List<Timestamp> times = DatabaseConnectorDude.getTimestampFromResultSet(DatabaseConnectorDude.query("select scores.date from scores inner join users on users.UUID=scores.UUID where users.UUID=?;", Arrays.asList(uuids.get(0))));
+    		List<String> names = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select first_name, "
+    				+ "last_name from users where username=?;",Arrays.asList(username)));
+    		List<Double> scores = DatabaseConnectorDude.getDoublesFromResultSet(DatabaseConnectorDude.query("select scores.score "
+    				+ "from scores inner join users on users.UUID=scores.UUID where users.UUID=? order by scores.date desc;", Arrays.asList(uuids.get(0))));
+    		List<Timestamp> times = DatabaseConnectorDude.getTimestampFromResultSet(DatabaseConnectorDude.query("select scores.date "
+    				+ "from scores inner join users on users.UUID=scores.UUID where users.UUID=? order by scores.date desc;", Arrays.asList(uuids.get(0))));
     		
-    		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query("select scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID=?;", Arrays.asList(uuids.get(0))));
-    		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times), new Boolean(isCurrentAdmin()) ));
+    		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query("select "
+    				+ "scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID=? order by scores.date desc;", 
+    				Arrays.asList(uuids.get(0))));
+    		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times), new Boolean(isCurrentAdmin())));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -219,6 +230,7 @@ public static Result addEquationsForLevel(){
 	
 	RequestBody body = request().body();
 	String level = body.asFormUrlEncoded().get("level")[0];
+	
 	if("1".equals(level)){
 		String number = body.asFormUrlEncoded().get("number")[0];
 		String answer = body.asFormUrlEncoded().get("answer")[0];
@@ -227,8 +239,12 @@ public static Result addEquationsForLevel(){
 		String first = body.asFormUrlEncoded().get("first")[0];
 		String second = body.asFormUrlEncoded().get("second")[0];
 		DatabaseConnectorDude.insert("insert into addition values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,first, second));
+	} else if("3".equals(level)){
+		String first = body.asFormUrlEncoded().get("first")[0];
+		String second = body.asFormUrlEncoded().get("second")[0];
+		DatabaseConnectorDude.insert("insert into subtraction values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,second, first));
 	}
-	return ok();
+	return ok(getJsonGenericResponse());
 }
 
 public static Result showCertificate() {
@@ -425,4 +441,17 @@ public static Result showCertificate() {
     	boolean hasFinished = hasFinishedList.get(0);
     	return hasFinished;
 	}
+    
+    public static JsonNode getJsonGenericResponse(){
+    	ObjectMapper mapper = new ObjectMapper();
+    	JsonNode actualObj = null;
+		try {
+			actualObj = mapper.readTree("{\"successfull\":\"Call Successful\"}");
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	return actualObj;
+    }
 }

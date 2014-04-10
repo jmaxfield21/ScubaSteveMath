@@ -30,19 +30,31 @@
                 <div id="directions">
                     <p>Enter two integers into the equation creation fields to create a specific equation.<br></p><br>
                 </div>
+                 <h1>Level:</h1>
+                <select id="level">
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 <h3>Equation</h3>
-                <form NAME="Equation Creator" ACTION="" METHOD="GET">
-                    <p>First Integer:</p>
-                    <input TYPE="number" NAME="firstNumber"><br>
-                    <select name ="operator">
-                        <option value="+">+</option>
-                        <option value="-">-</option>
-                    </select>
-                    <p>Second Integer:</p>
-                    <input Type="number" Name="secondNumber" Value=""><br>
-                    <input class="button" type="button" NAME="submit" Value="Submit" onClick="equaitonCreator(this.form)">
-                </form>
+                <p>First Integer:</p>
+                <input TYPE="number" NAME="firstNumber"><br>
+                <select name ="operator">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                </select>
+                <p>Second Integer:</p>
+                <input Type="number" Name="secondNumber" Value=""><br>
+                <input class="button" type="button" NAME="submit" Value="Submit" onClick="equaitonCreator(this.form)">
                 <input class="button" type="button" name="back" value="Finished" onclick="location.href='/ECLevelSelect';">
+                
+                <div id="recognitionDiv" class="recognitionDiv">
+		        <h2>Number Recognition</h2>
+		        <p>Enter desired number in the box:</p>
+		        <input id="number" name="number" class="inputBox" type="text" placeholder="Original Number"><br>
+		        <input id="answer" name="answer" class="inputBox" type="text" placeholder="Answer"><br>
+		        <input class="button" TYPE="button" NAME="submit" Value="Submit" onClick="recognitionCreator(this.form)"><br>
+		        <input class="button" type="button" name="back" value="Finished" onclick="location.href='/levelcreators';">
+		        </div>
             </div>
         </div>
     </body>

@@ -5,7 +5,7 @@ function submitEquation(number, answer)
 	  url: '/addequations',
 	  data:{number:number,answer:answer,level:1},
 	  dataType: 'json',
-	  success: function(){},
+	  success: function(){location.reload();},
 	  error: function(response){
 	    console.log("cannont send equation");
 		console.log(response);
