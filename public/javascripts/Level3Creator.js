@@ -1,28 +1,22 @@
-function subtractionCreator(form)
+function submitEquation(first, second) 
 {
-    var firstNumber = form.firstNumber.value;
-    var secondNumber = form.secondNumber.value;
-    alert("Equation created: " +firstNumber+ "-" +secondNumber);
-    return;
-    //alert(firstNumber);
-    //alert(secondNumber);
-    //firstNumber and secondNumber to be sent to database
-}
+	var scoreResponse = $.ajax({
+	  type: "POST",
+	  url: '/addequations',
+	  data:{first:first,second:second,level:3},
+	  dataType: 'json',
+	  success: function(){location.reload();},
+	  error: function(response){
+	    console.log("cannont send equation");
+		console.log(response);
+	  },
+	  async:   false
+	});
+};
 
-function rangeSetter(form)
-{
-    var firstRange = form.firstRange.value;
-    var secondRange = form.secondRange.value;
-    if(firstRange > secondRange)
-    {
-        alert("Range set: "+ secondRange+ "-" +firstRange);
-    }
-    else
-    {
-        alert("Range set: "+ firstRange+ "-" +secondRange);
-    }
-    return;
-    //alert(firstRange);
-    //alert(secondRange);
-    // firstRange and secondRange to be sent to database
-}
+function subtractionCreator(form) {
+    var first = $("#firstNumber").val();
+	var second = $("#secondNumber").val();
+	submitEquation(first,second);
+};
+
