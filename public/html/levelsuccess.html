@@ -6,10 +6,11 @@
 		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css">
 		<link rel="stylesheet" href="/assets/stylesheets/levelsuccess.css" >
 		<script src="/assets/javascripts/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/steveswimming.js"></script>
 	</head>
 	<body onload="bubbles()">
 		<div class="bubbles">
-			<img src="/assets/images/scuba_dive_md_clr1.gif" alt="">
+      <img id="scuba_steve" src="/assets/images/scuba_dive_md_clr1.gif" alt="" onload="startMoving(this)">
 		</div>
 		<script type="text/javascript">
 			function bubbles() {

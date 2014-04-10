@@ -8,6 +8,19 @@ body {
   background-image: -moz-linear-gradient(bottom, #0099ff, #45d1ff);
   background-image: -webkit-linear-gradient(bottom, #0099ff, #45d1ff);
   background-image: linear-gradient(to top, #0099ff, #45d1ff);
+  overflow-x: hidden;
+}
+
+#scuba_steve {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .bubble-toggle {
