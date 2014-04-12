@@ -13,17 +13,18 @@
 	</head>
 	<body class="game_body">
 		<div id="title_banner">
-			<text class="hugeTitleText">Welcome to Barracuda Point!!</text>
+			<text class="hugeTitleText">Dive at Barracuda Point!!</text>
 			<button class="logout_button" onclick="location.href='/map';">Back to Map</button>
 		</div>
 		<div id="tank">
+			<img src="/assets/images/scuba_tank.png">
 			<div id="filledTank">
 				<div id="emptyTank"></div>
 			</div>
 		</div>
 		<div class="gameplay">
 			<button name="play" class="button" id="play" onclick="setup()">Play</button><br>
-			<a id="output"> Click Play to Begin</a><br>
+			<a id="output"></a><br>
 			<button name="answer1" class="button" id="answer1" onclick="isCorrect('left')"> </button>
 			<button name="answer2" class="button" id="answer2" onclick="isCorrect('middle')"> </button>
 			<button name="answer3" class="button" id="answer3" onclick="isCorrect('right')"> </button><br>
