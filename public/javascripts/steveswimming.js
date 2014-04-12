@@ -49,6 +49,7 @@ function swimmingUp(img) {
         }, time, "linear", function() {
             // when animation finishes, start over
             // Dillon put your popup here
+            dialog('win');
             $(img$).css({
                 "display":"none"
             });
@@ -63,3 +64,10 @@ $(document).ready(function() {
         });
     });
 });
+
+function dialog(){
+		$(function() {
+    		$( "#success_dialog" ).dialog();
+			$("#finalScoreSuccess").append(Math.floor((self.correctAnswers/self.totalQuestions)*100) + "%");
+  		});
+}

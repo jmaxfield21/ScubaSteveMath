@@ -221,6 +221,8 @@ function changeHeightDynamic(percent)
 //isCorrect checks whether the student's answer is correct or not then prints message to 'answer' div
 function isCorrect(selectedButton)
 {
+	var incorrect_sound = document.getElementById("incorrect_sound");
+	var correct_sound = document.getElementById("correct_sound");
 	index++;
 	var studentAnswer;
 	switch(selectedButton)
@@ -240,7 +242,8 @@ function isCorrect(selectedButton)
 		self.correctAnswers++;
 		tankSize = tankSize + 10;
 		document.getElementById("result").innerHTML = 'Correct!';
-		document.getElementById("correct_sound").play();
+		correct_sound.load();
+		correct_sound.play();
 		$(function(){
 			$("#correct_image").fadeIn(500);
 			$("#correct_image").fadeOut(1500);
@@ -253,7 +256,8 @@ function isCorrect(selectedButton)
 		self.prevNumPos = getPlaceForNumber( self.prevBigNum, correctAnswer );
 		document.getElementById("result").innerHTML = 'Incorrect, the number was ' + self.prevBigNum + ', the number in the ' 
 				+ self.prevNumPos + ' place is ' +correctAnswer+ '.';
-		document.getElementById("incorrect_sound").play();
+		incorrect_sound.load();
+		incorrect_sound.play();
 		$(function(){
 			$("#incorrect_image").fadeIn(500);
 			$("#incorrect_image").fadeOut(1500);
