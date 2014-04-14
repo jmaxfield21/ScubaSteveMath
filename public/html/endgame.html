@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Success!!</title>
+		<title>End Game Animation</title>
 		<link rel="icon" type="image/png" href="/assets/images/favicon.png">
 		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css">
 		<link rel="stylesheet" href="/assets/stylesheets/levelsuccess.css" >
+		<link rel="stylesheet" href="/assets/stylesheets/endgame.css" >
 		<link rel="stylesheet" type="text/css" href="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/themes/base/jquery-ui.css">
 		<script src="/assets/javascripts/jquery-2.1.0.min.js"></script>
 		<script src="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/ui/jquery-ui.js"></script>
-    <script type="text/javascript" src="/assets/javascripts/steveswimming.js"></script>
 	</head>
 	<body onload="bubbles()">
-		<div class="bubbles">
-      <img id="scuba_steve" src="/assets/images/scuba_dive_md_clr1.gif" alt="" onload="startMoving(this)">
-		</div>
+	<div class="bubbles">
+		<img src="/assets/images/starfish.PNG" id="starfish_key">
+	</div>
     <audio id="splash" src="/assets/audio/water_splash.mp3" type="audio/mpeg" autoplay>
+	<div id="success_dialog" title="Level Complete!" style="display:none;">
+		<p>Congratulations, you unlocked a piece of the Starfish Key!</p>
+		<img src="/assets/images/starfish.PNG" id="Starfish Key">
+		<button class="replay_button" onclick="location.href='/Level1';">Replay</button>
+		<button class="back_to_map" onclick="location.href='/map';">Back to Map</button>
+	</div>
 		<script type="text/javascript">
 			function bubbles() {
 				var $bubbles = $('.bubbles');
@@ -64,11 +70,5 @@
 				});
 			}
 		</script>
-		<div id="success_dialog" title="Level Complete!" style="display:none;">
-			<p>Congratulations, you unlocked a piece of the Starfish Key!</p>
-			<img src="/assets/images/starfish.PNG" id="Starfish Key">
-			<button class="replay_button" onclick="location.href='/Level1';">Replay</button>
-			<button class="back_to_map" onclick="location.href='/map';">Back to Map</button>
-		</div>
 	</body>
 </html>

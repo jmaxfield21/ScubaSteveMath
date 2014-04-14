@@ -124,6 +124,13 @@ public class Application extends Controller {
         return redirect("/assets/html/levelsuccess.html");
     }
     
+    public static Result endgame() {
+        if(!isLoggedIn()) {
+            return redirect("/login");
+        }
+        return redirect("/assets/html/endgame.html");
+    }
+    
     public static Result map() {
     	if(!isLoggedIn()){
 			return redirect("/login");

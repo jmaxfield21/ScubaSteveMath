@@ -315,10 +315,7 @@ var successL2Callback = function(response)
 function dialog(result){
 	
 	if(result === 'win'){
-		$(function() {
-    		$( "#success_dialog" ).dialog();
-			$("#finalScoreSuccess").append(Math.floor((self.correctAnswers/self.totalQuestions)*100) + "%");
-  		});
+		window.location.href="/assets/html/levelsuccess.html";
   	}
   	else{
   		$(function() {
