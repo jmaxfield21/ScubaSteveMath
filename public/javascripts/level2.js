@@ -258,12 +258,13 @@ function getAnswerArrayForNumber(num1, num2)
 //If it is, prints dialog window informing student of result
 function isGameOver(){
 	if(index == 15){
-		if(self.correctAnswers/self.totalQuestions >= .9)
+		sendScore((Math.round((self.correctAnswers/self.totalQuestions)*100)));
+		if(self.correctAnswers/self.totalQuestions >= .9){
 			dialog('win');
-		else
+		} else {
 			dialog('loser');
+		}
 	}
-	sendScore((Math.round((self.correctAnswers/self.totalQuestions)*100)));
 }
 
 function sendScore(score) 
