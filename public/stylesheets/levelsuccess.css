@@ -203,3 +203,21 @@ body {
     margin-left: 2px;
   }
 }
+
+.replay_button{
+	border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 20px;
+}
+
+.back_to_map{
+		border-radius: 5px;
+	border-color: #00008B;
+	border-width : 3px;
+	background-color: #6495ED;
+	color: white;
+	font-size: 20px;
+}

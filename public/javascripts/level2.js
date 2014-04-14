@@ -23,7 +23,7 @@ function initialSetup(){
 function setup()
 {
 	isGameOver();
-	var level = 1;
+	var level = 2;
 	var wrongAnswers;
 	var wrong1;
 	var wrong2;
@@ -200,11 +200,23 @@ function isCorrect(selectedButton)
 		self.correctAnswers++;
 		tankSize = tankSize + 6.66666;
 		document.getElementById("result").innerHTML = 'Correct!';
+		correct_sound.load();
+		correct_sound.play();
+		$(function(){
+			$("#correct_image").fadeIn(500);
+			$("#correct_image").fadeOut(1500);
+		});
 		changeHeightDynamic(tankSize);
 	}
 	else
 	{
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
+		incorrect_sound.load();
+		incorrect_sound.play();
+		$(function(){
+			$("#incorrect_image").fadeIn(500);
+			$("#incorrect_image").fadeOut(1500);
+		});
 		changeHeightDynamic(tankSize);
 	}
 	self.currentProblem++;

@@ -25,6 +25,12 @@ function setup()
 	setButtons(correctAnswer, wrong1, wrong2);
 	var playButton = document.getElementById("play");
 	playButton.style.display = "none";
+	var answer1 = document.getElementById("answer1");
+	answer1.style.visibility = "visible";
+	var answer2 = document.getElementById("answer2");
+	answer2.style.visibility = "visible";
+	var answer3 = document.getElementById("answer3");
+	answer3.style.visibility = "visible";
 }
 
 //Called from setup()
@@ -128,6 +134,8 @@ function isCorrect(selectedButton)
 		score++;
 		tankSize = tankSize + 3.33333;
 		document.getElementById("result").innerHTML = 'Correct!';
+		correct_sound.load();
+		correct_sound.play();
 		$(function(){
 			$("#correct_image").fadeIn(500);
 			$("#correct_image").fadeOut(1500);
@@ -137,6 +145,8 @@ function isCorrect(selectedButton)
 	else
 	{
 		document.getElementById("result").innerHTML = 'Incorrect, the correct answer was ' +correctAnswer+ '.';
+		correct_sound.load();
+		correct_sound.play();
 		$(function(){
 			$("#incorrect_image").fadeIn(500);
 			$("#incorrect_image").fadeOut(1500);
