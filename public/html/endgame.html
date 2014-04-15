@@ -9,10 +9,11 @@
 		<link rel="stylesheet" type="text/css" href="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/themes/base/jquery-ui.css">
 		<script src="/assets/javascripts/jquery-2.1.0.min.js"></script>
 		<script src="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/ui/jquery-ui.js"></script>
+		<script src="/assets/javascripts/endgame.js"></script>
 	</head>
 	<body onload="bubbles()">
 	<div class="bubbles">
-		<img src="/assets/images/starfish.PNG" id="starfish_key">
+		<img src="/assets/images/starfish.PNG" id="starfish_key" onload="animation()">
 	</div>
     <audio id="splash" src="/assets/audio/water_splash.mp3" type="audio/mpeg" autoplay>
 	<div id="success_dialog" title="Level Complete!" style="display:none;">
