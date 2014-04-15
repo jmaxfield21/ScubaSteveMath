@@ -18,7 +18,7 @@ function initialSetup(){
 
 function setup()
 {
-	isGameOver();
+	isGameOver(); 	
 	var level = 1;
 	var wrongAnswers;
 	var wrong1;
@@ -340,7 +340,7 @@ function isGameOver(){
 function dialog(result){
 	
 	if(result === 'win'){
-		
+		setTimeout("location.href='/levelsuccess';", "2500");
   	}
   	else{
   		$(function() {

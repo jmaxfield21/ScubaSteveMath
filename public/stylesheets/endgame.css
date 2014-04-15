@@ -1,6 +1,19 @@
 #starfish_key{
-	position: relative;
+	position: fixed;
 	left: 40%;
-	top: 50%;
-	visibility: hidden;
+	top: 35%;
+	-webkit-animation: moveToCenter 3s; /* Chrome, Safari, Opera */
+	animation: moveToCenter 3s;
+}
+
+@-webkit-keyframes moveToCenter
+{
+from {top: 1000px;}
+to {top: 35%;}
+}
+
+@keyframes moveToCenter
+{
+from {top: 1000px;}
+to {top: 35%;}
 }
