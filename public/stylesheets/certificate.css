@@ -1,6 +1,16 @@
-.certimage{
-	background-size: 0px 0px;
-	background-repeat: repeat;
+.body{
+	position:relative;
+	left: 0%;
+	top: 0%; 
+	height: 100%; 
+	width: 100%; 
+	margin: 0;
+}
+
+#cert_container{
+	background: url("../images/Certificate.jpg");
+	background-size: 906px 700px;
+	background-repeat: no-repeat;
 	height: 700px;
 	width: 906px;
 	border-style: outset;
@@ -9,31 +19,23 @@
 	position: relative;
 
 }
+
+.score {
+	position: absolute;
+	left:14%;
+	top:73%;
+	font-size:250%;
+}
+
+.name {
+	position: absolute;
+	left:38%;
+	top:47%;
+	font-size:250%;
+}
+
 .seal{
 	position:absolute;
 	left:77%;
 	top:10%;
-}
-
-.body{
-	position:absolute;
-	left: 0%;
-	top: 0%; 
-	height: 100%; 
-	width: 100%; 
-	margin: 0;
-}
-
-.score{
-	position:absolute;
-	font-size:250%;
-	left:10%;
-	top:77%;
-}
-
-.name{
-	position:absolute;
-	font-size:250%;
-	left:27%;
-	top:50%;
 }
