@@ -171,10 +171,7 @@ function isGameOver(){
 
 function dialog(result){
 	if(result === 'win'){
-		$(function() {
-    		$("#success_dialog").dialog();
-    		$("#success_dialog").draggable({disabled:true});
-  		});
+		window.location.href="/assets/html/endgame.html";
   	}
   	else{
   		$(function() {

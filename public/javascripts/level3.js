@@ -168,9 +168,7 @@ function isGameOver(){
 
 function dialog(result){
 	if(result === 'win'){
-		$(function() {
-    		$( "#success_dialog" ).dialog();
-  		});
+		window.location.href="/assets/html/levelsuccess.html";
   	}
   	else{
   		$(function() {

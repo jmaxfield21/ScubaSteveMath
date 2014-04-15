@@ -329,6 +329,7 @@ function isGameOver(){
 	if(index == 10){
 		if(self.correctAnswers/self.totalQuestions >= .9){
 			dialog('win');
+			
 		} else {
 			dialog('loser');
 		}
@@ -339,10 +340,7 @@ function isGameOver(){
 function dialog(result){
 	
 	if(result === 'win'){
-		$(function() {
-    		$( "#success_dialog" ).dialog();
-			$("#finalScoreSuccess").append(Math.floor((self.correctAnswers/self.totalQuestions)*100) + "%");
-  		});
+		
   	}
   	else{
   		$(function() {
