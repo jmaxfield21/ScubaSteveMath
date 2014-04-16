@@ -2,18 +2,11 @@
 	position: fixed;
 	left: 40%;
 	top: 35%;
-	-webkit-animation: moveToCenter 3s; /* Chrome, Safari, Opera */
-	animation: moveToCenter 3s;
+	display: hidden;
 }
 
-@-webkit-keyframes moveToCenter
-{
-from {top: 1000px;}
-to {top: 35%;}
-}
-
-@keyframes moveToCenter
-{
-from {top: 1000px;}
-to {top: 35%;}
+#chest{
+	position: fixed;
+	left: 40%;
+	top: 35%;
 }
