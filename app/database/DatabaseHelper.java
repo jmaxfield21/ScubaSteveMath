@@ -57,7 +57,7 @@ public class DatabaseHelper {
 			ArrayList<String> problem = new ArrayList<String>();
 			
 			try {
-				bigProblemList = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select difference_min,difference_max from subtraction where subtraction_level_id=" + level, new ArrayList<String>()));
+				bigProblemList = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select difference_max,difference_min from subtraction where subtraction_level_id=" + level, new ArrayList<String>()));
 				for(int i = 0; i < bigProblemList.size(); i++){
 					if(i%2 == 0){
 						problem = new ArrayList<String>();
