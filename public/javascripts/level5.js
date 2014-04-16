@@ -171,7 +171,17 @@ function isGameOver(){
 
 function dialog(result){
 	if(result === 'win'){
-		window.location.href="/assets/html/endgame.html";
+		var output = document.getElementById("output");
+		var button1 = document.getElementById("answer1");
+		var button2 = document.getElementById("answer2");
+		var button3 = document.getElementById("answer3");
+
+		output.style.display = "none";
+		button1.style.display = "none";
+		button2.style.display = "none";
+		button3.style.display = "none";
+
+		setTimeout("location.href='/levelsuccess';", "2500");
   	}
   	else{
   		$(function() {
