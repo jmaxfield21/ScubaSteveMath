@@ -243,17 +243,21 @@ public static Result getEquationsForLevel(){
 	String level = body.asFormUrlEncoded().get("level")[0];
 	EquationsTO transObject = new EquationsTO();
 	
-	if("1".equals(level) || "5".equals(level)){
-		List<Integer> numbers = DatabaseHelper.getNumbersFromNumRecognition(level);
-		List<Integer> numbersToIdentify = DatabaseHelper.getNumbersToIdentifyFromNumRecognition(level);
-		transObject.numbers = numbers;
-		transObject.numbersToIdentify = numbersToIdentify;
+	if("1".equals(level)){
+		transObject.numbers = DatabaseHelper.getNumbersFromNumRecognition(level);
+		transObject.numbersToIdentify = DatabaseHelper.getNumbersToIdentifyFromNumRecognition(level);
 	} else if("2".equals(level)){
-		List<ArrayList<String>> problems = DatabaseHelper.getAdditionProblemsForLevel(level);
-		transObject.additionProblems = problems;
+		transObject.additionProblems = DatabaseHelper.getAdditionProblemsForLevel(level);
 	} else if("3".equals(level)){
-		List<ArrayList<String>> problems = DatabaseHelper.getSubtractionProblemsForLevel(level);
-		transObject.subtractionProblems = problems;
+		transObject.subtractionProblems = DatabaseHelper.getSubtractionProblemsForLevel(level);
+	} else if("4".equals(level)){
+		transObject.subtractionProblems = DatabaseHelper.getSubtractionProblemsForLevel(level);
+		transObject.additionProblems = DatabaseHelper.getAdditionProblemsForLevel(level);
+	} else if("5".equals(level)){
+		transObject.subtractionProblems = DatabaseHelper.getSubtractionProblemsForLevel(level);
+		transObject.additionProblems = DatabaseHelper.getAdditionProblemsForLevel(level);
+		transObject.numbers = DatabaseHelper.getNumbersFromNumRecognition(level);
+		transObject.numbersToIdentify = DatabaseHelper.getNumbersToIdentifyFromNumRecognition(level);
 	}
 	
 	response().setContentType("text/json");
