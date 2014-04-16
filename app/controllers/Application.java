@@ -244,6 +244,9 @@ public static Result getEquationsForLevel(){
 	} else if("2".equals(level)){
 		List<ArrayList<String>> problems = DatabaseHelper.getAdditionProblemsForLevel(level);
 		transObject.additionProblems = problems;
+	} else if("3".equals(level)){
+		List<ArrayList<String>> problems = DatabaseHelper.getSubtractionProblemsForLevel(level);
+		transObject.subtractionProblems = problems;
 	}
 	
 	response().setContentType("text/json");
@@ -400,6 +403,9 @@ public static Result showCertificate() {
 			uuids = DatabaseConnectorDude.getStringsFromResultSet(DatabaseConnectorDude.query("select UUID from users where username=?;", Arrays.asList(username)));
 			Assert.isTrue(uuids.size() == 1, "Too many IDs associated with a username.");
 	    	DatabaseConnectorDude.insert("insert into scores values (?,?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,uuids.get(0),score, getCurrentTimeString()));
+	    	if(getDoubleFromString(score) >= 90){
+	    		DatabaseConnectorDude.insert("update users set level_" + level + "_complete=1 where username='" + username + "';", new ArrayList<String>());
+	    	}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -412,7 +418,11 @@ public static Result showCertificate() {
     	return redirect("/login");
     }
     
-    public static List<String> getStringsFromTimestamps(List<Timestamp> times){
+    private static double getDoubleFromString(String number){
+    	return Double.parseDouble(number);
+    }
+    
+    private static List<String> getStringsFromTimestamps(List<Timestamp> times){
     	List<String> stringys = new ArrayList<String>();
     	Date date = new Date();
     	DateFormat dateFormat = new SimpleDateFormat();
