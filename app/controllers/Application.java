@@ -76,11 +76,18 @@ public class Application extends Controller {
     	return redirect("/assets/html/Level3Creator.html");
     }
     
-    public static Result level4_5creator() {
+    public static Result level4creator() {
     	if(!isLoggedIn()){
 			return redirect("/login");
     	}
-    	return redirect("/assets/html/Level4_5Creator.html");
+    	return redirect("/assets/html/Level4Creator.html");
+    }
+    
+    public static Result level5creator() {
+    	if(!isLoggedIn()){
+			return redirect("/login");
+    	}
+    	return redirect("/assets/html/Level5Creator.html");
     }
     
     public static Result level1() {
@@ -295,6 +302,29 @@ public static Result addEquationsForLevel(){
 		String first = body.asFormUrlEncoded().get("first")[0];
 		String second = body.asFormUrlEncoded().get("second")[0];
 		DatabaseConnectorDude.insert("insert into subtraction values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,second, first));
+	} else if("4".equals(level)){
+		String first = body.asFormUrlEncoded().get("first")[0];
+		String second = body.asFormUrlEncoded().get("second")[0];
+		String operator = body.asFormUrlEncoded().get("operator")[0];
+		
+		if("+".equals(operator)){
+			DatabaseConnectorDude.insert("insert into addition values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,first, second));
+		} else if ("-".equals(operator)){
+			DatabaseConnectorDude.insert("insert into subtraction values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,second, first));
+		}
+		
+	} else if("5".equals(level)){
+		String first = body.asFormUrlEncoded().get("first")[0];
+		String second = body.asFormUrlEncoded().get("second")[0];
+		String operator = body.asFormUrlEncoded().get("operator")[0];
+		
+		if("+".equals(operator)){
+			DatabaseConnectorDude.insert("insert into addition values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,first, second));
+		} else if ("-".equals(operator)){
+			DatabaseConnectorDude.insert("insert into subtraction values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,second, first));
+		} else if("".equals(operator)){
+			DatabaseConnectorDude.insert("insert into number_recognition values (?,?,?,?)", Arrays.asList(UUID.randomUUID().toString(),level,first, second));
+		}
 	}
 	return ok(getJsonGenericResponse());
 }

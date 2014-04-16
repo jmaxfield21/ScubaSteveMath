@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Level 5 Equation Creator</title>
+        <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css">
+        <link rel="stylesheet" href="/assets/stylesheets/admin.css" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/EquationCreation.css">
+
+        <script type="text/javascript" src="/assets/javascripts/jquery-2.0.3.min.js"></script>
+        <script src="/assets/javascripts/jquery.cycle.all.js"></script>
+        <script src="/assets/javascripts/Level5Creator.js"></script>
+    </head>
+    <body class="admin_body">
+        <div id="title_banner">
+            <img id="logo" class="rotate" alt="" src="/assets/images/scubasquad.png">
+            <text class="hugeTitleText">Equation Creator: Level 5</text>
+            <div id="admin_options">
+                <button class="button logout_button" onclick="location.href='/logout';">Logout</button>
+                <button class="button" onclick="location.href='/adminwelcome';">Home</button>
+                <button class="button" onclick="location.href='/adduser';">Add Students</button>
+                <button class="button" onclick="location.href='/adminrecords';">Student Progress Reports</button>
+                <button class="button" onclick="location.href='/levelcreators';">Add Equations to Level</button>
+            </div>
+        </div>
+        <div class="levelFour">
+            <div id="equationDiv" class="equationDiv">
+                <h2>Addition and Subtraction Problems</h2>
+                <div id="directions">
+                    <p>Enter two integers into the equation creation fields to create a specific equation.<br></p><br>
+                </div>
+                <h3>Equation</h3>
+                <p>First Integer:</p>
+                <input TYPE="number" id="firstNumber"><br>
+                <select id ="operator">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                </select>
+                <p>Second Integer:</p>
+                <input Type="number" id="secondNumber" Value=""><br>
+                
+				<h1>---OR---</h1><br>
+				
+                <div id="recognitionDiv">
+		        <h2>Number Recognition</h2>
+		        <p>Enter desired number in the box:</p>
+		        <input id="number" name="number" class="inputBox" type="text" placeholder="Original Number"><br>
+		        <input id="answer" name="answer" class="inputBox" type="text" placeholder="Answer"><br>
+		        <input class="button" TYPE="button" NAME="submit" Value="Submit" onClick="eqCreator()"><br>
+		        <input class="button" type="button" name="back" value="Finished" onclick="location.href='/levelcreators';">
+		        </div>
+            </div>
+        </div>
+    </body>
+</html>
+

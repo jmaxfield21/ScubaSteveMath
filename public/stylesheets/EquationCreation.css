@@ -4,7 +4,7 @@
     opacity:0.9;
     padding: 25px 75px 75px;
 	width:85%;
-	height:150px;
+	height:175px;
 	border-radius:50px;
 	background-color:#FFF7CC;
 	box-shadow: 7px 7px 7px #000000;
@@ -45,11 +45,11 @@
 	font-family:'helvetica neue', 'segoe ui', sans-serif;
 }
 
-.levelFourFive {
+.levelFour {
 	opacity:0.9;
     padding: 25px 75px 75px;
 	width:85%;
-	height:390px;
+	height:500px;
 	border-radius:50px;
 	background-color:#FFF7CC;
 	box-shadow: 7px 7px 7px #000000;
@@ -92,7 +92,7 @@ input {
 	opacity:0.9;
 	border-radius:50px;
 	background-color:#FFF7CC;
-	position: absolute;
+	position: relative;
 }
 
 #eq_head {
