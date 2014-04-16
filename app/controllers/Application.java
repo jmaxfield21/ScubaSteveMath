@@ -198,6 +198,8 @@ public class Application extends Controller {
     		List<Integer> levelIds = DatabaseConnectorDude.getIntegersFromResultSet(DatabaseConnectorDude.query("select "
     				+ "scores.score_level_id from scores inner join users on users.UUID=scores.UUID where users.UUID=? order by scores.date desc;", 
     				Arrays.asList(uuids.get(0))));
+    		
+    		levelIds = reduceSize(levelIds);
     		return ok(studentrecords.render(names, levelIds, scores, getStringsFromTimestamps(times), new Boolean(isCurrentAdmin())));
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -205,7 +207,19 @@ public class Application extends Controller {
     	return ok("Scuba Steve's database is having problems while trying to get your progress report for you.");
     }
     
-    public static Result showAdminStudentRecords() {
+    private static List<Integer> reduceSize(List<Integer> list) {
+		List<Integer> newArray = new ArrayList<Integer>();
+		for(int i = 0; i < list.size(); i++){
+			if(i < 10){
+				newArray.add(list.get(i));
+			} else {
+				break;
+			}
+		}
+		return newArray;
+	}
+
+	public static Result showAdminStudentRecords() {
     	if(!isLoggedIn()){
 			return redirect("/login");
     	}
