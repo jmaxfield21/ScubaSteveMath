@@ -271,24 +271,55 @@ function isCorrect(selectedButton)
 
 function getPlaceForNumber(number, numberToIdentify)
 {
+	
 	var numString = number + "";
+	var possiblePlaces = [];
+	
+	for(var i = 0; i < numString.length; i++){
+		if(numString[i] == numberToIdentify){
+			possiblePlaces[possiblePlaces.length] = i;
+		}
+	}
+	
+	var random = Math.floor(Math.random() * possiblePlaces.length);
+	console.log(random + possiblePlaces.length);
+	var indexToUse = possiblePlaces[random];
+	
 	if(numString.length == 3){
-		if(numString[0] == numberToIdentify){
+		if(indexToUse == 0){
 			return "HUNDREDS";
-		} else if(numString[1] == numberToIdentify){
+		} else if(indexToUse == 1){
 			return "TENS";
-		} else if (numString[2] == numberToIdentify){
+		} else if (indexToUse == 2){
 			return "ONES";
 		}
 	} else if(numString.length == 2){
-		if(numString[0] == numberToIdentify){
+		if(indexToUse == 0){
 			return "TENS";
-		} else if(numString[1] == numberToIdentify){
+		} else if(indexToUse == 1){
 			return "ONES";
-		}
-	} else {
+		} 
+	} else if (numString.length == 1){
 		return "ONES";
 	}
+	
+// 	if(numString.length == 3){
+// 		if(numString[0] == numberToIdentify){
+// 			return "HUNDREDS";
+// 		} else if(numString[1] == numberToIdentify){
+// 			return "TENS";
+// 		} else if (numString[2] == numberToIdentify){
+// 			return "ONES";
+// 		}
+// 	} else if(numString.length == 2){
+// 		if(numString[0] == numberToIdentify){
+// 			return "TENS";
+// 		} else if(numString[1] == numberToIdentify){
+// 			return "ONES";
+// 		}
+// 	} else {
+// 		return "ONES";
+// 	}
 }
 
 function getAnswerArrayForNumber(number, answer)
