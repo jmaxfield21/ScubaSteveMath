@@ -59,21 +59,6 @@ function setup()
 	var answer3 = document.getElementById("answer3");
 	answer3.style.visibility = "visible";
 };
-// function setup()
-// {
-// 	isGameOver();
-// 	var wrong1 = randomAnswer(2);
-// 	var wrong2 = randomAnswer(2);
-// 	var answerArray = level2();
-// 	correctAnswer = answerArray[0] + answerArray[1];
-// 	while(correctAnswer == wrong1 || correctAnswer == wrong2 || wrong1 == wrong2){
-// 		wrong1 = randomAnswer(2);
-// 		wrong2 = randomAnswer(2);
-// 	}
-// 	setButtons(correctAnswer, wrong1, wrong2);
-// 	var playButton = document.getElementById("play");
-// 	playButton.style.display = "none";
-// }
 
 function level2Generator(numberOfQuestionsNeeded) {
 	var questions = new Array();
@@ -228,20 +213,6 @@ function getAnswerArrayForNumber(num1, num2)
 	var answers = new Array();
 	answers[0] = parseInt(num1) + parseInt(num2);
 	
-	// if((number + "")[0] != answer){
-	// 	answers[nonAnswerIndex] = (number + "")[0];
-	// 	nonAnswerIndex++;
-	// }
-	//  
-	// if((number + "")[1] != answer){
-	// 	answers[nonAnswerIndex] = (number + "")[1];
-	// 	nonAnswerIndex++;
-	// } 
-	// 
-	// if ((number + "")[2] != answer){
-	// 	answers[nonAnswerIndex] = (number + "")[2];
-	// 	nonAnswerIndex++;
-	// }
 	
 	for(var i = 0; i < 3; i++){
 		if(answers[i] == undefined){
@@ -316,7 +287,17 @@ var successL2Callback = function(response)
 function dialog(result){
 	
 	if(result === 'win'){
-		window.location.href="/assets/html/levelsuccess.html";
+		var output = document.getElementById("output");
+		var button1 = document.getElementById("answer1");
+		var button2 = document.getElementById("answer2");
+		var button3 = document.getElementById("answer3");
+
+		output.style.display = "none";
+		button1.style.display = "none";
+		button2.style.display = "none";
+		button3.style.display = "none";
+
+		setTimeout("location.href='/levelsuccess';", "2500");
   	}
   	else{
   		$(function() {

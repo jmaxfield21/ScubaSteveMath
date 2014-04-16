@@ -131,6 +131,13 @@ public class Application extends Controller {
         }
         return redirect("/assets/html/endgame.html");
     }
+
+    public static Result rollcredits() {
+        if(!isLoggedIn()) {
+            return redirect("/login");
+        }
+        return redirect("/assets/html/rollcredits.html");
+    }
     
     public static Result map() {
     	if(!isLoggedIn()){

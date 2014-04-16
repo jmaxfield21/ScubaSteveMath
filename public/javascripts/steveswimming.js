@@ -9,6 +9,7 @@ function startMoving(img) {
         img$.css("right", -imgWidth);
         amount = screenWidth + imgWidth;
     }
+
     var moveRate = 75;   // pixels per second to move
     var time = amount * 1000 / moveRate;
     img$.stop(true)
