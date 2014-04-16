@@ -181,7 +181,7 @@ function dialog(result){
 		button2.style.display = "none";
 		button3.style.display = "none";
 
-		setTimeout("location.href='/levelsuccess';", "2500");
+		setTimeout("location.href='/endgame';", "2500");
   	}
   	else{
   		$(function() {

@@ -7,13 +7,15 @@
 		<link rel="stylesheet" href="/assets/stylesheets/levelsuccess.css" >
 		<link rel="stylesheet" href="/assets/stylesheets/endgame.css" >
 		<link rel="stylesheet" type="text/css" href="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/themes/base/jquery-ui.css">
+
 		<script src="/assets/javascripts/jquery-2.1.0.min.js"></script>
 		<script src="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/ui/jquery-ui.js"></script>
 		<script src="/assets/javascripts/endgame.js"></script>
 	</head>
 	<body onload="bubbles()">
 	<div class="bubbles">
-		<img src="/assets/images/starfish.PNG" id="starfish_key">
+		<img id="scuba_steve" src="/assets/images/scuba_dive_md_clr1.gif" alt="" onload="startMoving(this)">
+		<img src="/assets/images/starfish.PNG" id="starfish_key" style="display:none">
 		<img src="/assets/images/notYourGrandfathersChest.GIF" id="chest" style="display:none">
 	</div>
 	<div id="success_dialog" title="Level Complete!" style="display:none;">
@@ -22,6 +24,9 @@
 		<button class="replay_button" onclick="location.href='/Level1';">Replay</button>
 		<button class="back_to_map" onclick="location.href='/map';">Back to Map</button>
 	</div>
+	<audio id="splash" src="/assets/audio/water_splash.mp3" type="audio/mpeg" autoplay>
+    <audio id="swim" src="/assets/audio/deep_underwater_ambience_002.mp3" type="audio/mpeg" autoplay loop>
+    <audio id="win" src="/assets/audio/ta-da.mp3">
 		<script type="text/javascript">
 			function bubbles() {
 				var $bubbles = $('.bubbles');
