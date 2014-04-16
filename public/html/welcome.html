@@ -4,8 +4,10 @@
 		<link rel="icon" type="image/png" href="/assets/images/favicon.png">
 		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css">
 		<link rel="stylesheet" href="/assets/stylesheets/common.css" type="text/css" />
+		<link rel="stylesheet" href="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/themes/base/jquery-ui.css"></link>
 		
 		<script type="text/javascript" src="/assets/javascripts/jquery-2.0.3.min.js"></script>
+		<script src="/assets/javascripts/jquery-ui/jquery-ui-1.10.4/ui/jquery-ui.js"></script>
 		<script src="/assets/javascripts/jquery.cycle.all.js"></script>
 		<script type="text/javascript">
 			var page = {}, slideShowOptions = {
@@ -18,6 +20,7 @@
 			}
 			$(document).ready(page.init);
 		</script>
+		<script type="text/javascript" src="/assets/javascripts/about_steve.js"></script>
 	</head>
 	<body class="game_body" >
 		<div class="bubbles"></div>
@@ -31,6 +34,7 @@
 		<div class="farRight buttonDivVertical">
 			<button id="map" class="bigbutton textSettings farRight" onclick="location.href='/map';">Map</button>
 			<button id="progress" class="bigbutton textSettings farRight" onclick="location.href='/records';">Progress Report</button>
+			<button id="about" class="bigbutton textSettings farRight" onclick="about()">About Steve!</button>
 		</div>
 		<div class="shuffle">
 			<img src="/assets/images/scuba-shark.png" title="Hawaii">
@@ -47,6 +51,17 @@
 				<button class="pause" onclick="document.getElementById('player').pause()">Pause Music</button>
 				<button class="mute" onclick="document.getElementById('player').muted=!document.getElementById('player').muted">Mute</button>
 			</div>
+		</div>
+		<div id="about_steve" title="About Scuba Steve" style="display:none;">
+			<p>Scuba Steve has been scuba diving again. On his last dive he found a treasure chest!! He found that to open the chest he needs a key in the shape of a starfish. The key is broken up into five pieces and are hidden all around the world, he must find each piece in order to open the chest.</p>
+			<br>
+			<p>Steve needs your help!!</p>
+			<br>
+			<p>In order for Steve to be able to find each piece, he needs your help completing math problems that will help him fill his air tank. Each level will test your different math skills. Should you collect the pieces of the key, Steve will share his treasure with you!!</p>
+			<br>
+			<p>See you in the boat!!</p>
+			<br>
+			<p>Press Esc to Return to Game</p>
 		</div>
 		<audio id="player" autoplay loop>
 			<source src="/assets/audio/SteveTheme.ogg" type="audio/ogg" >
