@@ -61,7 +61,7 @@ function setup()
 	answer3.style.visibility = "visible";
 };
 
-function level4Generator(numberOfQuestionsNeeded) {
+function level5Generator(numberOfQuestionsNeeded) {
 	var questions = new Array();
 	var array = new Array();
 	var min = 0;
@@ -69,11 +69,13 @@ function level4Generator(numberOfQuestionsNeeded) {
 	
 	
 	for(var i = 0; i < numberOfQuestionsNeeded; i++){
-		
-		if(Math.round(Math.random()) == 0){
+		var random = Math.round(Math.random() * 2);
+		if(random == 0){
 			questions[questions.length] = getAdditionProblem();
-		} else {
+		} else if(random == 1){
 			questions[questions.length] = getSubtractionProblem();
+		} else {
+			questions[questions.length] = getNumberRecognitionProblem();
 		}
 	}
 	
@@ -83,7 +85,7 @@ function level4Generator(numberOfQuestionsNeeded) {
 function getAdditionProblem() {
 	var array = new Array();
 	var min = 0;
-	var max = 10;
+	var max = 100;
 	
 	var first = Math.floor(Math.random() *  max);
 	var second = Math.floor(Math.random() * max);
@@ -98,7 +100,7 @@ function getSubtractionProblem(){
 
 	var array = new Array();
 	var min = 0;
-	var max = 10;
+	var max = 100;
 		
 	var first = Math.floor(Math.random() * max);
 	var second = Math.floor(Math.random() * first);
@@ -115,6 +117,7 @@ function getNumberRecognitionProblem() {
 	var min = 0;
 	var max = 9;
 	var problemArray = new Array();
+	var rtnArray = new Array();
 	
 	//Calculate digits
 	var one = Math.floor(Math.random() * max);
@@ -129,9 +132,12 @@ function getNumberRecognitionProblem() {
 
 	//Get the big number
 	var bigNum = (100*one) + (10*two) + three;
-
+	var bigNumStr = bigNum + "";
+	rtnArray[0] = bigNum;
+	rtnArray[1] = bigNumStr[Math.floor(Math.random() * bigNumStr.length)];
+	rtnArray[2] = "rec";
 	
-	return bigNum;
+	return rtnArray;
 }
 
 function setNewQuestion(first, second, type){
@@ -140,8 +146,10 @@ function setNewQuestion(first, second, type){
 	
 	if(type == "sub"){
 		str = first + " - " + second + " = ";
-	} else {
+	} else if(type == "add"){
 		str = first + " + " + second + " = ";
+	} else if(type == "rec"){
+		str = "The number is " + first + ". What number is in the " + getPlaceForNumber(first,second) + " place?";
 	}
 	
 	id.innerHTML = str;
@@ -276,18 +284,85 @@ function getAnswerArrayForNumber(num1, num2, type)
 	var answers = new Array();
 	if(type == "sub"){
 		answers[0] = parseInt(num1) - parseInt(num2);
+	} else if(type == "rec"){
+		answers = getAnswerArrayForNumberRecognition(num1, num2);
 	} else {
 		answers[0] = parseInt(num1) + parseInt(num2);
 	}
 	
 	for(var i = 0; i < 3; i++){
 		if(answers[i] == undefined){
-			answers[i] = Math.floor(Math.random() * 20);
+			answers[i] = Math.floor(Math.random() * (answers[0]+40));
 		}
 	}
 	
 	return answers;
 	
+};
+
+function getAnswerArrayForNumberRecognition(number, answer)
+{
+	var answers = new Array();
+	answers[0] = answer + "";
+	var nonAnswerIndex = 1;
+	
+	if((number + "")[0] != answer){
+		answers[nonAnswerIndex] = (number + "")[0];
+		nonAnswerIndex++;
+	}
+	 
+	if((number + "")[1] != answer){
+		answers[nonAnswerIndex] = (number + "")[1];
+		nonAnswerIndex++;
+	} 
+	
+	if ((number + "")[2] != answer){
+		answers[nonAnswerIndex] = (number + "")[2];
+		nonAnswerIndex++;
+	}
+	
+	for(var i = 0; i < 3; i++){
+		if(answers[i] == undefined){
+			answers[i] = Math.floor(Math.random() * 10);
+		}
+	}
+	
+	return answers;
+};
+
+function getPlaceForNumber(number, numberToIdentify)
+{
+	
+	var numString = number + "";
+	var possiblePlaces = [];
+	
+	for(var i = 0; i < numString.length; i++){
+		if(numString[i] == numberToIdentify){
+			possiblePlaces[possiblePlaces.length] = i;
+		}
+	}
+	
+	var random = Math.floor(Math.random() * possiblePlaces.length);
+	console.log(random + possiblePlaces.length);
+	var indexToUse = possiblePlaces[random];
+	
+	if(numString.length == 3){
+		if(indexToUse == 0){
+			return "HUNDREDS";
+		} else if(indexToUse == 1){
+			return "TENS";
+		} else if (indexToUse == 2){
+			return "ONES";
+		}
+	} else if(numString.length == 2){
+		if(indexToUse == 0){
+			return "TENS";
+		} else if(indexToUse == 1){
+			return "ONES";
+		} 
+	} else if (numString.length == 1){
+		return "ONES";
+	}
 };
 
 //Called from setup()
@@ -327,7 +402,7 @@ var getEquations = function()
 	  url: '/getequations',
 	  data:{level:"5"},
 	  dataType: 'json',
-	  success: successL4Callback,
+	  success: successL5Callback,
 	  error: function(response){
 	    console.log("cannont get equations");
 		console.log(response);
@@ -336,10 +411,13 @@ var getEquations = function()
 	});
 };
 
-var successL4Callback = function(response)
+var successL5Callback = function(response)
 {
 	var subProblems = response.subtractionProblems;
 	var addProblems = response.additionProblems;
+	var numRecBigNums = response.numbers;
+	var numsToIdentify = response.numbersToIdentify;
+	var numRecProblems = new Array();
 	
 	if(subProblems != undefined){
 		subProblems.forEach(function(each){
@@ -353,11 +431,18 @@ var successL4Callback = function(response)
 		});
 	}
 	
-	if(response.subtractionProblems != undefined){
-		self.numbers = response.subtractionProblems.concat(response.additionProblems);
-	} else if (response.additionProblems != undefined){
-		self.numbers = response.additionProblems;
+	if(numRecBigNums != undefined && numsToIdentify != undefined){
+		for(var i = 0; i < numRecBigNums.length; i++){
+			numRecProblems[i] = new Array();
+			numRecProblems[i][0] = numRecBigNums[i];
+			numRecProblems[i][1] = numsToIdentify[i];
+			numRecProblems[i][2] = "rec";
+		}
 	}
+	
+	self.numbers = self.numbers.concat(addProblems);
+	self.numbers = self.numbers.concat(subProblems);
+	self.numbers = self.numbers.concat(numRecProblems);
 	
 	
 	for(var i = 0; i < self.numbers.length; i++){
@@ -388,3 +473,5 @@ function dialog(result){
   		});
   	}
 }
+
+initialSetup();
