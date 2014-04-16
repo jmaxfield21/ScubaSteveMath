@@ -6,22 +6,50 @@ var leftButtonValue;
 var middleButtonValue;
 var rightButtonValue;
 
-//Called from html play button on click
+var self = this;
+self.currentProblem = 1;
+self.answers = new Array();
+self.numbers = new Array();
+self.correctAnswers = 0;
+self.totalQuestions = 15;
+
+//runs when this file is loaded
+function initialSetup(){
+	getEquations();
+}
+
+//Called from HTML play button on click
 //Sets up the equation
 function setup()
 {
 	isGameOver();
-	var wrong1 = randomAnswer(4);
-	var wrong2 = randomAnswer(4);
-	var answerArray = level4();
-	if(answerArray[2] == '-')
-		correctAnswer = answerArray[0] - answerArray[1];
-	else
-		correctAnswer = answerArray[0] + answerArray[1];
-	while(correctAnswer == wrong1 || correctAnswer == wrong2 || wrong1 == wrong2){
-		wrong1 = randomAnswer(4);
-		wrong2 = randomAnswer(4);
+	var level = 2;
+	var wrongAnswers;
+	var wrong1;
+	var wrong2;
+	
+	var problems = self.numbers.concat(level4Generator(self.remainingProblems));
+	var answerArray =  self.answers[self.currentProblem-1];
+	
+	//for the randomly generated problems
+	if(answerArray == undefined){
+		var num1 = problems[self.currentProblem-1][0];
+		var num2 = problems[self.currentProblem-1][1];
+		var type = problems[self.currentProblem-1][2];
+		answerArray = getAnswerArrayForNumber(num1, num2,type);
 	}
+	
+	correctAnswer = answerArray[0];
+	wrong1 = answerArray[1];
+	wrong2 = answerArray[2];
+	
+	while(correctAnswer == wrong1 || correctAnswer == wrong2 || wrong1 == wrong2){
+		wrong1 = randomAnswer(1);
+		wrong2 = randomAnswer(1);
+	}
+	
+	setNewQuestion(problems[self.currentProblem-1][0], problems[self.currentProblem-1][1], problems[self.currentProblem-1][2]);
+	
 	setButtons(correctAnswer, wrong1, wrong2);
 	var playButton = document.getElementById("play");
 	playButton.style.display = "none";
@@ -31,6 +59,68 @@ function setup()
 	answer2.style.visibility = "visible";
 	var answer3 = document.getElementById("answer3");
 	answer3.style.visibility = "visible";
+};
+
+function level4Generator(numberOfQuestionsNeeded) {
+	var questions = new Array();
+	var array = new Array();
+	var min = 0;
+	var max = 10;
+	
+	
+	for(var i = 0; i < numberOfQuestionsNeeded; i++){
+		
+		if(Math.round(Math.random()) == 0){
+			questions[questions.length] = getAdditionProblem();
+		} else {
+			questions[questions.length] = getSubtractionProblem();
+		}
+	}
+	
+	return questions;
+}
+
+function getAdditionProblem() {
+	var array = new Array();
+	var min = 0;
+	var max = 10;
+	
+	var first = Math.floor(Math.random() *  max);
+	var second = Math.floor(Math.random() * max);
+	array[0] = first;
+	array[1] = second;
+	array[2] = "add";
+	
+	return array;
+}
+
+function getSubtractionProblem(){
+
+	var array = new Array();
+	var min = 0;
+	var max = 10;
+		
+	var first = Math.floor(Math.random() * max);
+	var second = Math.floor(Math.random() * first);
+
+	array[0] = first;
+	array[1] = second;
+	array[2] = "sub";
+	
+	return array;
+}
+
+function setNewQuestion(first, second, type){
+	var id = document.getElementById("output");
+	var str = "";
+	
+	if(type == "sub"){
+		str = first + " - " + second + " = ";
+	} else {
+		str = first + " + " + second + " = ";
+	}
+	
+	id.innerHTML = str;
 }
 
 //Called from setup()
@@ -131,8 +221,8 @@ function isCorrect(selectedButton)
 	}
 	if(studentAnswer == correctAnswer)
 	{
-		score++;
-		tankSize = tankSize + 4;
+		self.correctAnswers++;
+		tankSize = tankSize + 6.66666;
 		document.getElementById("result").innerHTML = 'Correct!';
 		correct_sound.load();
 		correct_sound.play();
@@ -153,21 +243,105 @@ function isCorrect(selectedButton)
 		});
 		changeHeightDynamic(tankSize);
 	}
-	
+	self.currentProblem++;
 	setup();
+}
+
+function getAnswerArrayForNumber(num1, num2, type)
+{
+	var answers = new Array();
+	if(type == "sub"){
+		answers[0] = parseInt(num1) - parseInt(num2);
+	} else {
+		answers[0] = parseInt(num1) + parseInt(num2);
+	}
+	
+	for(var i = 0; i < 3; i++){
+		if(answers[i] == undefined){
+			answers[i] = Math.floor(Math.random() * 20);
+		}
+	}
+	
+	return answers;
+	
 }
 
 //Called from setup()
 //Checks whether the game is over
-//If it is, start game over animation
+//If it is, prints dialog window informing student of result
 function isGameOver(){
-	if(index == 25){
-		if(score/index >= .9)
+	if(index == 15){
+		sendScore((Math.round((self.correctAnswers/self.totalQuestions)*100)));
+		if(self.correctAnswers/self.totalQuestions >= .9){
 			dialog('win');
-		else
+		} else {
 			dialog('loser');
+		}
 	}
 }
+
+function sendScore(score) 
+{
+	var scoreResponse = $.ajax({
+	  type: "POST",
+	  url: '/addscore',
+	  data:{score:score,level:4},
+	  dataType: 'json',
+	  success: function(){},
+	  error: function(response){
+	    console.log("cannont send score");
+		console.log(response);
+	  },
+	  async:   false
+	});
+};
+
+var getEquations = function() 
+{
+	var equationsResponse = $.ajax({
+	  type: "POST",
+	  url: '/getequations',
+	  data:{level:"4"},
+	  dataType: 'json',
+	  success: successL4Callback,
+	  error: function(response){
+	    console.log("cannont get equations");
+		console.log(response);
+	  },
+	  async:   false
+	});
+}
+
+var successL4Callback = function(response)
+{
+	var subProblems = response.subtractionProblems;
+	var addProblems = response.additionProblems;
+	
+	if(subProblems != undefined){
+		subProblems.forEach(function(each){
+			each[2] = "sub";	
+		});
+	}
+	
+	if(addProblems != undefined){
+		addProblems.forEach(function(each){
+			each[2] = "add";	
+		});
+	}
+	
+	if(response.subtractionProblems != undefined){
+		self.numbers = response.subtractionProblems.concat(response.additionProblems);
+	} else if (response.additionProblems != undefined){
+		self.numbers = response.additionProblems;
+	}
+	
+	
+	for(var i = 0; i < self.numbers.length; i++){
+		self.answers[i] = getAnswerArrayForNumber(self.numbers[i][0], self.numbers[i][1],self.numbers[i][2]);
+	}
+	var numOfProblems = self.numbers.length;
+	self.remainingProblems = self.totalQuestions - numOfProblems;
+};
 
 function dialog(result){
 	if(result === 'win'){
@@ -189,3 +363,4 @@ function dialog(result){
   		});
   	}
 }
+initialSetup();
