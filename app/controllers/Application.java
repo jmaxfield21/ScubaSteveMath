@@ -22,6 +22,7 @@ import views.html.adminstudentrecords;
 import views.html.certificate;
 import views.html.map;
 import views.html.studentrecords;
+import views.html.levelsuccess;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -138,6 +139,15 @@ public class Application extends Controller {
     	String username = session("username");
     	
     	return ok(map.render(hasFinishedLevel(username,1), hasFinishedLevel(username,2),hasFinishedLevel(username,3), hasFinishedLevel(username,4), hasFinishedLevel(username,5)));
+    }
+
+    public static Result levelsuccessvid() {
+        if(!isLoggedIn()) {
+            return redirect("/login");
+        }
+        String username = session("username");
+        
+        return ok(levelsuccess.render(hasFinishedLevel(username,1), hasFinishedLevel(username,2),hasFinishedLevel(username,3), hasFinishedLevel(username,4), hasFinishedLevel(username,5)));   
     }
     
     //Start actual functions

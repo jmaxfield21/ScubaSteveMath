@@ -1,3 +1,4 @@
+@(l1 : Boolean, l2 : Boolean, l3 : Boolean, l4 : Boolean, l5 : Boolean)
 <!DOCTYPE html>
 <html>
 	<head>
@@ -66,12 +67,26 @@
 			}
 		</script>
 		<div id="success_dialog" title="Level Complete!" style="display:none;">
-			<p>Congratulations, you unlocked a piece of the Starfish Key!</p>
-			<img src="/assets/images/starfish1.PNG" id="Starfish Key1">
-			<img src="/assets/images/starfish2.PNG" id="Starfish Key2">
-			<img src="/assets/images/starfish3.PNG" id="Starfish Key3">
-			<img src="/assets/images/starfish4.PNG" id="Starfish Key4">
-			<img src="/assets/images/starfish.PNG" id="Starfish Key">
+      @if(l1 && l2 && l3 && l4 && l5) {
+        <p>Congratulations, you've unlocked all the pieces of the Starfish Key!</p>
+        <img src="/assets/images/starfish.PNG" id="Starfish Key">
+      } 
+      @if(l1 && l2 && !l3) {
+        <p>Congratulations, you unlocked a piece of the Starfish Key!</p>
+        <img src="/assets/images/starfish2.PNG" id="Starfish Key2">
+      } 
+      @if(l1 && l2 && l3 && !l4) {
+        <p>Congratulations, you unlocked a piece of the Starfish Key!</p>
+        <img src="/assets/images/starfish3.PNG" id="Starfish Key3">
+      } 
+      @if(l1 && l2 && l3 && l4 && !l5) {
+        <p>Congratulations, you unlocked a piece of the Starfish Key!</p>
+        <img src="/assets/images/starfish4.PNG" id="Starfish Key4">
+      } 
+      @if(l1 && !l2) {
+        <p>Congratulations, you unlocked a piece of the Starfish Key!</p>
+        <img src="/assets/images/starfish1.PNG" id="Starfish Key1">
+      }
 			<button class="replay_button" onclick="location.href='/Level1';">Replay</button>
 			<button class="back_to_map" onclick="location.href='/map';">Back to Map</button>
 		</div>
