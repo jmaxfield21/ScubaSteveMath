@@ -302,24 +302,6 @@ function getPlaceForNumber(number, numberToIdentify)
 	} else if (numString.length == 1){
 		return "ONES";
 	}
-	
-// 	if(numString.length == 3){
-// 		if(numString[0] == numberToIdentify){
-// 			return "HUNDREDS";
-// 		} else if(numString[1] == numberToIdentify){
-// 			return "TENS";
-// 		} else if (numString[2] == numberToIdentify){
-// 			return "ONES";
-// 		}
-// 	} else if(numString.length == 2){
-// 		if(numString[0] == numberToIdentify){
-// 			return "TENS";
-// 		} else if(numString[1] == numberToIdentify){
-// 			return "ONES";
-// 		}
-// 	} else {
-// 		return "ONES";
-// 	}
 }
 
 function getAnswerArrayForNumber(number, answer)
